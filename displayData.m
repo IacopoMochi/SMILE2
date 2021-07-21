@@ -1,0 +1,151 @@
+function displayData(app)
+
+ax = app.Image;
+
+axp = app.ImageParameters;
+dataStructure = app.ExportdataButton.UserData;
+
+
+%Check for processed images
+if isfield(dataStructure,'ImagesRC')
+    ImagesRC = dataStructure.ImagesRC;
+end
+%Check for unprocessed images
+if isfield(dataStructure,'rawImages')
+    rawImages = dataStructure.rawImages;
+    rawImagesAdjusted = dataStructure.rawImages;
+end
+
+id = app.AnalysisprogressGauge.UserData;
+disp(id)
+if isempty(id)
+    id = 1;
+    app.AnalysisprogressGauge.UserData = 1;
+end
+if ~exist('ImagesRC','var')
+    hold(ax,'off')
+    if isempty(rawImagesAdjusted{id})
+        I = rawImages{id};
+    else
+        I = rawImagesAdjusted{id};
+    end
+    imagesc(ax,I);axis(ax,'image');colormap(ax,gray)
+    title(ax,dataStructure.fileName{id},'interpreter','none')
+    hold(axp,'off')
+    imagesc(axp,I);axis(axp(1),'image');colormap(axp,gray)
+    title(axp,dataStructure.fileName{id},'interpreter','none')
+else
+    if ~isempty(ImagesRC{id})
+        if isempty(rawImagesAdjusted{id})
+            I = rawImages{id};
+        else
+            I = rawImagesAdjusted{id};
+        end
+        hold(ax,'off')
+        imagesc(ax,ImagesRC{id});axis(ax,'image');
+        colormap(ax,gray)
+        title(ax,dataStructure.fileName{id},'interpreter','none')
+        hold(axp,'off')
+        imagesc(axp,I);axis(axp,'image');colormap(axp,gray)
+        title(axp,dataStructure.fileName{id},'interpreter','none')
+        Le = dataStructure.ProfilesLFilled{id};
+        Te = dataStructure.ProfilesRFilled{id};
+        LeB = dataStructure.LeProfilesBridged{id};
+        TeB = dataStructure.TeProfilesBridged{id};
+        LeP = dataStructure.LeProfilesPinched{id};
+        TeP = dataStructure.TeProfilesPinched{id};
+        LeU = dataStructure.LeProfilesUndetected{id};
+        TeU = dataStructure.TeProfilesUndetected{id};
+        LeS = dataStructure.LeProfilesSpikes{id};
+        TeS = dataStructure.TeProfilesSpikes{id};
+        
+        %CentersB = dataStructure.CentersB{id};
+        %CentersP = dataStructure.CentersP{id};
+        hold(ax,'on')
+        for m = 1:size(Le,2)
+            plot(ax,squeeze(Le(:,m)),1:size(ImagesRC{id},1),'-g','linewidth',1)
+            plot(ax,squeeze(Te(:,m)),1:size(ImagesRC{id},1),'-g','linewidth',1)
+            if app.ShowerrorsButton.Value
+                plot(ax,squeeze(LeB(:,m)),1:size(ImagesRC{id},1),'.r','markersize',15)
+                plot(ax,squeeze(TeB(:,m)),1:size(ImagesRC{id},1),'.r','markersize',15)
+                plot(ax,squeeze(LeP(:,m)),1:size(ImagesRC{id},1),'.b','markersize',15)
+                plot(ax,squeeze(TeP(:,m)),1:size(ImagesRC{id},1),'.b','markersize',15)
+                plot(ax,squeeze(LeS(:,m)),1:size(ImagesRC{id},1),'.k','markersize',15)
+                plot(ax,squeeze(TeS(:,m)),1:size(ImagesRC{id},1),'.k','markersize',15)
+                plot(ax,squeeze(LeU(:,m)),1:size(ImagesRC{id},1),'.y','markersize',15)
+                plot(ax,squeeze(TeU(:,m)),1:size(ImagesRC{id},1),'.y','markersize',15)
+            end
+        end
+        hold(ax,'off')
+        %         if ~isempty(CentersB)
+        %             plot(ax(1),CentersB(:,2),CentersB(:,1),'o','linewidth',2,'color','r')
+        %             hold(ax(1),'off')
+        %         end
+        
+        if strcmp(app.DataDisplayButtonGroup.SelectedObject.Text,'HHCF')
+            if strcmp(app.DisplaySwitch.Value,'Average')
+                HHCF = dataStructure.AverageHHCF_LWR;
+            else
+                HHCF = dataStructure.HHCorrF{id};
+                HHCFFit = dataStructure.HHCorrFFit{id};
+                LWRCorrLength = dataStructure.LWRCorrLength{id};
+            end
+            r = dataStructure.r{id};
+            
+            loglog(app.Metric,r,HHCF,'o',r,HHCFFit);axis(app.Metric,'tight')
+            %loglog(app.Metric,r,HHCF,'o');axis(app.Metric,'tight')
+            hold(app.Metric,'on')
+            loglog(app.Metric,[LWRCorrLength LWRCorrLength],get(app.Metric,'ylim'),'linewidth',2)
+            hold(app.Metric,'off')
+            title(app.Metric,['LWR Correlation length: ' num2str(LWRCorrLength) ' nm'])
+            
+            xlabel(app.Metric,'nm')
+        elseif strcmp(app.DataDisplayButtonGroup.SelectedObject.Text,'PSD')
+            
+            if strcmp(app.DisplaySwitch.Value,'Average')
+                LWR = dataStructure.AveragePSD_LWR;
+                LWR_fit = dataStructure.AveragePSD_LWR_Fit;
+                LWR_fit_unbiased = dataStructure.AveragePSD_LWR_Fit_Unbiased;
+                freq = dataStructure.freq{1};
+            else
+                LWR = dataStructure.PSD_LWR{id};
+                LWR_fit = dataStructure.PSD_LWR_fit{id};
+                LWR_fit_unbiased = dataStructure.PSD_LWR_fit_unbiased{id};
+                %LWR_nf = dataStructure.PSD_LWR_nf{id};
+                freq = dataStructure.freq{id};
+            end
+            loglog(app.Metric,freq,LWR(1:length(freq)),freq,LWR_fit)
+            xlabel(app.Metric,'nm^{-1}')
+            ylabel(app.Metric,'nm^{3}')
+            axis(app.Metric,'tight')
+            ylim = get(app.Metric,'ylim');
+            xlim = get(app.Metric,'xlim');
+            hold(app.Metric,'on')
+            loglog(app.Metric,freq,LWR_fit_unbiased)
+            set(app.Metric,'ylim',ylim,'xlim',xlim)
+            hold(app.Metric,'off')
+        else
+            LCDU = dataStructure.LinesCD{id};
+            LCenters = dataStructure.LinesCenters{id};
+            app.Metric.XScale = 'linear';
+            app.Metric.YScale = 'linear';
+            plot(app.Metric,LCenters,LCDU,'o-')
+            axis(app.Metric,'tight')
+            xlabel(app.Metric,'nm')
+            ylabel(app.Metric,'CD [nm]')
+        end
+        %imagesc(ax(1),rawImages{id});axis(ax(1),'image');colormap(gray)
+        app.AnalysisprogressGauge.UserData = id;
+    else
+        if isempty(rawImagesAdjusted{id})
+            I = rawImages{id};
+        else
+            I = rawImagesAdjusted{id};
+        end
+        imagesc(ax,I);axis(ax,'image');colormap(ax,gray)
+        title(ax,dataStructure.fileName{id},'interpreter','none')
+        imagesc(axp,I);axis(axp(1),'image');colormap(axp,gray)
+        title(axp,dataStructure.fileName{id},'interpreter','none')
+    end
+    
+end
