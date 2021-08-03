@@ -91,17 +91,18 @@ else
                 HHCFFit = dataStructure.HHCorrFFit{id};
                 LWRCorrLength = dataStructure.LWRCorrLength{id};
             elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER')
-                HHCF = dataStructure.HHCorrFLER{id};                
-                HHCFFit = dataStructure.HHCorrFLERfit{id};
-                LWRCorrLength = dataStructure.LcLER{id};
-            elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER lead')
-                HHCF = dataStructure.HHCorrFLERl{id};
-                HHCFFit = dataStructure.HHCorrFLERlfit{id};
-                LWRCorrLength = dataStructure.LcLERl{id};
-            elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER trail')
-                HHCF = dataStructure.HHCorrFLERt{id};
-                HHCFFit = dataStructure.HHCorrFLERtfit{id};
-                LWRCorrLength = dataStructure.LcLERt{id};
+                HHCF = dataStructure.HHCorrF{id};
+                dataStructure.
+                HHCFFit = dataStructure.HHCorrFFit{id};
+                LWRCorrLength = dataStructure.LWRCorrLength{id};
+            elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LERl')
+                HHCF = dataStructure.HHCorrF{id};
+                HHCFFit = dataStructure.HHCorrFFit{id};
+                LWRCorrLength = dataStructure.LWRCorrLength{id};
+            elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LERt')
+                HHCF = dataStructure.HHCorrF{id};
+                HHCFFit = dataStructure.HHCorrFFit{id};
+                LWRCorrLength = dataStructure.LWRCorrLength{id};
             end
             %end
             r = dataStructure.r{id};

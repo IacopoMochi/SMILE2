@@ -32,13 +32,13 @@ if ~isfield(edges,'Average_PSD_LWR')
     F_LW = fft(LW);  
     F_Le = fft(Le_f);
     F_Te = fft(Te_f);
-    F_LTe = fft([Le_f;Te_f]);
+    F_LTe = fft([Le_f Te_f]);
     
     %Calculate the correlation length
     sm = mean(std(LW)); %Average LWR standard deviation
     sml = mean(std(Le_f)); %Average standard deviation Le
     smt = mean(std(Te_f)); %Average standard deviation Te
-    smlt = mean(std([Le_f;Te_f])); %Average standard deviation Le+Te
+    smlt = mean(std([Le_f Te_f])); %Average standard deviation Le+Te
     
     %%%%%%
     [H1,r_1] = hhcf(LW(:,1)-mean(LW(:,1)),ps);
@@ -65,7 +65,7 @@ if ~isfield(edges,'Average_PSD_LWR')
     H3 = mean(H3,2); %Average height-height correlation function
     beta0_3 = [smt 20 1 0];
     %%%%%%
-    Ae = [Te_f; Le_f];
+    Ae = [Te_f Le_f];
     [H4,r_4] = hhcf(Ae(:,1)-mean(Ae(:,1)),ps);
     H4 = zeros(size(H4,1),size(Ae,2));
     for k = 1:size(Te_f,2)
@@ -386,84 +386,8 @@ if ~isfield(edges,'Average_PSD_LWR')
     metrics.betaLER = betaf_LER;
     metrics.r = r_1;
 else   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%AVERAGE IMAGES CASE - Not fully implemented yet
-    mF_LW = edges.Average_PSD_LWR;
-    N = size(mF_LW,1);
-    Fs = 1/ps;
-    freq = 0:Fs/N:Fs/2-Fs/N;
-    L = length(mF_LW);
     
-    FN  = parameters.FN;
-    LN  = parameters.LN;
-    CF = parameters.CF;
-    ExN = parameters.ExN;
-    Alpha = parameters.Alpha;
-    
-    
-    
-    freqx = freq(ExN:end);
-    mF_LWx= PSD(ExN:end);
-    
-    PSDmodel = parameters.PSDmodel;
-    
-    if strcmp(PSDmodel,'Gaussian')
-        model = @LWRModel4;
-        beta0 = [nanmean(mF_LW(1:FN))-nanmean(mF_LW(L-LN:L)),1/CF,nanmean(mF_LW(L-LN:L))];
-        f = @(beta,freqx) sum((LWRModel4(beta,freqx)-mF_LWx).^2);
-        Options = optimset('MaxFunEvals',parameters.MFE,'MaxIter',parameters.MI);
-        betaf = fminsearch(@(beta) f(beta,freqx,mF_LWx),beta0,Options);
-        mF_LW_fit = model(betaf,freq);
-        betan = betaf;
-        betan(3) = 0;
-        mF_LW_fit_unbiased = model(betan,freq);
-    elseif strcmp(PSDmodel,'FloatingAlpha')
-        model = @LWRModel3;
-        beta0 = [nanmean(mF_LW(1:FN))-nanmean(mF_LW(L-LN:L)),1/CF,nanmean(mF_LW(L-LN:L)),Alpha];
-        f = @(beta,freqx) sum((LWRModel3(beta,freqx)-mF_LWx).^2);
-        Options = optimset('MaxFunEvals',parameters.MFE,'MaxIter',parameters.MI);
-        betaf = fminsearch(@(beta) f(beta,freqx,mF_LWx),beta0,Options);
-        mF_LW_fit = model(betaf,freq);
-        betan = betaf;
-        betan(3) = 0;
-        mF_LW_fit_unbiased = model(betan,freq);
-    elseif strcmp(PSDmodel,'NoWhiteNoise')
-        model = @LWRModel5;
-        beta0 = [nanmean(mF_LW(1:FN))-nanmean(mF_LW(L-LN:L)),1/CF,0];
-        f = @(beta,freqx) sum((LWRModel5(beta,freqx)-mF_LWx).^2);
-        Options = optimset('MaxFunEvals',parameters.MFE,'MaxIter',parameters.MI);
-        betaf = fminsearch(@(beta) f(beta,freqx,mF_LWx),beta0,Options);
-        mF_LW_fit = model(betaf,freq);
-        betan = betaf;
-        betan(3) = 0;
-        mF_LW_fit_unbiased = model(betan,freq);
-    elseif strcmp(PSDmodel,'Palasantzas')
-        model = @LWRModel6;
-        beta0 = [nanmean(mF_LW(1:FN))-nanmean(mF_LW(L-LN:L)), CF, sqrt(nanmean(mF_LW(L-LN:L))),2];
-        f = @(beta,freqx,mF_LWx) sum((LWRModel6(beta,freqx)-mF_LWx).^2);
-        Options = optimset('MaxFunEvals',parameters.MFE,'MaxIter',parameters.MI);
-        betaf = fminsearch(@(beta) f(beta,freqx,mF_LWx),beta0,Options);
-        mF_LW_fit = model(betaf,freq);
-        betan = betaf;
-        betan(3) = 0;
-        mF_LW_fit_unbiased = model(betan,freq);
-    end
-    
-    
-    %LWR = 3*sqrt(sum(2*mF_LW.^2)/ps);
-    LWR = 3*sqrt(sum(mF_LW));
-    
-    PSD = mF_LW*(size(LW,1));
-    %PSD_unbiased = (mF_LW-betaf(3))*(size(LW,1));
-    PSD_unbiased = (mF_LW-betaf(3));
-    PSD_unbiased(PSD_unbiased<0)=0;
-    
-    LWR_unbiased = 3*sqrt(sum(PSD_unbiased));
-    LWR_fit = 3*sqrt(sum(mF_LW_fit));
-    LWR_fit_unbiased = 3*sqrt(sum(mF_LW_fit_unbiased));
-    
-    
-    PSD_LWR_fit = abs(mF_LW_fit);
-    PSD_LWR_fit_unbiased = abs(mF_LW_fit_unbiased)*(size(LW,1));
-    PSD_LWR_beta = betaf;
+   
     
     
 end
