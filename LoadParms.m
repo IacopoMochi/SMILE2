@@ -44,6 +44,7 @@ h.ed_peakDist.String = num2str(parameters.MinPeakDistance);
 h.PSDmodel.Value = parameters.PSDModel;
 h.edgefitF.Value = parameters.EdgeDetectionMethod;
 h.parmRemGrad.Value = parameters.RemoveGradient;
+h.parmRemGrad.Value = parameters.RemoveGradient;
 h.SEMmodel.Value = parameters.SEM_model;
 
 h.parmBridgingTh.String = num2str(parameters.BridgingThreshold);

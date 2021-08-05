@@ -89,19 +89,23 @@ else
             if strcmp(app.MetricButtonGroup.SelectedObject.Text,'LWR')
                 HHCF = dataStructure.HHCorrF{id};
                 HHCFFit = dataStructure.HHCorrFFit{id};
-                LWRCorrLength = dataStructure.LWRCorrLength{id};
+                CorrLength = dataStructure.LWRCorrLength{id};
+                Tstring = ['Line width Height-Height Correlation Length: ' num2str(CorrLength) ' nm'];
             elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER')
                 HHCF = dataStructure.HHCorrFLER{id};                
                 HHCFFit = dataStructure.HHCorrFLERfit{id};
-                LWRCorrLength = dataStructure.LcLER{id};
+                CorrLength = dataStructure.LcLER{id};
+                Tstring = ['Line Edge Height-Height Correlation Length: ' num2str(CorrLength) ' nm'];
             elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER lead')
                 HHCF = dataStructure.HHCorrFLERl{id};
                 HHCFFit = dataStructure.HHCorrFLERlfit{id};
-                LWRCorrLength = dataStructure.LcLERl{id};
+                CorrLength = dataStructure.LcLERl{id};
+                Tstring = ['Leading Edge Height-Height Correlation Length: ' num2str(CorrLength) ' nm'];
             elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER trail')
                 HHCF = dataStructure.HHCorrFLERt{id};
                 HHCFFit = dataStructure.HHCorrFLERtfit{id};
-                LWRCorrLength = dataStructure.LcLERt{id};
+                CorrLength = dataStructure.LcLERt{id};
+                Tstring = ['Trailing Edge Height-Height Correlation Length: ' num2str(CorrLength) ' nm'];
             end
             %end
             r = dataStructure.r{id};
@@ -109,35 +113,48 @@ else
             loglog(app.Metric,r,HHCF,'o',r,HHCFFit);axis(app.Metric,'tight')
             %loglog(app.Metric,r,HHCF,'o');axis(app.Metric,'tight')
             hold(app.Metric,'on')
-            loglog(app.Metric,[LWRCorrLength LWRCorrLength],get(app.Metric,'ylim'),'linewidth',2)
+            loglog(app.Metric,[CorrLength CorrLength],get(app.Metric,'ylim'),'linewidth',2)
             hold(app.Metric,'off')
-            title(app.Metric,['LWR Correlation length: ' num2str(LWRCorrLength) ' nm'])
+            title(app.Metric,Tstring)
             
             xlabel(app.Metric,'nm')
         elseif strcmp(app.DataDisplayButtonGroup.SelectedObject.Text,'PSD')
             
-            %if strcmp(app.DisplaySwitch.Value,'Average')
-            %    LWR = dataStructure.AveragePSD_LWR;
-            %    LWR_fit = dataStructure.AveragePSD_LWR_Fit;
-            %    LWR_fit_unbiased = dataStructure.AveragePSD_LWR_Fit_Unbiased;
-            %    freq = dataStructure.freq{1};
-            %else
-                LWR = dataStructure.PSD_LWR{id};
-                LWR_fit = dataStructure.PSD_LWR_fit{id};
-                LWR_fit_unbiased = dataStructure.PSD_LWR_fit_unbiased{id};
-                %LWR_nf = dataStructure.PSD_LWR_nf{id};
-                freq = dataStructure.freq{id};
-            %end
-            loglog(app.Metric,freq,LWR(1:length(freq)),freq,LWR_fit)
+            freq = dataStructure.freq{id};
+            if strcmp(app.MetricButtonGroup.SelectedObject.Text,'LWR')
+                PSD = dataStructure.PSD_LWR{id};
+                PSD_fit = dataStructure.PSD_LWR_fit{id};
+                PSD_fit_unbiased = dataStructure.PSD_LWR_fit_unbiased{id};
+                Tstring = 'LWR Power Spectral Density';
+            elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER')
+                PSD = dataStructure.PSD_LER{id};
+                PSD_fit = dataStructure.PSD_LER_fit{id};
+                PSD_fit_unbiased = dataStructure.PSD_LER_fit_unbiased{id};
+                Tstring = 'LER Power Spectral Density';
+            elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER lead')
+                PSD = dataStructure.PSD_LERl{id};
+                PSD_fit = dataStructure.PSD_LERl_fit{id};
+                PSD_fit_unbiased = dataStructure.PSD_LERl_fit_unbiased{id};
+                Tstring = 'Leading edge LER Power Spectral Density';
+            elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER trail')
+                PSD = dataStructure.PSD_LERt{id};
+                PSD_fit = dataStructure.PSD_LERt_fit{id};
+                PSD_fit_unbiased = dataStructure.PSD_LERt_fit_unbiased{id};
+                Tstring = 'Trailing edge LER Power Spectral Density';
+            end
+                
+            
+            loglog(app.Metric,freq,PSD(1:length(freq)),freq,PSD_fit)
             xlabel(app.Metric,'nm^{-1}')
             ylabel(app.Metric,'nm^{3}')
             axis(app.Metric,'tight')
             ylim = get(app.Metric,'ylim');
             xlim = get(app.Metric,'xlim');
             hold(app.Metric,'on')
-            loglog(app.Metric,freq,LWR_fit_unbiased)
+            loglog(app.Metric,freq,PSD_fit_unbiased)
             set(app.Metric,'ylim',ylim,'xlim',xlim)
             hold(app.Metric,'off')
+            title(app.Metric,Tstring)
         else
             LCDU = dataStructure.LinesCD{id};
             LCenters = dataStructure.LinesCenters{id};
@@ -147,6 +164,7 @@ else
             axis(app.Metric,'tight')
             xlabel(app.Metric,'nm')
             ylabel(app.Metric,'CD [nm]')
+            title(app.Metric,'Average CD value across the image')
         end
         %imagesc(ax(1),rawImages{id});axis(ax(1),'image');colormap(gray)
         app.AnalysisprogressGauge.UserData = id;

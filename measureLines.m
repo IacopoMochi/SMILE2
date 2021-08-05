@@ -350,10 +350,18 @@ if ~isfield(edges,'Average_PSD_LWR')
     metrics.PSD_LWR_fit = PSD_LWR_fit;
     metrics.PSD_LWR_fit_unbiased = PSD_LWR_fit_unbiased;
     metrics.PSD_LWR_beta = PSD_LWR_beta;
+    metrics.PSD_LER = PSD_LERh;
     metrics.PSD_LER_fit = PSD_LER_fit;
     metrics.PSD_LER_fit_unbiased = PSD_LER_fit_unbiased;
     metrics.PSD_LER_beta = PSD_LER_beta;
-    
+    metrics.PSD_LERl = PSD_LERlh;
+    metrics.PSD_LERl_fit = PSD_LERl_fit;
+    metrics.PSD_LERl_fit_unbiased = PSD_LERl_fit_unbiased;
+    metrics.PSD_LERl_beta = PSD_LERl_beta;
+    metrics.PSD_LERt = PSD_LERth;
+    metrics.PSD_LERt_fit = PSD_LERt_fit;
+    metrics.PSD_LERt_fit_unbiased = PSD_LERt_fit_unbiased;
+    metrics.PSD_LERt_beta = PSD_LERt_beta;
     
     metrics.LinesCenters = LinesCenters;
     
