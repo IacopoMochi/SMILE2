@@ -59,9 +59,7 @@ sy = app.DenoiseYEditField.Value;
 
 w = 10*round(max(sx,sy));
 [x,y] = meshgrid(-w/2:2*w/(w-1):w/2);
-g = exp(-(x.^2/(2*sy^2)+y.^2/(2*sx^2)));
-g = normal(g);
-AF = conv2(A,g,'same');
+g = exp(-(x.^2/(2*sy^2)+y.^2/(2*sx^2))
 theta = 0:0.1:(2*pi+0.1);
 
 %Cropped image
