@@ -28,7 +28,6 @@ parameters.MI = app.MaximumnumberofiterationsEditField.Value;
 parameters.MFE = app.MaximumnumberofiterationsEditField.Value;
 parameters.MinPeakProminence = app.MinpeakprominenceEditField.Value;
 parameters.MinPeakDistance = app.MinpeakdistanceEditField.Value;
-%parameters.PSDmodel = h.PSDmodel.String{h.PSDmodel.Value};
 parameters.RemoveDistortion = app.RemovedistortionCheckBox.Value;
 parameters.RemoveGradient = app.GradientcorrectionButtonGroup.Buttons.Value;
 parameters.BridgingThreshold = app.BridgingthresholdEditField.Value;
