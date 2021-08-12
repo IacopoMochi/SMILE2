@@ -110,7 +110,7 @@ else
             %end
             r = dataStructure.r{id};
             
-            loglog(app.Metric,r,HHCF,'o',r,HHCFFit);axis(app.Metric,'tight')
+            loglog(app.Metric,r,HHCF,'o',r,HHCFFit,'lineWidth',2);axis(app.Metric,'tight')
             %loglog(app.Metric,r,HHCF,'o');axis(app.Metric,'tight')
             hold(app.Metric,'on')
             loglog(app.Metric,[CorrLength CorrLength],get(app.Metric,'ylim'),'linewidth',2)
@@ -144,14 +144,14 @@ else
             end
                 
             
-            loglog(app.Metric,freq,PSD(1:length(freq)),freq,PSD_fit)
+            loglog(app.Metric,freq,PSD(1:length(freq)),freq,PSD_fit,'lineWidth',2)
             xlabel(app.Metric,'nm^{-1}')
             ylabel(app.Metric,'nm^{3}')
             axis(app.Metric,'tight')
             ylim = get(app.Metric,'ylim');
             xlim = get(app.Metric,'xlim');
             hold(app.Metric,'on')
-            loglog(app.Metric,freq,PSD_fit_unbiased)
+            loglog(app.Metric,freq,PSD_fit_unbiased,'lineWidth',2)
             set(app.Metric,'ylim',ylim,'xlim',xlim)
             hold(app.Metric,'off')
             title(app.Metric,Tstring)
@@ -160,7 +160,7 @@ else
             LCenters = dataStructure.LinesCenters{id};
             app.Metric.XScale = 'linear';
             app.Metric.YScale = 'linear';
-            plot(app.Metric,LCenters,LCDU,'o-')
+            plot(app.Metric,LCenters,LCDU,'o-','lineWidth',2)
             axis(app.Metric,'tight')
             xlabel(app.Metric,'nm')
             ylabel(app.Metric,'CD [nm]')
