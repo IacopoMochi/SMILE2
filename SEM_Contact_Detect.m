@@ -60,12 +60,18 @@ sy = app.DenoiseYEditField.Value;
 w = 10*round(max(sx,sy));
 [x,y] = meshgrid(-w/2:2*w/(w-1):w/2);
 g = exp(-(x.^2/(2*sy^2)+y.^2/(2*sx^2)));
-g = normal(g);
+g = g./sum(g);
 AF = conv2(A,g,'same');
-theta = 0:0.1:(2*pi+0.1);
 
-%Cropped image
-Ac = A(h1:h2,w1:w2);
+%Cropped and filtered image
+Acf = normal(AF(h1:h2,w1:w2));
+
+C = contourc(Acf,[threshold,threshold]);
+M = cntsplit(C);
+Output.contacts_contours = M;
+Output.PixelSize = ps;
+
+
 
 
 

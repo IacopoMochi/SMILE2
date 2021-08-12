@@ -17,7 +17,6 @@ if isfield(dataStructure,'rawImages')
 end
 
 id = app.AnalysisprogressGauge.UserData;
-disp(id)
 if isempty(id)
     id = 1;
     app.AnalysisprogressGauge.UserData = 1;
@@ -48,6 +47,12 @@ else
         hold(axp,'off')
         imagesc(axp,I);axis(axp,'image');colormap(axp,gray)
         title(axp,dataStructure.fileName{id},'interpreter','none')
+        
+        
+        %Contacts
+        
+        %Lines
+        
         Le = dataStructure.ProfilesLFilled{id};
         Te = dataStructure.ProfilesRFilled{id};
         LeB = dataStructure.LeProfilesBridged{id};
