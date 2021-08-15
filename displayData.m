@@ -50,7 +50,11 @@ else
         
         
         %Contacts
-        
+        Contours = dataStructure.ContactsContours;
+        hold(ax,'on')
+        for m = 1:numel(Contours)
+            plot(ax,Contours(m).x,Contours(m).y,'-g','linewidth',2)
+        end
         %Lines
         
         Le = dataStructure.ProfilesLFilled{id};
@@ -179,10 +183,21 @@ else
         else
             I = rawImagesAdjusted{id};
         end
+        %Contacts
+        Contours = dataStructure.ContactsContours;
+        hold(ax,'on')
+        for m = 1:numel(Contours)
+            try
+            plot(ax,Contours(m).x,Contours(m).y,'-g','linewidth',2)
+            catch
+                disp('Uffa')
+            end
+        end
         imagesc(ax,I);axis(ax,'image');colormap(ax,gray)
         title(ax,dataStructure.fileName{id},'interpreter','none')
         imagesc(axp,I);axis(axp(1),'image');colormap(axp,gray)
         title(axp,dataStructure.fileName{id},'interpreter','none')
+        
     end
     
 end

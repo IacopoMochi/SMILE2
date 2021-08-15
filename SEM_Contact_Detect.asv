@@ -70,7 +70,7 @@ C = contourc(Acf,[threshold,threshold]);
 M = cntsplit(C);
 Output.contacts_contours = M;
 Output.PixelSize = ps;
-Output.AC = A(h1:h2,w1:w2);
+Output.AC
 
 
 
