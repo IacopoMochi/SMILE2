@@ -68,7 +68,42 @@ Acf = normal(AF(h1:h2,w1:w2));
 
 C = contourc(Acf,[threshold,threshold]);
 M = cntsplit(C);
-Output.contacts_contours = M;
+
+ContoursRadius = zeros(numel(M),1);
+ContoursCenters = struct;
+for n = 1:numel(M)
+    ContoursCenters(n).x = mean(M(n).x);
+    ContoursCenters(n).y = mean(M(n).y);
+    ContoursRadius(n) = mean(sqrt((M(n).x-ContoursCenters(n).x).^2+...
+        (M(n).y-ContoursCenters(n).y).^2));
+end
+
+%Cut edge contacts
+cnt = 1;
+MC  = struct;
+mr = mean(ContoursRadius);
+for n= 1:numel(M)
+    if ContoursCenters(n).x>2*mr && ContoursCenters(n).y>2*mr && ...
+            ContoursCenters(n).y<(h2-h1-2*mr) && ...
+            ContoursCenters(n).x<(w2-w1-2*mr)
+        cnt = cnt+1;
+        MC(cnt).x = M(n).x;
+        MC(cnt).y = M(n).y;
+    end
+end
+
+Output.contacts_contours = MC;
+
+ContoursCenters = struct;
+for n = 1:numel(MC)
+    ContoursCenters(n).x = mean(MC(n).x);
+    ContoursCenters(n).y = mean(MC(n).y);
+    ContoursRadius(n) = mean(sqrt((MC(n).x-ContoursCenters(n).x).^2+...
+        (MC(n).y-ContoursCenters(n).y).^2));
+end
+Output.contacts_centers = ContoursCenters;
+Output.contacts_radius = ContoursRadius;
+
 Output.PixelSize = ps;
 Output.AC = A(h1:h2,w1:w2);
 

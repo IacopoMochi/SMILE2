@@ -48,13 +48,18 @@ else
         imagesc(axp,I);axis(axp,'image');colormap(axp,gray)
         title(axp,dataStructure.fileName{id},'interpreter','none')
         
-        
+        if strcmp(dataStructure.Type{id} , 'Contacts')
         %Contacts
         Contours = dataStructure.ContactsContours;
+        ContoursFx = dataStructure.CntMetrics.processedContoursX;
+        ContoursFy = dataStructure.CntMetrics.processedContoursY;
         hold(ax,'on')
-        for m = 1:numel(Contours)
+        for m = 1:numel(ContoursFx)
             plot(ax,Contours(m).x,Contours(m).y,'-g','linewidth',2)
+            plot(ax,ContoursFx{m},ContoursFy{m},'-r','linewidth',1)
         end
+        
+        else
         %Lines
         
         Le = dataStructure.ProfilesLFilled{id};
@@ -175,6 +180,7 @@ else
             ylabel(app.Metric,'CD [nm]')
             title(app.Metric,'Average CD value across the image')
         end
+        end
         %imagesc(ax(1),rawImages{id});axis(ax(1),'image');colormap(gray)
         app.AnalysisprogressGauge.UserData = id;
     else
@@ -183,16 +189,16 @@ else
         else
             I = rawImagesAdjusted{id};
         end
-        %Contacts
-        Contours = dataStructure.ContactsContours;
-        hold(ax,'on')
-        for m = 1:numel(Contours)
-            try
-            plot(ax,Contours(m).x,Contours(m).y,'-g','linewidth',2)
-            catch
-                disp('Uffa')
-            end
-        end
+%         %Contacts
+%         Contours = dataStructure.ContactsContours;
+%         hold(ax,'on')
+%         for m = 1:numel(Contours)
+%             try
+%             plot(ax,Contours(m).x,Contours(m).y,'-g','linewidth',2)
+%             catch
+%                 disp('Uffa')
+%             end
+%         end
         imagesc(ax,I);axis(ax,'image');colormap(ax,gray)
         title(ax,dataStructure.fileName{id},'interpreter','none')
         imagesc(axp,I);axis(axp(1),'image');colormap(axp,gray)
