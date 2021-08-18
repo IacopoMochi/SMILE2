@@ -14,9 +14,9 @@ for n = 2:numel(Contours)
     X0 = Centers(n).x;
     Y0 = Centers(n).y;
     dt = 2*pi/numel(X);
-    Th = 0:dt:2*pi-dt;
-    EllFit = @(beta,X,Y,Th) sum((X-beta(1)-beta(2).*cos(Th+beta(5))).^2+...
-        (Y-beta(3)-beta(4).*sin(Th+beta(5))).^2);
+    Th = 0:dt:2*pi;
+    EllFit = @(beta,X,Y,Th) sum(abs((X-X0).^2+(Y-Y0).^2-(beta(1)+beta(2).*cos(Th+beta(5))).^2-...
+        (beta(3)+beta(4).*sin(Th+beta(5))).^2));
     beta = fminsearch(@(beta) EllFit(beta,X,Y,Th),...
         [X0;Radii(n);Y0;Radii(n);0]);
     ContoursFit.X = beta(2)*cos(Th+beta(5))+beta(1);

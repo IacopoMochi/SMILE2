@@ -1,7 +1,7 @@
 function Output = SEM_Contact_Detect(parameters,app)
 
 filename = parameters.filename;
-
+Output = struct();
 if strcmp(parameters.SEM_model,'Zeiss')
     %Zeiss SEM: reading image pixel size from header
     A = imfinfo(filename);
