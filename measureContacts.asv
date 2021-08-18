@@ -25,10 +25,9 @@ for n = 2:numel(Contours)
     %beta = beta0;
     cx = beta(2)*cos(Th)+beta(1);
     cy = beta(4)*sin(Th)+beta(3);
-    cxr = cx*cos(beta(5))+cy*sin(beta(5));
-    cyr = -cx*sin(beta(5))+cy*cos(beta(5));
-    ContoursFit.X = cxr;
-    ContoursFit.Y = cyr;
+    
+    ContoursFit.X = beta(2)*cos(Th)+beta(1);
+    ContoursFit.Y = beta(4)*sin(Th)+beta(3);
     
     output.processedContoursX{n} = ContoursFit.X;
     output.processedContoursY{n} = ContoursFit.Y;
