@@ -15,16 +15,15 @@ for n = 2:numel(Contours)
     Y0 = Centers(n).y;
     dt = 2*pi/(numel(X)-1);
     Th = 0:dt:2*pi;
-    beta0 = [X0;Radii(n);Y0;Radii(n);0];
-    EllFit = @(beta,X,Y,Th) sum((-X+((beta(1)+beta(2).*cos(Th))*cos(beta(5))+...
-        (beta(3)+beta(4).*sin(Th))*sin(beta(5)))).^2+...
-        (-Y+(-(beta(1)+beta(2).*cos(Th))*sin(beta(5))+...
-        (beta(3)+beta(4).*sin(Th))*cos(beta(5)))).^2);
-    beta = fminsearch(@(beta) EllFit(beta,X,Y,Th),...
-        beta0);
+    beta0 = [X0;Radii(n);Y0;Radii(n);0;0];
+    
+    %beta = fminsearch(@(beta) EllFit(beta,X,Y,Th),...
+    %    beta0);
     %beta = beta0;
-    cx = beta(2)*cos(Th)+beta(1);
-    cy = beta(4)*sin(Th)+beta(3);
+    beta = nlinfit([Th Th],[X Y],EllModel,beta0);
+    
+    cx = beta(2)*cos(Th+beta(6))+beta(1);
+    cy = beta(4)*sin(Th+beta(6))+beta(3);
     cxr = cx*cos(beta(5))+cy*sin(beta(5));
     cyr = -cx*sin(beta(5))+cy*cos(beta(5));
     ContoursFit.X = cxr;
