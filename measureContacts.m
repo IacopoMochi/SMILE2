@@ -2,17 +2,19 @@ function output = measureContacts(app)
 
 dataStructure = app.ExportdataButton.UserData;
 
-Contours = dataStructure.ContactsContours;
-Centers = dataStructure.ContactsCenters;
+ContoursX = dataStructure.ContactsContoursX;
+ContoursY = dataStructure.ContactsContoursY;
+CentersX = dataStructure.ContactsCentersX;
+CentersY = dataStructure.ContactsCentersY;
 Radii = dataStructure.Contacts_AverageRadius;
 
 ContoursFit  = struct;
 output = struct;
-for n = 2:numel(Contours)
-    X = Contours(n).x;
-    Y = Contours(n).y;
-    X0 = Centers(n).x;
-    Y0 = Centers(n).y;
+for n = 2:numel(ContoursX)
+    X = ContoursX{n};
+    Y = ContoursY{n};
+    X0 = CentersX{n};
+    Y0 = CentersY{n};
     dt = 2*pi/(numel(X)-1);
     Th = 0:dt:2*pi;
     beta0 = [X0;Radii(n);Y0;Radii(n);0;0];

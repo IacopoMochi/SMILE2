@@ -50,12 +50,16 @@ else
         
         if strcmp(dataStructure.Type{id} , 'Contacts')
         %Contacts
-        Contours = dataStructure.ContactsContours;
-        ContoursFx = dataStructure.CntMetrics.processedContoursX;
-        ContoursFy = dataStructure.CntMetrics.processedContoursY;
+        
+        
+        
+        ContoursX = dataStructure.ContactsContoursX{id};
+        ContoursY = dataStructure.ContactsContoursY{id};
+        ContoursFx = dataStructure.CntMetrics{id}.processedContoursX;
+        ContoursFy = dataStructure.CntMetrics{id}.processedContoursY;
         hold(ax,'on')
         for m = 1:numel(ContoursFx)
-            plot(ax,Contours(m).x,Contours(m).y,'-g','linewidth',2)
+            plot(ax,ContoursX(m),ContoursY(m),'-g','linewidth',2)
             plot(ax,ContoursFx{m},ContoursFy{m},'-r','linewidth',1)
         end
         
