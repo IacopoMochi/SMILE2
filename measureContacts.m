@@ -20,7 +20,9 @@ for n = 2:numel(Contours)
     %beta = fminsearch(@(beta) EllFit(beta,X,Y,Th),...
     %    beta0);
     %beta = beta0;
-    beta = nlinfit([Th Th],[X Y],EllModel,beta0);
+    Options = statset('nlinfit');
+    Options.MaxIter = 1000;
+    beta = nlinfit([Th Th],[X Y],@EllModel,beta0,Options);
     
     cx = beta(2)*cos(Th+beta(6))+beta(1);
     cy = beta(4)*sin(Th+beta(6))+beta(3);
