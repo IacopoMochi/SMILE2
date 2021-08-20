@@ -1,6 +1,5 @@
 function M = cntsplit(C)
 
-M = struct();
 f = 0;
 k = 1;
 cnt = 1;

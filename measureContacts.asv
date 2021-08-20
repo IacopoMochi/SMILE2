@@ -23,14 +23,16 @@ for n = 1:length(ContoursX)
     %    beta0);
     %beta = beta0;
     Options = statset('nlinfit');
-    Options.MaxIter = 1000;
-
+    Options.MaxIter = 200;
+    tic;
     beta = nlinfit([Th Th],[X Y],@EllModel,beta0,Options);
+    a = toc;
     cx = beta(2)*cos(Th+beta(6))+beta(1);
     cy = beta(4)*sin(Th+beta(6))+beta(3);
     cxr = cx*cos(beta(5))+cy*sin(beta(5));
     cyr = -cx*sin(beta(5))+cy*cos(beta(5));
-
+    plot(X,Y,cxr,cyr);title([num2str(n) ' time: ' num2str(a) ' DBeta:' num2str(beta-beta0)]);
+    drawnow
     output.processedContoursX{n} = cxr;
     output.processedContoursY{n} = cyr;
     output.MajorSemiaxis{n} = max([beta(2) beta(4)]); 

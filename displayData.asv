@@ -55,11 +55,11 @@ else
         
         ContoursX = dataStructure.ContactsContoursX{id};
         ContoursY = dataStructure.ContactsContoursY{id};
-        ContoursFx = dataStructure.CntMetrics{id}.processedContoursX;
-        ContoursFy = dataStructure.CntMetrics{id}.processedContoursY;
+        ContoursFx = dataStructure.metrics.processedContoursX{n};
+        ContoursFy = dataStructure.processedContoursY{n};
         hold(ax,'on')
         for m = 1:numel(ContoursFx)
-            plot(ax,ContoursX{m},ContoursY{m},'-g','linewidth',2)
+            plot(ax,ContoursX(m),ContoursY(m),'-g','linewidth',2)
             plot(ax,ContoursFx{m},ContoursFy{m},'-r','linewidth',1)
         end
         

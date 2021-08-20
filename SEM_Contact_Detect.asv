@@ -71,12 +71,12 @@ M = cntsplit(C);
 
 ContoursRadius = zeros(numel(M),1);
 ContoursCentersX = zeros(numel(M),1);
-ContoursCentersY = zeros(numel(M),1);
+ContoursCentersX = zeros(numel(M),1);
 for n = 1:numel(M)
-    ContoursCentersX(n) = mean(M(n).x);
-    ContoursCentersY(n) = mean(M(n).y);
-    ContoursRadius(n) = mean(sqrt((M(n).x-ContoursCentersX(n)).^2+...
-        (M(n).y-ContoursCentersY(n)).^2));
+    ContoursCentersX{n} = mean(M(n).x);
+    ContoursCentersY{n} = mean(M(n).y);
+    ContoursRadius(n) = mean(sqrt((M(n).x-ContoursCentersX{n}).^2+...
+        (M(n).y-ContoursCentersY{n}).^2));
 end
 
 %Cut edge contacts
@@ -84,9 +84,9 @@ cnt = 0;
 %MC  = struct;
 mr = mean(ContoursRadius);
 for n= 1:numel(M)
-    if ContoursCentersX(n)>2*mr && ContoursCentersY(n)>2*mr && ...
-            ContoursCentersY(n)<(h2-h1-2*mr) && ...
-            ContoursCentersX(n)<(w2-w1-2*mr)
+    if ContoursCentersX{n}>2*mr && ContoursCentersY{n}>2*mr && ...
+            ContoursCentersY{n}<(h2-h1-2*mr) && ...
+            ContoursCentersX{n}<(w2-w1-2*mr)
         cnt = cnt+1;
         %MC(cnt).x = M(n).x;
         %MC(cnt).y = M(n).y;
@@ -99,10 +99,10 @@ Output.contacts_contoursX = MCx;
 Output.contacts_contoursY = MCy;
 
 for n = 1:numel(MCx)
-    ContoursCentersX(n) = nanmean(MCx{n});
-    ContoursCentersY(n) = nanmean(MCy{n});
-    ContoursRadius(n) = mean(sqrt((MCx{n}-ContoursCentersX(n)).^2+...
-        (MCy{n}-ContoursCentersY(n)).^2));
+    ContoursCentersX{n} = nanmean(MCx{n});
+    ContoursCentersY{n} = nanmean(MCy{n});
+    ContoursRadius(n) = mean(sqrt((MCx{n}-ContoursCentersX{n}).^2+...
+        (MCy{n}-ContoursCentersY{n}).^2));
 end
 Output.contacts_radius = ContoursRadius;
 Output.ContoursCentersX = ContoursCentersX;
