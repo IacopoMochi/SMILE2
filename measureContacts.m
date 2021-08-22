@@ -33,11 +33,12 @@ for n = 1:length(ContoursX)
 
     output.processedContoursX{n} = cxr;
     output.processedContoursY{n} = cyr;
-    output.MajorSemiaxis{n} = max([beta(2) beta(4)]); 
-    output.MinorSemiaxis{n} = min([beta(2) beta(4)]); 
-    output.ellipticity{n} = (output.MajorSemiaxis{n}-...
-        output.MinorSemiaxis{n})/output.MajorSemiaxis{n};
-    output.EllipseAngle{n} = mod(abs(beta(5)),2*pi)*180/pi;
+    output.MajorSemiaxis(n) = max([beta(2) beta(4)]); 
+    output.MinorSemiaxis(n) = min([beta(2) beta(4)]); 
+    output.ellipticity(n) = (output.MajorSemiaxis(n)-...
+        output.MinorSemiaxis(n))/output.MajorSemiaxis(n);
+    output.EllipseAngle(n) = mod(abs(beta(5)),2*pi)*180/pi;
+    output.StdError(n) = std(sqrt(cxr.^2+cyr.^2)-sqrt(X.^2+Y.^2));
     
     %Fit center
     %Contour Fit Error

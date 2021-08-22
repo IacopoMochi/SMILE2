@@ -51,20 +51,43 @@ else
         if strcmp(dataStructure.Type{id} , 'Contacts')
         %Contacts
         
-        
+        %Change visualization
+        app.Metric.Visible = 'off';
+        app.DataDisplayButtonGroup.Visible = 'off';
+        app.MetricButtonGroup.Visible = 'off';
+        app.ShowellipticalfitCheckBox.Visible = 'on';
+        app.ContourMetricButtonGroup.Visible = 'on';
         
         ContoursX = dataStructure.ContactsContoursX{id};
         ContoursY = dataStructure.ContactsContoursY{id};
-        ContoursFx = dataStructure.metrics.processedContoursX{n};
-        ContoursFy = dataStructure.processedContoursY{n};
+        ContoursFx = dataStructure.CntMetrics{id}.processedContoursX;
+        ContoursFy = dataStructure.CntMetrics{id}.processedContoursY;
+        Radii = dataStructure.Contacts_AverageRadius{id};
+        Ellipticity = dataStructure.CntMetrics{id}.ellipticity;
+        Angle = dataStructure.CntMetrics{id}.EllipseAngle;    
+        FitStdError = dataStructure.CntMetrics{id}.StdError; 
+        
         hold(ax,'on')
         for m = 1:numel(ContoursFx)
-            plot(ax,ContoursX(m),ContoursY(m),'-g','linewidth',2)
-            plot(ax,ContoursFx{m},ContoursFy{m},'-r','linewidth',1)
+            plot(ax,ContoursX{m},ContoursY{m},'-g','linewidth',2)
+            C = jet(256);
+            fill(ax,ContoursX{m},ContoursY{m},C(round(1+255*(Radii(m)-min(Radii))/(max(Radii)-min(Radii))),:))
+            
+            
+            if app.ShowellipticalfitCheckBox.Value
+                plot(ax,ContoursFx{m},ContoursFy{m},'-r','linewidth',1)
+            end
         end
         
         else
         %Lines
+        
+        %Change visualization
+        app.Metric.Visible = 'on';
+        app.DataDisplayButtonGroup.Visible = 'on';
+        app.MetricButtonGroup.Visible = 'on';
+        app.ShowellipticalfitCheckBox.Visible = 'off';
+        app.ContourMetricButtonGroup.Visible = 'off'; 
         
         Le = dataStructure.ProfilesLFilled{id};
         Te = dataStructure.ProfilesRFilled{id};
