@@ -17,7 +17,7 @@ for n = 1:length(ContoursX)
     Y0 = CentersY(n);
     dt = 2*pi/(numel(X)-1);
     Th = 0:dt:2*pi;
-    beta0 = [X0;Radii(n);Y0;Radii(n);0;0];
+    beta0 = [0;(Radii(n));0;(Radii(n));0;0];
     
     %beta = fminsearch(@(beta) EllFit(beta,X,Y,Th),...
     %    beta0);
@@ -25,11 +25,13 @@ for n = 1:length(ContoursX)
     Options = statset('nlinfit');
     Options.MaxIter = 1000;
 
-    beta = nlinfit([Th Th],[X Y],@EllModel,beta0,Options);
+    beta = nlinfit([Th Th],[X-X0 Y-Y0],@EllModel,beta0,Options);
+    
     cx = beta(2)*cos(Th+beta(6))+beta(1);
     cy = beta(4)*sin(Th+beta(6))+beta(3);
-    cxr = cx*cos(beta(5))+cy*sin(beta(5));
-    cyr = -cx*sin(beta(5))+cy*cos(beta(5));
+    cxr = cx*cos(beta(5))+cy*sin(beta(5))+X0;
+    cyr = -cx*sin(beta(5))+cy*cos(beta(5))+Y0;
+    beta(2)=abs(beta(2));beta(4)=abs(beta(4));
 
     output.processedContoursX{n} = cxr;
     output.processedContoursY{n} = cyr;

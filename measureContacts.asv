@@ -17,7 +17,7 @@ for n = 1:length(ContoursX)
     Y0 = CentersY(n);
     dt = 2*pi/(numel(X)-1);
     Th = 0:dt:2*pi;
-    beta0 = [X0;Radii(n);Y0;Radii(n);0;0];
+    beta0 = [0;sqrt(Radii(n));0;sqrt(Radii(n));0;0];
     
     %beta = fminsearch(@(beta) EllFit(beta,X,Y,Th),...
     %    beta0);
@@ -26,19 +26,20 @@ for n = 1:length(ContoursX)
     Options.MaxIter = 1000;
 
     beta = nlinfit([Th Th],[X Y],@EllModel,beta0,Options);
-    cx = beta(2)*cos(Th+beta(6))+beta(1);
-    cy = beta(4)*sin(Th+beta(6))+beta(3);
+    beta(2)=abs(beta(2));beta(4)=abs(beta(4));
+    cx = beta(2)^2*cos(Th+beta(6))+beta(1);
+    cy = beta(4)^2*sin(Th+beta(6))+beta(3);
     cxr = cx*cos(beta(5))+cy*sin(beta(5));
     cyr = -cx*sin(beta(5))+cy*cos(beta(5));
 
     output.processedContoursX{n} = cxr;
     output.processedContoursY{n} = cyr;
-    output.MajorSemiaxis{n} = max([beta(2) beta(4)]); 
-    output.MinorSemiaxis{n} = min([beta(2) beta(4)]); 
-    output.ellipticity(n) = (output.MajorSemiaxis{n}-...
-        output.MinorSemiaxis{n})/output.MajorSemiaxis{n};
-    output.EllipseAngle{n} = mod(abs(beta(5)),2*pi)*180/pi;
-    output.StdError{n} = std(sqrt(cxr.^2+cyr.^2)-sqrt(X.^2+Y.^2));
+    output.MajorSemiaxis(n) = max([beta(2) beta(4)]); 
+    output.MinorSemiaxis(n) = min([beta(2) beta(4)]); 
+    output.ellipticity(n) = (output.MajorSemiaxis(n)-...
+        output.MinorSemiaxis(n))/output.MajorSemiaxis(n);
+    output.EllipseAngle(n) = mod(abs(beta(5)),2*pi)*180/pi;
+    output.StdError(n) = std(sqrt(cxr.^2+cyr.^2)-sqrt(X.^2+Y.^2));
     
     %Fit center
     %Contour Fit Error

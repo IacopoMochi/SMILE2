@@ -68,12 +68,33 @@ else
         FitStdError = dataStructure.CntMetrics{id}.StdError; 
         
         hold(ax,'on')
+        mR = min(Radii);
+        MR = max(Radii);
+        mE = min(Ellipticity);
+        ME = max(Ellipticity);
+        mA = min(Angle);
+        MA = max(Angle);
+        mfse = min(FitStdError);
+        Mfse = max(FitStdError);
         for m = 1:numel(ContoursFx)
             plot(ax,ContoursX{m},ContoursY{m},'-g','linewidth',2)
             C = jet(256);
-            %fill(ax,ContoursX{m},ContoursY{m},C(round(1+255*(Radii(m)-min(Radii))/(max(Radii)-min(Radii))),:))
-            fill(ax,ContoursX{m},ContoursY{m},C(round(1+255*(Ellipticity(m)-min(Ellipticity))/(max(Ellipticity)-min(Ellipticity))),:))
-            
+            switch app.ContourMetricButtonGroup.SelectedObject.Text
+                case 'Radius'
+                    Cid = round(1+255*(Radii(m)-mR)/(MR-mR));
+                    fill(ax,ContoursX{m},ContoursY{m},C(Cid,:))
+                case 'Ellipticity'
+                    Cid = round(1+255*(Ellipticity(m)-mE)/(ME-mE));
+                    fill(ax,ContoursX{m},ContoursY{m},C(Cid,:))
+                case 'Angle'
+                    Cid = round(1+255*(Angle(m)-mA)/(MA-mA));
+                    fill(ax,ContoursX{m},ContoursY{m},C(Cid,:))
+                case 'Fit std error'
+                    Cid = round(1+255*(FitStdError(m)-mfse)/(Mfse-mfse));
+                    fill(ax,ContoursX{m},ContoursY{m},C(Cid,:))
+                case 'None'
+                    %Do nothing'
+            end
             
             if app.ShowellipticalfitCheckBox.Value
                 plot(ax,ContoursFx{m},ContoursFy{m},'-r','linewidth',1)
