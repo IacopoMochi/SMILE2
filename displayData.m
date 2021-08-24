@@ -49,11 +49,22 @@ else
         imagesc(axp,I);axis(axp,'image');colormap(axp,gray)
         title(axp,dataStructure.fileName{id},'interpreter','none')
         
+        %position = ax.Position;
+        ax.PositionConstraint = 'innerposition';
+        cb = colorbar(ax);
+        positionCb = ax.Position;
+        positionCbproper = cb.Position;
+        colorbar(ax,'delete')
+        %disp(position)
+        %disp(positionCb)
         if strcmp(dataStructure.Type{id} , 'Contacts')
             %Contacts
             
             %Change visualization
             app.Metric.Visible = 'off';
+            for chn = 1:length(app.Metric.Children)
+                delete(app.Metric.Children(1))
+            end
             app.DataDisplayButtonGroup.Visible = 'off';
             app.MetricButtonGroup.Visible = 'off';
             app.ShowellipticalfitCheckBox.Visible = 'on';
@@ -77,70 +88,79 @@ else
             MA = max(Angle);
             mfse = min(FitStdError);
             Mfse = max(FitStdError);
+            colorbar(ax,'delete')
+            colorbar(axc,'delete')
+            
             for m = 1:numel(ContoursFx)
-                plot(ax,ContoursX{m},ContoursY{m},'-g','linewidth',2)
+               
                 C = jet(256);
+                
                 switch app.ContourMetricButtonGroup.SelectedObject.Text
                     case 'Radius'
                         Cid = round(1+255*(Radii(m)-mR)/(MR-mR));
-                        fill(ax,ContoursX{m},ContoursY{m},C(Cid,:))
+                        fill(ax,ContoursX{m},ContoursY{m},C(Cid,:),'edgecolor','none')
                     case 'Ellipticity'
                         Cid = round(1+255*(Ellipticity(m)-mE)/(ME-mE));
-                        fill(ax,ContoursX{m},ContoursY{m},C(Cid,:))
+                        fill(ax,ContoursX{m},ContoursY{m},C(Cid,:),'edgecolor','none')
                     case 'Angle'
                         Cid = round(1+255*(Angle(m)-mA)/(MA-mA));
-                        fill(ax,ContoursX{m},ContoursY{m},C(Cid,:))
+                        fill(ax,ContoursX{m},ContoursY{m},C(Cid,:),'edgecolor','none')
                     case 'Fit std error'
                         Cid = round(1+255*(FitStdError(m)-mfse)/(Mfse-mfse));
-                        fill(ax,ContoursX{m},ContoursY{m},C(Cid,:))
+                        fill(ax,ContoursX{m},ContoursY{m},C(Cid,:),'edgecolor','none')
                     case 'None'
-                        %Do nothing'
+                         plot(ax,ContoursX{m},ContoursY{m},'-g','linewidth',2)
                 end
                 
                 if app.ShowellipticalfitCheckBox.Value
                     plot(ax,ContoursFx{m},ContoursFy{m},'-r','linewidth',1)
                 end
             end
+            hold(ax,'off')
+            
+            
             Tlabels = cell(1,11);
             switch app.ContourMetricButtonGroup.SelectedObject.Text
                 case 'Radius'
                     for nlab = 1:11
                         Tlabels{nlab} = num2str((nlab-1)*(MR-mR)/10+mR,'%0.2f');
                     end
+                    title(ax,[dataStructure.fileName{id} ' - Radius [nm]'],'interpreter','none')
                 case 'Ellipticity'
                     for nlab = 1:11
                         Tlabels{nlab} = num2str((nlab-1)*(ME-mE)/10+mE,'%0.2f');
                     end
+                    title(ax,[dataStructure.fileName{id} ' - Ellipticity'],'interpreter','none')
                 case 'Angle'
                     for nlab = 1:11
                         Tlabels{nlab} = num2str((nlab-1)*(MA-mA)/10+mA,'%0.2f');
                     end
+                    title(ax,[dataStructure.fileName{id} ' - Angle [deg]'],'interpreter','none')
                 case 'Fit std error'
                     for nlab = 1:11
                         Tlabels{nlab} = num2str((nlab-1)*(Mfse-mfse)/10+mfse,'%0.2f');
                     end
+                    title(ax,[dataStructure.fileName{id} ' - Fit std error [nm]'],'interpreter','none')
             end
             
+            
             if ~strcmp(app.ContourMetricButtonGroup.SelectedObject.Text,'None')
-                clb = colorbar(ax);
                 colormap(axc,jet(256));
-                
                 clc = colorbar(axc);
-                
-                axc.Position = ax.Position;
-                clc.Position = clb.Position;
-                axc.Visible = 'off';     
-                clb.TickLabels = {};
                 clc.TickLabels = Tlabels;
+                clc.Position = positionCbproper;
+                ax.Position = positionCb;
                 
             else
                 
                 colorbar(axc,'off')
             end
+            
         else
             %Lines
             
             %Change visualization
+            colorbar(axc,'delete')
             app.Metric.Visible = 'on';
             app.DataDisplayButtonGroup.Visible = 'on';
             app.MetricButtonGroup.Visible = 'on';

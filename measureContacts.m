@@ -42,6 +42,4 @@ for n = 1:length(ContoursX)
     output.EllipseAngle(n) = mod(abs(beta(5)),2*pi)*180/pi;
     output.StdError(n) = std(sqrt(cxr.^2+cyr.^2)-sqrt(X.^2+Y.^2));
     
-    %Fit center
-    %Contour Fit Error
 end
