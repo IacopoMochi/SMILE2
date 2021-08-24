@@ -101,30 +101,42 @@ else
                     plot(ax,ContoursFx{m},ContoursFy{m},'-r','linewidth',1)
                 end
             end
-            
+            Tlabels = cell(1,11);
             switch app.ContourMetricButtonGroup.SelectedObject.Text
                 case 'Radius'
                     for nlab = 1:11
-                    Tlabels{nlab} = num2str;
+                        Tlabels{nlab} = num2str((nlab-1)*(MR-mR)/10+mR,'%0.2f');
+                    end
                 case 'Ellipticity'
-                    p = imagesc(axc,Ellipticity);
+                    for nlab = 1:11
+                        Tlabels{nlab} = num2str((nlab-1)*(ME-mE)/10+mE,'%0.2f');
+                    end
                 case 'Angle'
-                    p = imagesc(axc,Angle);
+                    for nlab = 1:11
+                        Tlabels{nlab} = num2str((nlab-1)*(MA-mA)/10+mA,'%0.2f');
+                    end
                 case 'Fit std error'
-                    p = imagesc(axc,FitStdError);
+                    for nlab = 1:11
+                        Tlabels{nlab} = num2str((nlab-1)*(Mfse-mfse)/10+mfse,'%0.2f');
+                    end
             end
             
             if ~strcmp(app.ShowellipticalfitCheckBox.Value,'None')
                 clb = colorbar(ax);
                 colormap(axc,jet(256));
+                
                 clc = colorbar(axc);
+                
                 axc.Position = ax.Position;
                 clc.Position = clb.Position;
                 axc.Visible = 'off';
-                clb.Visible = 'off';
-                p.Visible = 'off';
+                delete(clb)
+               
+                clc.TickLabels = Tlabels;
+                
             else
-                colorbar(ax,'off')
+                
+                colorbar(axc,'off')
             end
         else
             %Lines

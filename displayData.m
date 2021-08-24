@@ -121,17 +121,16 @@ else
                     end
             end
             
-            if ~strcmp(app.ShowellipticalfitCheckBox.Value,'None')
+            if ~strcmp(app.ContourMetricButtonGroup.SelectedObject.Text,'None')
                 clb = colorbar(ax);
                 colormap(axc,jet(256));
-               
+                
                 clc = colorbar(axc);
                 
                 axc.Position = ax.Position;
                 clc.Position = clb.Position;
-                axc.Visible = 'off';
-                delete(clb)
-               
+                axc.Visible = 'off';     
+                clb.TickLabels = {};
                 clc.TickLabels = Tlabels;
                 
             else
