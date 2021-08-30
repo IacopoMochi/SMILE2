@@ -1,7 +1,6 @@
-function Rotate_image(~,~)
+function Rotate_image(app)
 
-h = guihandles;
-alpha = h.slider_manual_rotation.Value* 180 - 90;
+alpha = app.slider_manual_rotation.Value* 180 - 90;
 h.slider_manual_rotation.UserData = alpha;
 
 axp = get(h.ParametersTab,'userdata');

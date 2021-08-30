@@ -98,6 +98,8 @@ end
 Output.contacts_contoursX = MCx;
 Output.contacts_contoursY = MCy;
 
+
+
 for n = 1:numel(MCx)
     ContoursCentersX(n) = nanmean(MCx{n});
     ContoursCentersY(n) = nanmean(MCy{n});

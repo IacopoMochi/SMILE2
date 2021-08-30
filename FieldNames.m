@@ -1,4 +1,4 @@
-function Fields = FieldNames(app)
+function [Fields, Fields_C] = FieldNames(app)
 
 Fields = {...
 'Selected', 'Selected data', 'Id';...
@@ -88,3 +88,5 @@ Fields_C = {...
 
 app.dataTable.ColumnName=Fields(:,2);        
 app.dataTable_Contacts.ColumnName=Fields_C(:,2);        
+app.dataTable.ColumnEditable = [true false(1,numel(app.dataTable.ColumnName)-1)];
+app.dataTable_Contacts.ColumnEditable = [true false(1,numel(app.dataTable_Contacts.ColumnName)-1)];
