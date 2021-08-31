@@ -96,7 +96,7 @@ for n= 1:numel(M)
         %MC(cnt).y = M(n).y;
         MCx{cnt} = M(n).x;
         MCy{cnt} = M(n).y;
-        ContoursRadius2 = [ContoursRadius2 ContoursRadius(n)];
+        ContoursRadius2 = [ContoursRadius2 ContoursRadius2(n)];
     end
 end
 ContoursRadius = ContoursRadius2;
