@@ -72,6 +72,8 @@ else
             
             ContoursX = dataStructure.ContactsContoursX{id};
             ContoursY = dataStructure.ContactsContoursY{id};
+            ContoursXs = dataStructure.ContactsContoursXs{id};
+            ContoursYs = dataStructure.ContactsContoursYs{id};
             ContoursFx = dataStructure.CntMetrics{id}.processedContoursX;
             ContoursFy = dataStructure.CntMetrics{id}.processedContoursY;
             Radii = dataStructure.Contacts_AverageRadius{id};
@@ -109,7 +111,8 @@ else
                         Cid = round(1+255*(FitStdError(m)-mfse)/(Mfse-mfse));
                         fill(ax,ContoursX{m},ContoursY{m},C(Cid,:),'edgecolor','none')
                     case 'None'
-                         plot(ax,ContoursX{m},ContoursY{m},'-g','linewidth',2)
+                         plot(ax,ContoursX{m},ContoursY{m},'-g','linewidth',1)
+                         plot(ax,ContoursXs{m},ContoursYs{m},'-b','linewidth',1)
                 end
                 
                 if app.ShowellipticalfitCheckBox.Value

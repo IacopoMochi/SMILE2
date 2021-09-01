@@ -96,7 +96,7 @@ for n= 1:numel(M)
         %MC(cnt).y = M(n).y;
         MCx{cnt} = M(n).x;
         MCy{cnt} = M(n).y;
-        ContoursRadius2 = [ContoursRadius2 ContoursRadius2(n)];
+        ContoursRadius2 = [ContoursRadius2 ContoursRadius(n)];
     end
 end
 ContoursRadius = ContoursRadius2;
@@ -118,9 +118,9 @@ Output.ContoursCentersY = ContoursCentersY;
 Output.PixelSize = ps;
 Output.AC = A(h1:h2,w1:w2);
 
-a = 1.5;
-b = 0.3;
-for n = 1:size(ContoursRadius,1)
+a = app.ContactsubimagesizeEditField.Value;
+b = app.RadiusfractionEditField.Value;
+for n = 1:size(ContoursRadius,2)
     R = AllRadii{n};
     r = max(R);
     %r = ContoursRadius(n);
@@ -137,44 +137,46 @@ for n = 1:size(ContoursRadius,1)
     Y = MCy{n};
     for k = 1:numel(X)
         rr = R(k)*(1-b):1/(4*b*r):R(k)*(1+b);
-        th = atan2(Y(k)-ContoursCentersY(k), X(k)-ContoursCentersX(n));
+        th = atan2(Y(k)-ContoursCentersY(n), X(k)-ContoursCentersX(n));
         xi = rr*cos(th)+(x2-x1)/2;
         yi = rr*sin(th)+(y2-y1)/2;
         edge = g(xi,yi);
-        p = edgeDetectLin_C(rr,edge,0.5);
-        xp = p*cos(th)+(x2-x1)/2;
-        yp = p*sin(th)+(y2-y1)/2;
-        %plot(rr,edge,'-k',p,0.5,'o');hold on
-        X(k) = xp;
-        Y(k) = yp;
+        
+        if strcmp(app.ContourdetectionButtonGroup.SelectedObject.Text,'Edge fit function')
+            switch app.EdgefitfunctionButtonGroup.SelectedObject.Text
+                case 'Polynomial'
+                    p = edgeDetectPoly_C(app,rr,edge);
+                case 'Linear'
+                    p = edgeDetectLin_C(app,rr,edge);
+                case 'Threshold'
+                    p = edgeDetectLin_C(app,rr,edge);
+            end
+            if k>1
+                if abs(p-p0)>4
+                    p = R(k);
+                    p0 = R(k);
+                else
+                    p0 = p;
+                end
+            else
+                p0 = p;
+            end
+            
+            xp = p*cos(th);
+            yp = p*sin(th);
+            %plot(rr,edge,'-k',p,0.5,'o');hold on
+            X(k) = xp;
+            Y(k) = yp;
+        end
+        MCxA{n} = X+ContoursCentersX(n);
+        MCyA{n} = Y+ContoursCentersY(n);
+        
     end
-    MCx{n} = X;
-    MCy{n} = Y;
-
-    
 end
-% nc = 50;
-% imagesc(Ac);axis image
-% hold on
-% subplot(1,2,1)
-% plot(MCx{nc},MCy{nc},'.r')
-% plot(ContoursCentersX(nc),ContoursCentersY(nc),'or')
-% dr = 10;
-% r = sqrt((MCx{nc}-ContoursCentersX(nc)).^2+(MCy{nc}-ContoursCentersY(nc)).^2);
-% theta = atan2((MCy{nc}-ContoursCentersY(nc)),(MCx{nc}-ContoursCentersX(nc)));
-% for n = 1:numel(r)
-%     cx = ContoursCentersX(nc);
-%     cy = ContoursCentersY(nc);
-%     line([(r(n)+dr)*cos(theta(n))+cx, (r(n)-dr)*cos(theta(n))+cx],[(r(n)+dr)*sin(theta(n))+cy, (r(n)-dr)*sin(theta(n))+cy])
-% end
-% for n = 1:numel(r)
-%     cx = ContoursCentersX(nc);
-%     cy = ContoursCentersY(nc);
-%     line([(r(n)+dr)*cos(theta(n))+cx, (r(n)-dr)*cos(theta(n))+cx],[(r(n)+dr)*sin(theta(n))+cy, (r(n)-dr)*sin(theta(n))+cy])
-%
-% end
 
-Output.contacts_contoursX = MCx;
-Output.contacts_contoursY = MCy;
+Output.contacts_contoursX = MCxA;
+Output.contacts_contoursY = MCyA;
+Output.contacts_contoursXs = MCx;
+Output.contacts_contoursYs = MCy;
 
 end

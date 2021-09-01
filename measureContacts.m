@@ -24,9 +24,11 @@ for n = 1:length(ContoursX)
     %beta = beta0;
     Options = statset('nlinfit');
     Options.MaxIter = 1000;
-
+    try
     beta = nlinfit([Th Th],[X-X0 Y-Y0],@EllModel,beta0,Options);
-    
+    catch
+        disp('darn')
+    end
     cx = beta(2)*cos(Th+beta(6))+beta(1);
     cy = beta(4)*sin(Th+beta(6))+beta(3);
     cxr = cx*cos(beta(5))+cy*sin(beta(5))+X0;
