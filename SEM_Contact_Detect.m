@@ -115,6 +115,9 @@ end
 Output.contacts_radius = ContoursRadius;
 Output.ContoursCentersX = ContoursCentersX;
 Output.ContoursCentersY = ContoursCentersY;
+
+
+
 Output.PixelSize = ps;
 Output.AC = A(h1:h2,w1:w2);
 
@@ -135,21 +138,34 @@ for n = 1:size(ContoursRadius,2)
     
     X = MCx{n};
     Y = MCy{n};
-    for k = 1:numel(X)
-        rr = R(k)*(1-b):1/(4*b*r):R(k)*(1+b);
-        th = atan2(Y(k)-ContoursCentersY(n), X(k)-ContoursCentersX(n));
-        xi = rr*cos(th)+(x2-x1)/2;
-        yi = rr*sin(th)+(y2-y1)/2;
-        edge = g(xi,yi);
-        
-        if strcmp(app.ContourdetectionButtonGroup.SelectedObject.Text,'Edge fit function')
+    if strcmp(app.ContourdetectionButtonGroup.SelectedObject.Text,'Edge fit function')
+        for k = 1:numel(X)
+            rr = R(k)*(1-b):1/(4*b*r):R(k)*(1+b);
+            th = atan2(Y(k)-ContoursCentersY(n), X(k)-ContoursCentersX(n));
+            xi = rr*cos(th)+(x2-x1)/2;
+            yi = rr*sin(th)+(y2-y1)/2;
+            edge = g(xi,yi);
+            
+            
             switch app.EdgefitfunctionButtonGroup.SelectedObject.Text
                 case 'Polynomial'
-                    p = edgeDetectPoly_C(app,rr,edge);
+                    if length(edge)>4
+                        [p,P,mu] = edgeDetectPoly_C(app,rr,edge);
+                    else
+                        p = nan;
+                    end
                 case 'Linear'
-                    p = edgeDetectLin_C(app,rr,edge);
+                    if length(edge)>3
+                        p = edgeDetectLin_C(app,rr,edge);
+                    else
+                        p = nan;
+                    end
                 case 'Threshold'
-                    p = edgeDetectLin_C(app,rr,edge);
+                    if length(edge)>3
+                        p = edgeDetectLin_C(app,rr,edge);
+                    else
+                        p = nan;
+                    end
             end
             if isnan(p)
                 p = R(k);
@@ -163,19 +179,36 @@ for n = 1:size(ContoursRadius,2)
             else
                 p0 = p;
             end
-            
-            xp = p*cos(th);
-            yp = p*sin(th);
+            switch app.EdgefitfunctionButtonGroup.SelectedObject.Text
+                case 'Polynomial'
+                    xp = (p-rr(1))*cos(th);
+                    yp = (p-rr(1))*sin(th);
+                case 'Linear'
+                    xp = p*cos(th);
+                    yp = p*sin(th);
+                case 'Threshold'
+                    xp = p*cos(th);
+                    yp = p*sin(th);
+            end
             %plot(rr,edge,'-k',p,0.5,'o');hold on
             X(k) = xp;
             Y(k) = yp;
+            %hold(app.Image,'on')
+            %line(app.Image,[xi(1) xi(end)]+ContoursCentersX(n)-(x2-x1)/2,[yi(1) yi(end)]+ContoursCentersY(n)-(y2-y1)/2,'color','red')
             
-            MCxA{n} = X+ContoursCentersX(n);
-            MCyA{n} = Y+ContoursCentersY(n);
-        else
-            MCxA{n} = MCx{n};
-            MCyA{n} = MCy{n};
+
+            %plot(app.Image,xp+ContoursCentersX(n),yp+ContoursCentersY(n),'o')
+            %plot(rr,edge,rr,polyval(P,rr,[],mu))
+            %waitforbuttonpress
+            
         end
+        
+        MCxA{n} = X+ContoursCentersX(n)-0.5;
+        MCyA{n} = Y+ContoursCentersY(n)-0.5;
+        
+    else
+        MCxA{n} = MCx{n};
+        MCyA{n} = MCy{n};
     end
     
     Output.contacts_contoursX = MCxA;

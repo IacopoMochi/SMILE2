@@ -53,4 +53,6 @@ h.parmPinchingTh.String = num2str(parameters.PinchingThreshold);
 h.Pol2.Value = parameters.LinesTone;
 h.Pol1.Value = ~parameters.LinesTone;
 
+
+
 dataStructure.parameters = parameters;

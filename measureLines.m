@@ -1,11 +1,10 @@
-function metrics = measureLines(edges,parameters,app)
+function metrics = measureLines(edges,app)
 
 ps = app.PixelsizenmEditField.Value;
 if ~isfield(edges,'Average_PSD_LWR')
     Output = edges;
     
-    %Le = Output.leadingEdgeProfilesFilled.*ps;
-    %Te = Output.trailingEdgeProfilesFilled.*ps;
+    
     Le_f = Output.leadingEdgeProfilesFilledCorrected.*ps;
     Te_f = Output.trailingEdgeProfilesFilledCorrected.*ps;
     LWvar = Output.LWvar*ps;

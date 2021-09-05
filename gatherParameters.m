@@ -1,4 +1,4 @@
-function gatherParameters(app)
+function parameters = gatherParameters(app)
 
 
 dataStructure = app.ExportdataButton.UserData;
@@ -12,6 +12,8 @@ parameters.ROI_Y2 = floor(app.maxYpixEditField.Value);
 
 parameters.sx = 0;
 parameters.sy = 0;
+
+parameters.APSmoothing = app.APSmoothingEditField.Value;
 
 parameters.rotation = app.AutorotationalignmentCheckBox.Value;
 parameters.ps = app.PixelsizenmEditField.Value;
@@ -29,13 +31,18 @@ parameters.MFE = app.MaximumnumberofiterationsEditField.Value;
 parameters.MinPeakProminence = app.MinpeakprominenceEditField.Value;
 parameters.MinPeakDistance = app.MinpeakdistanceEditField.Value;
 parameters.RemoveDistortion = app.RemovedistortionCheckBox.Value;
-parameters.RemoveGradient = app.GradientcorrectionButtonGroup.Buttons.Value;
+parameters.RemoveGradient = app.GradientcorrectionButtonGroup.SelectedObject.Text;
 parameters.BridgingThreshold = app.BridgingthresholdEditField.Value;
 parameters.PinchingThreshold = app.PinchingthresholdEditField.Value;
 parameters.PSDModel = app.PSDmodelDropDown.Value;
-parameters.EdgeDetectionMethod = app.EdgefitfunctionButtonGroup.Buttons.Value;
+parameters.EdgeDetectionMethod = app.EdgefitfunctionButtonGroup.SelectedObject.Text;
+parameters.DenoiseX = app.DenoiseXEditField.Value;
+parameters.DenoiseY = app.DenoiseYEditField.Value;
+parameters.ContoursEdge = app.ContourdetectionButtonGroup.SelectedObject.Text;
+parameters.CntSubimageSize = app.ContactsubimagesizeEditField.Value;
+parameters.CntRadiusFraction = app.RadiusfractionEditField.Value;
 
-parameters.LinesTone = app.ImagetoneButtonGroup.Buttons.Value; %Positive tone if true
-
+parameters.LinesTone = app.ImagetoneButtonGroup.SelectedObject.Text;
+parameters.ManualRotation = app.ManualrotationadjustmentdegSlider.Value;
 dataStructure.parameters = parameters;
 app.ExportdataButton.UserData = dataStructure;
