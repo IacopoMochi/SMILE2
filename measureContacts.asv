@@ -34,8 +34,6 @@ for n = 1:length(ContoursX)
     cxr = cx*cos(beta(5))+cy*sin(beta(5))+X0;
     cyr = -cx*sin(beta(5))+cy*cos(beta(5))+Y0;
     beta(2)=abs(beta(2));beta(4)=abs(beta(4));
-    
-    
 
     output.processedContoursX{n} = cxr;
     output.processedContoursY{n} = cyr;
