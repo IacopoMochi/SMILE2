@@ -204,7 +204,7 @@ else
             %             hold(ax(1),'off')
             %         end
             
-            if strcmp(app.DataDisplayButtonGroup.SelectedObject.Text,'HHCF')
+            if strcmp(app.DataDisplayButtonGroup.SelectedObject.Text,'HDCF')
                 %if strcmp(app.DisplaySwitch.Value,'Average')
                 %    HHCF = dataStructure.AverageHHCF_LWR;
                 %else
@@ -212,22 +212,22 @@ else
                     HHCF = dataStructure.HHCorrF{id};
                     HHCFFit = dataStructure.HHCorrFFit{id};
                     CorrLength = dataStructure.LWRCorrLength{id};
-                    Tstring = ['Line width Height-Height Correlation Length: ' num2str(CorrLength) ' nm'];
+                    Tstring = ['Line width Correlation Length: ' num2str(CorrLength) ' nm'];
                 elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER')
                     HHCF = dataStructure.HHCorrFLER{id};
                     HHCFFit = dataStructure.HHCorrFLERfit{id};
                     CorrLength = dataStructure.LcLER{id};
-                    Tstring = ['Line Edge Height-Height Correlation Length: ' num2str(CorrLength) ' nm'];
+                    Tstring = ['Line Edge Correlation Length: ' num2str(CorrLength) ' nm'];
                 elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER lead')
                     HHCF = dataStructure.HHCorrFLERl{id};
                     HHCFFit = dataStructure.HHCorrFLERlfit{id};
                     CorrLength = dataStructure.LcLERl{id};
-                    Tstring = ['Leading Edge Height-Height Correlation Length: ' num2str(CorrLength) ' nm'];
+                    Tstring = ['Leading Edge Correlation Length: ' num2str(CorrLength) ' nm'];
                 elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER trail')
                     HHCF = dataStructure.HHCorrFLERt{id};
                     HHCFFit = dataStructure.HHCorrFLERtfit{id};
                     CorrLength = dataStructure.LcLERt{id};
-                    Tstring = ['Trailing Edge Height-Height Correlation Length: ' num2str(CorrLength) ' nm'];
+                    Tstring = ['Trailing Edge Correlation Length: ' num2str(CorrLength) ' nm'];
                 end
                 %end
                 r = dataStructure.r{id};
@@ -239,7 +239,8 @@ else
                 hold(app.Metric,'off')
                 title(app.Metric,Tstring)
                 
-                xlabel(app.Metric,'nm')
+                xlabel(app.Metric,'x [nm]')
+                ylabel(app.Metric,'HDCF(x)')
             elseif strcmp(app.DataDisplayButtonGroup.SelectedObject.Text,'PSD')
                 
                 freq = dataStructure.freq{id};

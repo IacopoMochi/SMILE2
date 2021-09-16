@@ -1,6 +1,7 @@
 function exportData(app)
 
 D = app.dataTable.Data;
+Dc = app.dataTable_Contacts.Data;
 DS = app.ExportdataButton.UserData;
 DSc =  struct();
 DSc.PSD_LWR = DS.PSD_LWR;
@@ -8,52 +9,80 @@ DSc.PSD_LWR_fit = DS.PSD_LWR_fit;
 DSc.PSD_LWR_fit_unbiased = DS.PSD_LWR_fit_unbiased;
 
 D = cell2table(D);
+Dc = cell2table(Dc);
 
 AllParms = app.ParametersTab.UserData;
 parameters = gatherParameters(app);
-VD = {'Selected'  'File Name'  'Type' 'Number of detected features' ...
-    'CD' 'stdCD'   'LWR 3s' 'LWR' ...
-    'LWR unbiased' 'LWR fit unbiased' ...
-    'LER 3s' 'LER' ...
-    'LER unbiased' 'LER fit unbiased' ...
-    'LER leading 3s ' 'LER leading' ...
-    'LER leading unbiased' 'LER leading fit unbiased' ...
-    'LER trailing 3s ' 'LER trailing' ...
-    'LER trailing unbiased' 'LER trailing fit unbiased' ...
-    'LW Corr. Length' 'LE Corr. Length' 'Leading LE Corr. Length' ...
-    'Trailing LE Corr. Length','Bridging','Pinching','Spikes','Undetected','Undefined A','Undefined B'};
-VN = {'Selected'  'File_Name'  'Type' 'Number_of_detected_features' ...
-    'CD' 'stdCD'   'LWR_3s' 'LWR' ...
-    'LWR_unbiased' 'LWR_fit_unbiased' ...
-    'LER_3s' 'LER' ...
-    'LER_unbiased' 'LER_fit_unbiased' ...
-    'LER_leading_3s ' 'LER_leading' ...
-    'LER_leading_unbiased' 'LER_leading_fit_unbiased' ...
-    'LER_trailing_3s ' 'LER_trailing' ...
-    'LER_trailing_unbiased' 'LER_trailing_fit_unbiased' ...
-    'LW_CorrLength' 'LE_CorrLength' 'Leading_LE_CorrLength' ...
-    'Trailing_LE_CorrLength','Bridging','Pinching','Spikes','Undetected','UndefinedA','UndefinedB'};
 
+%%Lines
+VD = app.dataTable.ColumnName;
+VN = VD;
+for n = 1:numel(VD)
+   a = VN{n};
+   a(isspace(a))='_';
+   VN{n} = a;
+end
 
 L = length(VN);
 
 FN = fieldnames(parameters);
-        cntp = 0;
-        for kk = 1:length(FN)
-            if (isnumeric(parameters.(FN{kk})) || islogical(parameters.(FN{kk}))) &&...
-                    size(parameters.(FN{kk}),1)==1 && size(parameters.(FN{kk}),2)==1
-                cntp = cntp+1;
-                VD{L+cntp} = FN{kk};
-                VN{L+cntp} = FN{kk};
-            end
-        end
-        numel(AllParms)
+cntp = 0;
+cntc = size(D,2);
+for kk = 1:length(FN)
+    
+    cntp = cntp+1;
+    VD{L+cntp} = FN{kk};
+    VN{L+cntp} = FN{kk};
+    parm = cell(size(D,1),1);
+    for n = 1:size(D,1)
+        p = AllParms{n};
+        parm{n} = p.(FN{kk});
+    end
+    D.(['D' num2str(cntc+kk)]) = parm;
+end
 D.Properties.VariableDescriptions = VD;
 D.Properties.VariableNames = VN;
 
+%%contacts
+VD = app.dataTable_Contacts.ColumnName;
+VN = VD;
+for n = 1:numel(VD)
+   a = VN{n};
+   a(isspace(a))='_';
+   VN{n} = a;
+end
+
+L = length(VN);
+
+FN = fieldnames(parameters);
+cntp = 0;
+cntc = size(D,2);
+for kk = 1:length(FN)
+    
+    cntp = cntp+1;
+    VD{L+cntp} = FN{kk};
+    VN{L+cntp} = FN{kk};
+    parm = cell(size(D,1),1);
+    for n = 1:size(Dc,1)
+        p = AllParms{n};
+        parm{n} = p.(FN{kk});
+    end
+    Dc.(['Dc' num2str(cntc+kk)]) = parm;
+end
+Dc.Properties.VariableDescriptions = VD;
+Dc.Properties.VariableNames = VN;
+
+
 [filename, pathname] = uiputfile({'*.txt;*.xlsx;*.mat'});
-if strcmpi(filename(end-2:end),'mat')
-    save([pathname filename],'D','DSc')
+
+pd = strfind(filename,'.');
+
+FN_Lines = [filename(1:pd-1) '_Lines' filename(pd:end)];
+FN_Contacts = [filename(1:pd-1) '_Contacts' filename(pd:end)];
+if strcmpi(FN_Lines(end-2:end),'mat')
+    save([pathname FN_Lines],'D','DSc')
+    %save([pathname FN_Contacts],'Dc','DSc_c')
 else
-    writetable(D,[pathname filename])
+    writetable(D,[pathname FN_Lines])
+    writetable(Dc,[pathname FN_Contacts])
 end
