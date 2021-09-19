@@ -198,7 +198,7 @@ if ~isfield(edges,'Average_PSD_LWR')
         beta0 = [nanmean(mF_LERtx(1:FN))-nanmean(mF_LERtx(Lx-LN:Lx)),1/CF,nanmean(mF_LERtx(Lx-LN:Lx)),Alpha];
         f = @(beta,freqx,mF_LERtx) sum((FloatingAlpha(beta,freqx)-mF_LERtx).^2);
         betaf = fminsearch(@(beta) f(beta,freqx,mF_LERtx),beta0,Options);
-        mF_LER_fit = model(betaf,freq);
+        mF_LERt_fit = model(betaf,freq);
         betan = betaf;
         betan(3) = 0;
         mF_LERt_fit_unbiased = model(betan,freq);
