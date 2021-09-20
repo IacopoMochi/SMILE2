@@ -168,6 +168,34 @@ if ~isfield(edges,'Average_PSD_LWR')
         betan = betaf;
         betan(3) = 0;
         mF_LW_fit_unbiased = model(betan,freq);
+        
+        beta0 = [nanmean(mF_LERx(1:FN))-nanmean(mF_LERx(Lx-LN:Lx)),1/CF,nanmean(mF_LERx(Lx-LN:Lx))];
+        f = @(beta,freqx,mF_LERx) sum((Gaussian(beta,freqx)-mF_LERx).^2);
+        Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
+        betaf_LER = fminsearch(@(beta) f(beta,freqx,mF_LERx),beta0,Options);
+        mF_LER_fit = model(betaf_LER,freq);
+        betan = betaf_LER;
+        betan(3) = 0;
+        mF_LER_fit_unbiased = model(betan,freq);
+        
+        beta0 = [nanmean(mF_LERlx(1:FN))-nanmean(mF_LERlx(Lx-LN:Lx)),1/CF,nanmean(mF_LERlx(Lx-LN:Lx))];
+        f = @(beta,freqx,mF_LERlx) sum((Gaussian(beta,freqx)-mF_LERlx).^2);
+        Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
+        betaf_LERl = fminsearch(@(beta) f(beta,freqx,mF_LERlx),beta0,Options);
+        mF_LERl_fit = model(betaf_LERl,freq);
+        betan = betaf_LERl;
+        betan(3) = 0;
+        mF_LERl_fit_unbiased = model(betan,freq);
+        
+        beta0 = [nanmean(mF_LERtx(1:FN))-nanmean(mF_LERtx(Lx-LN:Lx)),1/CF,nanmean(mF_LERtx(Lx-LN:Lx))];
+        f = @(beta,freqx,mF_LERtx) sum((Gaussian(beta,freqx)-mF_LERtx).^2);
+        Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
+        betaf_LERt = fminsearch(@(beta) f(beta,freqx,mF_LERtx),beta0,Options);
+        mF_LERt_fit = model(betaf_LERt,freq);
+        betan = betaf_LERt;
+        betan(3) = 0;
+        mF_LERt_fit_unbiased = model(betan,freq);
+        
     elseif strcmp(PSDmodel,'Floating alpha')
         model = @FloatingAlpha;
         beta0 = [nanmean(mF_LWx(1:FN))-nanmean(mF_LWx(Lx-LN:Lx)),1/CF,nanmean(mF_LWx(Lx-LN:Lx)),Alpha];
