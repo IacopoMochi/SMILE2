@@ -10,12 +10,12 @@ end
 if ~exist('parameters','dir')
     mkdir('parameters')
 end
-[filename, pathname] = uigetfile(['parameters' sl ' *.mat']);
-%%%%Windows deployment
-% if ~exist([ctfroot sl 'parameters'],'dir')
-%     mkdir([ctfroot sl 'parameters'])
-% end
-% [filename, pathname] = uigetfile([ctfroot sl 'parameters' sl ' *.mat']);
+%[filename, pathname] = uigetfile(['parameters' sl ' *.mat']);
+%%%Windows deployment
+if ~exist([ctfroot sl 'parameters'],'dir')
+    mkdir([ctfroot sl 'parameters'])
+end
+[filename, pathname] = uigetfile([ctfroot sl 'parameters' sl ' *.mat']);
 load([pathname filename],'parameters')
 
 dataStructure = h.pb_export.UserData;
