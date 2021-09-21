@@ -2,6 +2,11 @@ function [p,pp1,Mu1] = edgeDetectPoly_C(app,x,edge)
 
         threshold = app.ThresholdEditField.Value; 
         [pp1,~,Mu1] = polyfit(x,edge,4);
+        
+%         plot(x,edge,x,polyval(pp1,x,[],Mu1),x,0.5*ones(size(x)))
+%         drawnow
+        
+        
         pp = pp1;
         pp(end)=pp(end)-threshold;
         try

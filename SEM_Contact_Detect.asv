@@ -227,8 +227,8 @@ for n = 1:size(ContoursRadius,2)
             
         end
         
-        MCxA{n} = X+ContoursCentersX(n)-1;
-        MCyA{n} = Y+ContoursCentersY(n)-1;
+        MCxA{n} = X+ContoursCentersX(n);
+        MCyA{n} = Y+ContoursCentersY(n);
         
     else
         MCxA{n} = MCx{n};
