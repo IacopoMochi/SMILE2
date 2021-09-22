@@ -180,19 +180,19 @@ for n = 1:size(ContoursRadius,2)
                     end
             end
             if isnan(p)
-                p = R(k);
+                p = ra;
             end
             %Robustness check (profile fit error)
-            if p<rr(1) || p>rr(end)
-                p = R(k);
+            if p<=rr(1) || p>=rr(end)
+                p = ra;
             end
             
             if k>1
                 if abs(p-p0)>app.MaxspikeEditField.Value
-                    p = p0;
-                else
-                    p0 = p;
+                    p = ra;
+                    
                 end
+                p0 = p;
             else
                 p0 = p;
             end
