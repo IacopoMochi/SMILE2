@@ -526,7 +526,6 @@ if ~isfield(edges,'Average_PSD_LWR')
     metrics.betaLERl = betaf_LERl;
     metrics.betaLERt = betaf_LERt;
     metrics.r = r_1;
-else   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%AVERAGE IMAGES CASE - Not fully implemented yet
     
    
     

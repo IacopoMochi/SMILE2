@@ -362,24 +362,24 @@ else %Display average metrics
         
         freq = AD.freq;
         if strcmp(app.MetricButtonGroup.SelectedObject.Text,'LWR')
-            PSD = AD.PSD;
+            PSD = AD.PSD_LWR;
             PSD_fit = AD.PSD_LWR_fit;
-            PSD_fit_unbiased = AD.PSD_LWR_fit_unbiased;
+            PSD_fit_unbiased = dataStructure.PSD_LWR_fit_unbiased{id};
             Tstring = 'Average LWR Power Spectral Density';
         elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER')
-            PSD = AD.PSD_LER;
-            PSD_fit = AD.PSD_LER_fit;
-            PSD_fit_unbiased = AD.PSD_LER_fit_unbiased;
+            PSD = dataStructure.PSD_LER{id};
+            PSD_fit = dataStructure.PSD_LER_fit{id};
+            PSD_fit_unbiased = dataStructure.PSD_LER_fit_unbiased{id};
             Tstring = 'Average LER Power Spectral Density';
         elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER lead')
-            PSD = AD.PSD_LERl;
-            PSD_fit = AD.PSD_LERl_fit;
-            PSD_fit_unbiased = AD.PSD_LERl_fit_unbiased;
+            PSD = dataStructure.PSD_LERl{id};
+            PSD_fit = dataStructure.PSD_LERl_fit{id};
+            PSD_fit_unbiased = dataStructure.PSD_LERl_fit_unbiased{id};
             Tstring = 'Average Leading edge LER Power Spectral Density';
         elseif strcmp(app.MetricButtonGroup.SelectedObject.Text,'LER trail')
-            PSD = AD.PSD_LERt;
-            PSD_fit = AD.PSD_LERt_fit;
-            PSD_fit_unbiased = AD.PSD_LERt_fit_unbiased;
+            PSD = dataStructure.PSD_LERt{id};
+            PSD_fit = dataStructure.PSD_LERt_fit{id};
+            PSD_fit_unbiased = dataStructure.PSD_LERt_fit_unbiased{id};
             Tstring = 'Average Trailing edge LER Power Spectral Density';
         end
         

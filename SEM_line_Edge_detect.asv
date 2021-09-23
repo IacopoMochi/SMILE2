@@ -362,6 +362,9 @@ OLP = leadingEdgeProfilesFilled;
 OLT = trailingEdgeProfilesFilled;
 LW = OLT-OLP;
 
+if app.RemovedistortionCheckBox
+    LWvar = LW-smooth(median(LW,2),app.APSmoothingEditField.Value);
+
 Output = struct;
 Output.trailingEdgeProfiles = trailingEdgeProfiles;
 Output.leadingEdgeProfiles = leadingEdgeProfiles;

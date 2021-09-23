@@ -18,32 +18,31 @@ parameters = gatherParameters(app);
 VD = app.dataTable.ColumnName;
 VN = VD;
 for n = 1:numel(VD)
-    a = VN{n};
-    a(isspace(a))='_';
-    VN{n} = a;
+   a = VN{n};
+   a(isspace(a))='_';
+   VN{n} = a;
 end
-if ~isempty(D)
-    L = length(VN);
+
+L = length(VN);
+
+FN = fieldnames(parameters);
+cntp = 0;
+cntc = size(D,2);
+for kk = 1:length(FN)
     
-    FN = fieldnames(parameters);
-    cntp = 0;
-    cntc = size(D,2);
-    for kk = 1:length(FN)
-        
-        cntp = cntp+1;
-        VD{L+cntp} = FN{kk};
-        VN{L+cntp} = FN{kk};
-        parm = cell(size(D,1),1);
-        for n = 1:(size(D,1)-1)
-            p = AllParms{n};
-            if ~isempty(p)
-                parm{n} = p.(FN{kk});
-            else
-                parm{n} = [];
-            end
+    cntp = cntp+1;
+    VD{L+cntp} = FN{kk};
+    VN{L+cntp} = FN{kk};
+    parm = cell(size(D,1),1);
+    for n = 1:(size(D,1))
+        p = AllParms{n};
+        if ~isempty(pp)
+            parm{n} = p.(FN{kk});
+        catch
+            disp('Darn')
         end
-        D.(['D' num2str(cntc+kk)]) = parm;
     end
+    D.(['D' num2str(cntc+kk)]) = parm;
 end
 D.Properties.VariableDescriptions = VD;
 D.Properties.VariableNames = VN;
@@ -52,32 +51,27 @@ D.Properties.VariableNames = VN;
 VD = app.dataTable_Contacts.ColumnName;
 VN = VD;
 for n = 1:numel(VD)
-    a = VN{n};
-    a(isspace(a))='_';
-    VN{n} = a;
+   a = VN{n};
+   a(isspace(a))='_';
+   VN{n} = a;
 end
 
 L = length(VN);
-if ~isempty(Dc)
-    FN = fieldnames(parameters);
-    cntp = 0;
-    cntc = size(D,2);
-    for kk = 1:length(FN)
-        
-        cntp = cntp+1;
-        VD{L+cntp} = FN{kk};
-        VN{L+cntp} = FN{kk};
-        parm = cell(size(D,1),1);
-        for n = 1:size(Dc,1)
-            p = AllParms{n};
-            if ~isempty(p)
-                parm{n} = p.(FN{kk});
-            else
-                parm{n} = [];
-            end
-        end
-        Dc.(['Dc' num2str(cntc+kk)]) = parm;
+
+FN = fieldnames(parameters);
+cntp = 0;
+cntc = size(D,2);
+for kk = 1:length(FN)
+    
+    cntp = cntp+1;
+    VD{L+cntp} = FN{kk};
+    VN{L+cntp} = FN{kk};
+    parm = cell(size(D,1),1);
+    for n = 1:size(Dc,1)
+        p = AllParms{n};
+        parm{n} = p.(FN{kk});
     end
+    Dc.(['Dc' num2str(cntc+kk)]) = parm;
 end
 Dc.Properties.VariableDescriptions = VD;
 Dc.Properties.VariableNames = VN;
