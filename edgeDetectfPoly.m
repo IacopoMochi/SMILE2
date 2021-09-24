@@ -4,7 +4,7 @@ function [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly(leadingEdg
 leadingEdgeProfiles = zeros(size(Arc,1),length(leadingEdges));
 trailingEdgeProfiles = zeros(size(Arc,1),length(trailingEdges));
 for n = 1:length(leadingEdges)
-    parfor m = 1:size(Arc,1)
+    for m = 1:size(Arc,1)
         s1 = max(leadingEdges(n)-round(CD*b),1);
         s2 = min(leadingEdges(n)+round(CD*b),size(Arc,2));
         
