@@ -1,6 +1,6 @@
 function metrics = measureLines(edges,app)
 
-ps = app.PixelsizenmEditField.Value;
+ps = edges.PS;
 if ~isfield(edges,'Average_PSD_LWR')
     Output = edges;
     
