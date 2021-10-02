@@ -173,7 +173,7 @@ dS = diff(Sb);
 leadingEdges = [];
 trailingEdges = [];
 for n = 1:length(edgelocations)
-    if app.ImagetoneButtonGroup.Buttons(1).Value
+    if app.ImagetoneButtonGroup.Buttons(2).Value
         if dS(edgelocations(n))>0
             trailingEdges = [trailingEdges edgelocations(n)];
         else
