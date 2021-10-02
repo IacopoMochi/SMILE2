@@ -144,8 +144,11 @@ for n = 1:size(ContoursRadius,2)
     y2 = round(ContoursCentersY(n)+r*a);
     B = Ac(y1:y2,x1:x2);
     [x,y] = meshgrid(1:(x2-x1+1),1:(y2-y1+1));
+    try
     g = griddedInterpolant(x',y',B');
-    
+    catch
+        disp('what?')
+    end
     X = MCx{n};
     Y = MCy{n};
     if strcmp(app.ContourdetectionButtonGroup.SelectedObject.Text,'Edge fit function')

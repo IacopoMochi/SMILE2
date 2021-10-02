@@ -50,7 +50,7 @@ if id~=0
             imagesc(axp,I);axis(axp,'image');colormap(axp,gray)
             title(axp,dataStructure.fileName{id},'interpreter','none')
             
-            %position = ax.Position;
+            position = ax.Position;
             ax.PositionConstraint = 'innerposition';
             cb = colorbar(ax);
             positionCb = ax.Position;
@@ -150,11 +150,13 @@ if id~=0
                 
                 
                 if ~strcmp(app.ContourMetricButtonGroup.SelectedObject.Text,'None')
-                    colormap(axc,jet(256));
-                    clc = colorbar(axc);
+                    clc = colorbar(app.Image);
+                    colormap(clc,jet(256));
+                    %app.Image.PositionConstraint = 'innerposition';
+                    
                     clc.TickLabels = Tlabels;
-                    clc.Position = positionCbproper;
-                    ax.Position = positionCb;
+                    %clc.Position = positionCbproper;
+                    %ax.Position = positionCb;
                     
                 else
                     
