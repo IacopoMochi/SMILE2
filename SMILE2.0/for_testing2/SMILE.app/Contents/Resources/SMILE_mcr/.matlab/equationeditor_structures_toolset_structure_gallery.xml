@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toolset id="equationeditor_structures_toolset" template="true">
+   <tool id="eqn_insert_overline" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_subscript" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_lim" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_ointdef" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_widetilde" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_bars" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_vec" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_bar" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_floor" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_overbrace" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_over" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_check" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_tilde" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_anglebracket" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_intdef" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_hat" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_superscript" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_breve" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_derivative" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="Script" quick_access_eligible="false" toolset_id="equationeditor_structures_toolset" type="group">
+      <child_tool id="eqn_insert_superscript" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_subscript" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_subsuperscript" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_multiscript" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_over" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_under" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_underover" toolset_id="equationeditor_structures_toolset"/>
+   </tool>
+   <tool id="eqn_insert_root" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="Operators" quick_access_eligible="false" toolset_id="equationeditor_structures_toolset" type="group">
+      <child_tool id="eqn_insert_int" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_intdef" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_oint" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_ointdef" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_sum" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_sumdef" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_prod" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_proddef" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_lim" toolset_id="equationeditor_structures_toolset"/>
+   </tool>
+   <tool id="eqn_insert_int" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_proddef" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_prod" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_doublebars" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_ddot" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="Misc_Structures" quick_access_eligible="false" toolset_id="equationeditor_structures_toolset" type="group">
+      <child_tool id="eqn_insert_cases" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_derivative" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_derivativeN" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_partialderivative" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_partialderivativeN" toolset_id="equationeditor_structures_toolset"/>
+   </tool>
+   <tool id="eqn_insert_frac" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_acute" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_fracbevelled" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="structure_gallery" quick_access_eligible="false" toolset_id="equationeditor_structures_toolset" type="gallery">
+      <child_tool id="favorites" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="Script" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="Fractions_and_Radicals" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="Operators" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="BracketPairs" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="Accents" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="Misc_Structures" toolset_id="equationeditor_structures_toolset"/>
+   </tool>
+   <tool id="favorites" quick_access_eligible="false" toolset_id="equationeditor_structures_toolset" type="group">
+      <child_tool id="eqn_insert_superscript" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_frac" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_sqrt" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_subscript" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_subsuperscript" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_sumdef" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_intdef" toolset_id="equationeditor_structures_toolset"/>
+   </tool>
+   <tool id="eqn_insert_dot" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_overleftrightarrow" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_sum" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_ceil" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_underbrace" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="Accents" quick_access_eligible="false" toolset_id="equationeditor_structures_toolset" type="group">
+      <child_tool id="eqn_insert_hat" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_breve" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_grave" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_bar" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_dot" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_check" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_acute" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_tilde" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_vec" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_ddot" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_widehat" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_widetilde" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_overleftarrow" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_overrightarrow" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_overleftrightarrow" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_overbrace" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_overline" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_underbrace" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_underline" toolset_id="equationeditor_structures_toolset"/>
+   </tool>
+   <tool id="eqn_insert_braces" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_overrightarrow" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_fracinline" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="BracketPairs" quick_access_eligible="false" toolset_id="equationeditor_structures_toolset" type="group">
+      <child_tool id="eqn_insert_parentheses" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_brackets" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_braces" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_ceil" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_floor" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_anglebracket" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_bars" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_doublebars" toolset_id="equationeditor_structures_toolset"/>
+   </tool>
+   <tool id="Fractions_and_Radicals" quick_access_eligible="false" toolset_id="equationeditor_structures_toolset" type="group">
+      <child_tool id="eqn_insert_frac" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_fracbevelled" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_fracinline" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_sqrt" toolset_id="equationeditor_structures_toolset"/>
+      <child_tool id="eqn_insert_root" toolset_id="equationeditor_structures_toolset"/>
+   </tool>
+   <tool id="eqn_insert_grave" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_cases" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_derivativeN" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_underline" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_sqrt" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_under" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_widehat" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_partialderivative" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_multiscript" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_oint" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_parentheses" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_subsuperscript" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_brackets" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_sumdef" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_partialderivativeN" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_overleftarrow" toolset_id="equationeditor_structures_toolset"/>
+   <tool id="eqn_insert_underover" toolset_id="equationeditor_structures_toolset"/>
+</toolset>

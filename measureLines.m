@@ -74,14 +74,29 @@ if ~isfield(edges,'Average_PSD_LWR')
     beta0_4 = [smt 20 1 0];
     %%%%%%
     
-    %try
+    try
         beta = nlinfit(r_1',H1,@hhcfmod,beta0_1);
+    catch
+        beta =beta0_1;
+    end
+    try
         beta2 = nlinfit(r_2',H2,@hhcfmod,beta0_2);
+    catch
+        beta2 =beta0_2;
+    end
+    try
         beta3 = nlinfit(r_3',H3,@hhcfmod,beta0_3);
+    catch
+        beta3 =beta0_3;
+    end
+    try
         beta4 = nlinfit(r_4',H4,@hhcfmod,beta0_4);
-    %catch
-    %    beta =beta0_1;
-    %end
+    catch
+        beta4 =beta0_4;
+    end
+        
+        
+     
 
     HHCorrFunc = H1;
     HHCorrFuncFit = hhcfmod(beta,r_1);
