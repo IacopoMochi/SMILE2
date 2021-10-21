@@ -1,0 +1,13 @@
+C:\Users\mochi_i\Documents\GitHub
+C:\Users\mochi_i\Documents\GitHub
+{Index in position 1 exceeds array bounds (must not exceed 768).
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SEM_Contact_Detect', 'C:\Users\mochi_i\Documents\GitHub\SMILE2\SEM_Contact_Detect.m', 69)" style="font-weight:bold">SEM_Contact_Detect</a> (<a href="matlab: opentoline('C:\Users\mochi_i\Documents\GitHub\SMILE2\SEM_Contact_Detect.m',69,0)">line 69</a>)
+Ac = A(h1:h2,w1:w2);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/ProcessimagesButtonPushed', 'C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE.mlapp', 435)" style="font-weight:bold">SMILE/ProcessimagesButtonPushed</a> (<a href="matlab: opentoline('C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE.mlapp',435,0)">line 435</a>)
+                        Output = SEM_Contact_Detect(parameters,app);
+} 
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.control.internal.controller.ComponentController/executeUserCallback', 'C:\Program Files\MATLAB\R2021a_x64\toolbox\matlab\uicomponents\uicomponents\+matlab\+ui\+control\+internal\+controller\ComponentController.m', 410)" style="font-weight:bold">matlab.ui.control.internal.controller.ComponentController/executeUserCallback</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2021a_x64\toolbox\matlab\uicomponents\uicomponents\+matlab\+ui\+control\+internal\+controller\ComponentController.m',410,0)">line 410</a>)
+Error while evaluating Button PrivateButtonPushedFcn.
+
