@@ -14,7 +14,7 @@
     <param.company>Paul Scherrer Institute</param.company>
     <param.summary>SMILE - SEM-Measured Image Lines Estimator</param.summary>
     <param.description>SMILE is a metrology tool for the analysis of L/S and contact array SEM images.</param.description>
-    <param.screenshot>I:\Iacopo\temporary\SMILE2_splash.png</param.screenshot>
+    <param.screenshot>I:\Iacopo\temporary\SMILE-splash.png</param.screenshot>
     <param.guid />
     <param.installpath.string>\Paul Scherrer Institute\SMILE\</param.installpath.string>
     <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
