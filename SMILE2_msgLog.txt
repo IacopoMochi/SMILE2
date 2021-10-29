@@ -1,0 +1,48 @@
+help dpss
+ <strong>dpss</strong>   Discrete prolate spheroidal sequences (Slepian sequences).
+    [E,V] = <strong>dpss</strong>(N,NW) are the first 2*NW discrete prolate spheroidal sequences
+    (DPSSs, or Slepian sequences) of length N (in the columns of E) and 
+    their corresponding concentrations (in vector V) in the frequency band 
+    |w|<=(2*pi*W) (where  W = NW/N is the half-bandwidth and w is in 
+    radians/sample).  E(:,1) is the length N signal most concentrated in the 
+    frequency band |w|<=(2*pi*W) radians/sample, E(:,2) is the signal 
+    orthogonal to E(:,1) which is most concentrated in this band, E(:,3) is the
+    signal orthogonal to both E(:,1) and E(:,2) which is most concentrated in 
+    this band, etc.  
+ 
+    For multi-taper spectral analysis, typical choices for NW are 2, 5/2, 3, 
+    7/2, or 4.
+ 
+    [E,V] = <strong>dpss</strong>(N,NW,K) are the K most band-limited discrete prolate spheroidal
+    sequences.  [E,V] = <strong>dpss</strong>(N,NW,[K1 K2]) returns the K1-th through the 
+    K2-th sequences.
+ 
+    [E,V] = <strong>dpss</strong>(N,NW,'spline') uses spline interpolation to compute the DPSSs 
+    from existing DPSSs in the <strong>dpss</strong> database with length closest to N.
+    [E,V] = <strong>dpss</strong>(N,NW,'spline',Ni) interpolates from existing length Ni DPSSs.
+    <strong>dpss</strong>(N,NW,'linear') and <strong>dpss</strong>(N,NW,'linear',Ni) use linear interpolation, 
+    which is much faster but less accurate than spline interpolation.  
+    'linear' requires Ni > N. [E,V] = <strong>dpss</strong>(N,NW,'calc') uses the direct 
+    algorithm (default).
+ 
+    Use a trailing 'trace' argument to find out which method <strong>dpss</strong> uses, e.g.,
+    <strong>dpss</strong>(...,'trace').
+ 
+    % Example:
+    %   Construct a set of Slepian sequences. 
+ 
+    seq_length = 512; 
+    time_halfbandwidth = 2.5;
+    num_seq = 2*(2.5)-1;
+    %Obtain DPSSs
+    [dps_seq,lambda] = dpss(seq_length,time_halfbandwidth,num_seq);
+    % Plot the Slepian sequences
+    plot(dps_seq);
+    title('Slepian Sequences N=512, NW=2.5');
+    axis([0 512 -0.15 0.15]);
+    legend('1st','2nd','3rd','4th');
+ 
+    See also <a href="matlab:help pmtm -displayBanner">pmtm</a>, <a href="matlab:help dpssload -displayBanner">dpssload</a>, <a href="matlab:help dpssdir -displayBanner">dpssdir</a>, <a href="matlab:help dpsssave -displayBanner">dpsssave</a>, <a href="matlab:help dpssclear -displayBanner">dpssclear</a>.
+
+    <a href="matlab:doc dpss">Documentation for dpss</a>
+

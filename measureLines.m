@@ -28,6 +28,10 @@ if ~isfield(edges,'Average_PSD_LWR')
     Le_f = Le_f-nanmean(Le_f,1); %line profiles
     Te_f = Te_f-nanmean(Te_f,1);
     
+%     N = length(LW,1);
+%     eBW = app.EffectiveBWEditField.Value;
+%     [dps_seq,lambda] = dpss(N,0.5*eBW*N*ps,2*round(0.5*eBW*N*ps)-1);
+    
     F_LW = fft(LW);  
     F_Le = fft(Le_f);
     F_Te = fft(Te_f);
@@ -126,9 +130,11 @@ if ~isfield(edges,'Average_PSD_LWR')
     
     %%%%Calculate bias
     
+    
     %Evaluate average LWR
     N = size(LW,1);
     Fs = 1/ps;
+    
     freq = 0:Fs/N:Fs/2-Fs/N;
     freqL = 0:Fs/N:Fs-Fs/N;
     %F_LW = F_LW(1:length(freq),:);
