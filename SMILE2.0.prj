@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="2841300541" file="C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE2.0.prj" location="C:\Users\mochi_i\Documents\GitHub\SMILE2" name="SMILE2.0" preferred-package-location="C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE2.0\for_redistribution2" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="2379524826" file="C:\SMILE_2\SMILE2\SMILE2.0.prj" location="C:\SMILE_2\SMILE2" name="SMILE2.0" preferred-package-location="C:\Users\iacopomochi\Documents\Work\SMILE\SMILE_matlab\SMILE20\SMILE2\SMILE2.0\for_redistribution" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>SMILE</param.appname>
     <param.icon>${PROJECT_ROOT}\SMILE2.0_resources\icon.ico</param.icon>
     <param.icons>
@@ -8,13 +8,13 @@
       <file>${PROJECT_ROOT}\SMILE2.0_resources\icon_24.png</file>
       <file>${PROJECT_ROOT}\SMILE2.0_resources\icon_16.png</file>
     </param.icons>
-    <param.version>2.0</param.version>
+    <param.version>2.1</param.version>
     <param.authnamewatermark>Iacopo Mochi</param.authnamewatermark>
     <param.email>iacopo.mochi@psi.ch</param.email>
     <param.company>Paul Scherrer Institute</param.company>
     <param.summary>SMILE - SEM-Measured Image Lines Estimator</param.summary>
     <param.description>SMILE is a metrology tool for the analysis of L/S and contact array SEM images.</param.description>
-    <param.screenshot>${PROJECT_ROOT}\SMILE2.0_resources\SMILE2_splash.png</param.screenshot>
+    <param.screenshot>I:\Iacopo\temporary\SMILE-splash.png</param.screenshot>
     <param.guid />
     <param.installpath.string>\Paul Scherrer Institute\SMILE\</param.installpath.string>
     <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
@@ -32,7 +32,7 @@
     <param.web.mcr>true</param.web.mcr>
     <param.package.mcr>false</param.package.mcr>
     <param.no.mcr>false</param.no.mcr>
-    <param.web.mcr.name>SMILE2_Win10_web</param.web.mcr.name>
+    <param.web.mcr.name>SMILE2_1_Win10_web</param.web.mcr.name>
     <param.package.mcr.name>MyAppInstaller_mcr</param.package.mcr.name>
     <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
     <param.windows.command.prompt>true</param.windows.command.prompt>
@@ -102,9 +102,9 @@
       <file>${PROJECT_ROOT}\setROI.m</file>
     </fileset.depfun>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\SMILE2.0\for_testing2" name="SMILE.exe" optional="false">C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE2.0\for_testing2\SMILE.exe</file>
-      <file location="${PROJECT_ROOT}\SMILE2.0\for_testing2" name="readme.txt" optional="true">C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE2.0\for_testing2\readme.txt</file>
-      <file location="${PROJECT_ROOT}\SMILE2.0\for_testing2" name="splash.png" optional="false">C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE2.0\for_testing2\splash.png</file>
+      <file location="${PROJECT_ROOT}\SMILE2.0\for_testing2" name="readme.txt" optional="true">C:\SMILE_2\SMILE2\SMILE2.0\for_testing2\readme.txt</file>
+      <file location="${PROJECT_ROOT}\SMILE2.0\for_testing2" name="SMILE.exe" optional="false">C:\SMILE_2\SMILE2\SMILE2.0\for_testing2\SMILE.exe</file>
+      <file location="${PROJECT_ROOT}\SMILE2.0\for_testing2" name="splash.png" optional="false">C:\SMILE_2\SMILE2\SMILE2.0\for_testing2\splash.png</file>
     </build-deliverables>
     <workflow />
     <matlab>

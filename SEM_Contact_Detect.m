@@ -75,9 +75,44 @@ Acf = AF(h1:h2,w1:w2);
 comap = normal(Acf)<0.5;
 m = mean(Acf(comap));
 M = mean(Acf(~comap));
-
+if sum(comap(:))<sum(1-comap(:))
+    backgroundmap = ~comap;
+else
+    backgroundmap = comap;
+end
 Ac = (Ac-m)/(M-m);
 Acf = (Acf-m)/(M-m);
+
+%% flattening image
+flattening = parameters.RemoveGradient;
+
+[xfit,yfit] = meshgrid(1:size(Acf,2),1:size(Acf,1));
+xfit = xfit-size(xfit,2)/2;
+yfit = yfit-size(yfit,1)/2;
+for n = 1:2
+     id = ~isnan(Acf);
+     if strcmp(flattening,'Linear')
+         F = fit([xfit(backgroundmap),yfit(backgroundmap)],Acf(backgroundmap),'poly11');
+         F = F(xfit,yfit);
+         AcF = Acf./F;
+     elseif strcmp(flattening,'Quadratic')
+         F = fit([xfit(backgroundmap),yfit(backgroundmap)],Acf(backgroundmap),'poly22');
+         F = F(xfit,yfit);
+         AcF = Acf./F;
+     elseif strcmp(flattening,'Cubic')
+         F = fit([xfit(backgroundmap),yfit(backgroundmap)],Acf(backgroundmap),'poly22');
+         F = F(xfit,yfit);
+         AcF = Acf./F;
+     else
+         AcF = Acf;
+     end
+end
+Acf = AcF;
+% 
+% 
+% ArcF = (ArcF-(median(min(ArcF,[],2))))./((median(max(ArcF,[],2)))-(median(min(ArcF,[],2))));
+% ArcF(ArcF<0)=0;
+% Sb = mean(ArcF);
 
 C = contourc(Acf,[threshold,threshold]);
 M = cntsplit(C);
