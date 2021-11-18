@@ -1,64 +1,63 @@
-{Index in position 1 is invalid. Array indices must be positive integers or logical values.
+[Warning: Rank deficient, rank = 2, tol =  1.149796e-12.] 
+[Warning: Rank deficient, rank = 2, tol =  1.101755e-12.] 
+[Warning: Rank deficient, rank = 2, tol =  1.096835e-12.] 
+[Warning: Some columns of the Jacobian are effectively zero at the solution, indicating that the model is insensitive to
+some of its parameters.  That may be because those parameters are not present in the model, or otherwise do not affect
+the predicted values.  It may also be due to numerical underflow in the model function, which can sometimes be avoided
+by choosing better initial parameter values, or by rescaling or recentering.  Parameter estimates may be unreliable.] 
+[Warning: Rank deficient, rank = 2, tol =  1.101755e-12.] 
+[Warning: Rank deficient, rank = 2, tol =  1.096835e-12.] 
+[Warning: Rank deficient, rank = 2, tol =  1.096342e-12.] 
+[Warning: Some columns of the Jacobian are effectively zero at the solution, indicating that the model is insensitive to
+some of its parameters.  That may be because those parameters are not present in the model, or otherwise do not affect
+the predicted values.  It may also be due to numerical underflow in the model function, which can sometimes be avoided
+by choosing better initial parameter values, or by rescaling or recentering.  Parameter estimates may be unreliable.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters may not be estimated well (they are
+not identifiable).  Use caution in making predictions.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+{Index in position 2 exceeds array bounds (must not exceed 24).
 
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SEM_line_Edge_detect', 'C:\Users\mochi_i\Documents\GitHub\SMILE2\SEM_line_Edge_detect.m', 59)" style="font-weight:bold">SEM_line_Edge_detect</a> (<a href="matlab: opentoline('C:\Users\mochi_i\Documents\GitHub\SMILE2\SEM_line_Edge_detect.m',59,0)">line 59</a>)
-Ac = A(h1:h2,w1:w2);
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/ProcessimagesButtonPushed', 'C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE.mlapp', 492)" style="font-weight:bold">SMILE/ProcessimagesButtonPushed</a> (<a href="matlab: opentoline('C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE.mlapp',492,0)">line 492</a>)
-                        Output = SEM_line_Edge_detect(parameters,app);
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/ProcessimagesButtonPushed', 'C:\SMILE_2\SMILE2\SMILE.mlapp', 608)" style="font-weight:bold">SMILE/ProcessimagesButtonPushed</a> (<a href="matlab: opentoline('C:\SMILE_2\SMILE2\SMILE.mlapp',608,0)">line 608</a>)
+                            disp(size((Output.leadingEdgeProfilesBridged(:,nl))))
 } 
 Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.control.internal.controller.ComponentController/executeUserCallback', 'C:\Program Files\MATLAB\R2021a_x64\toolbox\matlab\uicomponents\uicomponents\+matlab\+ui\+control\+internal\+controller\ComponentController.m', 410)" style="font-weight:bold">matlab.ui.control.internal.controller.ComponentController/executeUserCallback</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2021a_x64\toolbox\matlab\uicomponents\uicomponents\+matlab\+ui\+control\+internal\+controller\ComponentController.m',410,0)">line 410</a>)
 Error while evaluating Button PrivateButtonPushedFcn.
 
-[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
-[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters may not be estimated well (they are not identifiable).  Use caution in
-making predictions.] 
-[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
-[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters may not be estimated well (they are not identifiable).  Use caution in
-making predictions.] 
-[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
- 
-Exiting: Maximum number of function evaluations has been exceeded
-         - increase MaxFunEvals option.
-         Current function value: 40206518.446251 
-
-[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
-[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters may not be estimated well (they are not identifiable).  Use caution in
-making predictions.] 
-[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
-[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters may not be estimated well (they are not identifiable).  Use caution in
-making predictions.] 
-[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
-[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters may not be estimated well (they are not identifiable).  Use caution in
-making predictions.] 
-[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
-[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters may not be estimated well (they are not identifiable).  Use caution in
-making predictions.] 
-[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
-
-ans =
-
-    7.9346
-
-[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
-[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
- 
-Exiting: Maximum number of function evaluations has been exceeded
-         - increase MaxFunEvals option.
-         Current function value: 20178908.855079 
-
- 
-Exiting: Maximum number of function evaluations has been exceeded
-         - increase MaxFunEvals option.
-         Current function value: 34981439.827874 
-
+[Warning: Rank deficient, rank = 2, tol =  1.149796e-12.] 
+[Warning: Rank deficient, rank = 2, tol =  1.101755e-12.] 
+[Warning: Rank deficient, rank = 2, tol =  1.096835e-12.] 
+[Warning: Some columns of the Jacobian are effectively zero at the solution, indicating that the model is insensitive
+to some of its parameters.  That may be because those parameters are not present in the model, or otherwise do not
+affect the predicted values.  It may also be due to numerical underflow in the model function, which can sometimes be
+avoided by choosing better initial parameter values, or by rescaling or recentering.  Parameter estimates may be
+unreliable.] 
+[Warning: Rank deficient, rank = 2, tol =  1.101755e-12.] 
+[Warning: Rank deficient, rank = 2, tol =  1.096835e-12.] 
+[Warning: Rank deficient, rank = 2, tol =  1.096342e-12.] 
+[Warning: Some columns of the Jacobian are effectively zero at the solution, indicating that the model is insensitive
+to some of its parameters.  That may be because those parameters are not present in the model, or otherwise do not
+affect the predicted values.  It may also be due to numerical underflow in the model function, which can sometimes be
+avoided by choosing better initial parameter values, or by rescaling or recentering.  Parameter estimates may be
+unreliable.] 
 [Warning: Iteration limit exceeded.  Returning results from final iteration.] 
 [Warning: Iteration limit exceeded.  Returning results from final iteration.] 
 [Warning: Iteration limit exceeded.  Returning results from final iteration.] 
-[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters may not be estimated well (they are not identifiable).  Use caution in
-making predictions.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters may not be estimated well (they
+are not identifiable).  Use caution in making predictions.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
 [Warning: Iteration limit exceeded.  Returning results from final iteration.] 
 
 ans =
 
-    8.7488
+   13.8600
 
