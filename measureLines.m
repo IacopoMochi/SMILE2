@@ -38,32 +38,32 @@ if ~isfield(edges,'Average_PSD_LWR')
             dps = (ones(size(LW,2),1)*dps_seq(:,ntap)')';
             Tap(:,:,ntap) = dps.*LW;
         end
-        F_LW2 = fft(Tap);
-        F_LW = fft(LW);
+        F_LW = mean(abs(fft(Tap)),3)*sqrt(size(Tap,1));
+        %F_LW = fft(LW);
         %LER_l
         Tap = ones(size(Le_f,1),size(Le_f,2),size(dps_seq,2));
         for ntap = 1:Ntapers
             dps = (ones(size(Le_f,2),1)*dps_seq(:,ntap)')';
             Tap(:,:,ntap) = dps.*Le_f;
         end
-        F_Le2 = fft(Tap);
-        F_Le = fft(Le_f);
+        F_Le = mean(abs(fft(Tap)),3)*sqrt(size(Tap,1));
+        %F_Le = fft(Le_f);
         %LER_t
         Tap = ones(size(Te_f,1),size(Te_f,2),size(dps_seq,2));
         for ntap = 1:Ntapers
             dps = (ones(size(Te_f,2),1)*dps_seq(:,ntap)')';
             Tap(:,:,ntap) = dps.*Te_f;
         end
-        F_Te2 = fft(Tap);
-        F_Te = fft(Te_f);
+        F_Te = mean(abs(fft(Tap)),3)*sqrt(size(Tap,1));
+        %F_Te = fft(Te_f);
         %LER_lt
         Tap = ones(size([Le_f Te_f],1),size([Le_f Te_f],2),size(dps_seq,2));
         for ntap = 1:Ntapers
             dps = (ones(size([Le_f Te_f],2),1)*dps_seq(:,ntap)')';
             Tap(:,:,ntap) = dps.*[Le_f Te_f];
         end
-        F_LTe2 = fft(Tap);
-        F_LTe = fft([Le_f Te_f]);
+        F_LTe = mean(abs(fft(Tap)),3)*sqrt(size(Tap,1));
+        %F_LTe = fft([Le_f Te_f]);
     else
         F_LW = fft(LW);
         F_Le = fft(Le_f);
@@ -177,13 +177,7 @@ if ~isfield(edges,'Average_PSD_LWR')
     mF_LERl = nanmean(abs(F_Le).^2,2); % Average LERl PSD (uncut)
     mF_LERt = nanmean(abs(F_Te).^2,2); % Average LERt PSD (uncut)
     
-    if app.MultitaperButton.Value
-        mF_LW2 = nanmean(abs(F_LW2).^2,2); % Average LW PSD Multitaper(uncut)
-        mF_LER2 = nanmean(abs(F_LTe2).^2,2); % Average LER PSD Multitaper(uncut)
-        mF_LERl2 = nanmean(abs(F_Le2).^2,2); % Average LERl PSD Multitaper(uncut)
-        mF_LERt2 = nanmean(abs(F_Te2).^2,2); % Average LERt PSD Multitaper(uncut)
-    end
-    
+   
     %     L = length(mF_LW);
     %
     %     mF_LW = mF_LW/L;
@@ -215,23 +209,10 @@ if ~isfield(edges,'Average_PSD_LWR')
     mF_LERtx= mF_LERt(1:length(freq));
     mF_LERtx= mF_LERtx(ExN+1:end-ExNe);
     
-    if app.MultitaperButton.Value
-        mF_LWx2= mF_LW2(1:length(freq));
-        mF_LWx2= mF_LWx2(ExN+1:end-ExNe).';
-        mF_LERx2= mF_LER2(1:length(freq));
-        mF_LERx2= mF_LERx2(ExN+1:end-ExNe).';
-        mF_LERlx2= mF_LERl2(1:length(freq));
-        mF_LERlx2= mF_LERlx2(ExN+1:end-ExNe).';
-        mF_LERtx2= mF_LERt2(1:length(freq));
-        mF_LERtx2= mF_LERtx2(ExN+1:end-ExNe).';
-    end
-    
     Lx = length(mF_LWx);
     
     PSDmodel = app.PSDmodelDropDown.Value;
-    %%%%%%%%%TO DO
-    %%% DUPLICATE fit for mutitaper PSD curves
-    %%%%%%%%%
+    
     if strcmp(PSDmodel,'Gaussian')
         model = @Gaussian;
         beta0 = [nanmean(mF_LWx(1:FN))-nanmean(mF_LWx(Lx-LN:Lx)),1/CF,nanmean(mF_LWx(Lx-LN:Lx))];
@@ -271,44 +252,6 @@ if ~isfield(edges,'Average_PSD_LWR')
         betan(3) = 0;
         mF_LERt_fit_unbiased = model(betan,freq);
         
-        if app.MultitaperButton.Value
-            beta0 = [nanmean(mF_LWx2(1:FN))-nanmean(mF_LWx2(Lx-LN:Lx)),1/CF,nanmean(mF_LWx2(Lx-LN:Lx))];
-            f = @(beta,freqx,mF_LWx2) sum((Gaussian(beta,freqx)-mF_LWx2).^2);
-            Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
-            betaf2 = fminsearch(@(beta) f(beta,freqx,mF_LWx2),beta0,Options);
-            mF_LW_fit2 = model(betaf2,freq);
-            betan2 = betaf2;
-            betan2(3) = 0;
-            mF_LW_fit_unbiased2 = model(betan2,freq);
-            betaf_LW2 = betaf2;
-            
-            beta0 = [nanmean(mF_LERx2(1:FN))-nanmean(mF_LERx2(Lx-LN:Lx)),1/CF,nanmean(mF_LERx2(Lx-LN:Lx))];
-            f = @(beta,freqx,mF_LERx2) sum((Gaussian(beta,freqx)-mF_LERx2).^2);
-            Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
-            betaf_LER2 = fminsearch(@(beta) f(beta,freqx,mF_LERx2),beta0,Options);
-            mF_LER_fit2 = model(betaf_LER2,freq);
-            betan2 = betaf_LER2;
-            betan2(3) = 0;
-            mF_LER_fit_unbiased2 = model(betan2,freq);
-            
-            beta0 = [nanmean(mF_LERlx2(1:FN))-nanmean(mF_LERlx2(Lx-LN:Lx)),1/CF,nanmean(mF_LERlx2(Lx-LN:Lx))];
-            f = @(beta,freqx,mF_LERlx2) sum((Gaussian(beta,freqx)-mF_LERlx2).^2);
-            Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
-            betaf_LERl2 = fminsearch(@(beta) f(beta,freqx,mF_LERlx2),beta0,Options);
-            mF_LERl_fit2 = model(betaf_LERl2,freq);
-            betan2 = betaf_LERl2;
-            betan2(3) = 0;
-            mF_LERl_fit_unbiased2 = model(betan2,freq);
-            
-            beta0 = [nanmean(mF_LERtx2(1:FN))-nanmean(mF_LERtx2(Lx-LN:Lx)),1/CF,nanmean(mF_LERtx2(Lx-LN:Lx))];
-            f = @(beta,freqx,mF_LERtx2) sum((Gaussian(beta,freqx)-mF_LERtx2).^2);
-            Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
-            betaf_LERt2 = fminsearch(@(beta) f(beta,freqx,mF_LERtx2),beta0,Options);
-            mF_LERt_fit2 = model(betaf_LERt2,freq);
-            betan2 = betaf_LERt2;
-            betan2(3) = 0;
-            mF_LERt_fit_unbiased2 = model(betan2,freq);
-        end
         
     elseif strcmp(PSDmodel,'Floating alpha')
         model = @FloatingAlpha;
@@ -460,47 +403,6 @@ if ~isfield(edges,'Average_PSD_LWR')
         betan(3) = 0;
         mF_LERt_fit_unbiased = model(betan,freq);
         betaf_LERt = betaf;
-        if app.MultitaperButton.Value
-            beta0 = [sqrt(nanmean(mF_LWx2(1:FN))-nanmean(mF_LWx2(Lx-LN:Lx))), CF, (nanmean(mF_LWx2(Lx-LN:Lx))),Alpha];
-            f = @(beta,freqx,mF_LWx2) sum((Palasantzas2(beta,freqx)-mF_LWx2).^2);
-            Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
-            betaf2 = fminsearch(@(beta) f(beta,freqx,mF_LWx2),beta0,Options);
-            mF_LW_fit2 = model(betaf2,freq);
-            betan2 = betaf2;
-            betan2(3) = 0;
-            mF_LW_fit_unbiased2 = model(betan2,freq);
-            betaf_LW2 = betaf2;
-            
-            beta0 = [sqrt(nanmean(mF_LERx2(1:FN))-nanmean(mF_LERx2(Lx-LN:Lx))), CF, (nanmean(mF_LERx2(Lx-LN:Lx))),Alpha];
-            f = @(beta,freqx,mF_LERx2) sum((Palasantzas2(beta,freqx)-mF_LERx2).^2);
-            Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
-            betaf2 = fminsearch(@(beta) f(beta,freqx,mF_LERx2),beta0,Options);
-            mF_LER_fit2 = model(betaf2,freq);
-            betan2 = betaf2;
-            betan2(3) = 0;
-            mF_LER_fit_unbiased2 = model(betan2,freq);
-            betaf_LER2 = betaf2;
-            
-            beta0 = [sqrt(nanmean(mF_LERlx2(1:FN))-nanmean(mF_LERlx2(Lx-LN:Lx))), CF, (nanmean(mF_LERlx2(Lx-LN:Lx))),Alpha];
-            f = @(beta,freqx,mF_LERlx2) sum((Palasantzas2(beta,freqx)-mF_LERlx2).^2);
-            Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
-            betaf2 = fminsearch(@(beta) f(beta,freqx,mF_LERlx2),beta0,Options);
-            mF_LERl_fit2 = model(betaf2,freq);
-            betan2 = betaf2;
-            betan2(3) = 0;
-            mF_LERl_fit_unbiased2 = model(betan2,freq);
-            betaf_LERl2 = betaf2;
-            
-            beta0 = [sqrt(nanmean(mF_LERtx2(1:FN))-nanmean(mF_LERtx2(Lx-LN:Lx))), CF, (nanmean(mF_LERtx2(Lx-LN:Lx))),Alpha];
-            f = @(beta,freqx,mF_LERtx2) sum((Palasantzas2(beta,freqx)-mF_LERtx2).^2);
-            Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
-            betaf2 = fminsearch(@(beta) f(beta,freqx,mF_LERtx2),beta0,Options);
-            mF_LERt_fit2 = model(betaf2,freq);
-            betan2 = betaf2;
-            betan2(3) = 0;
-            mF_LERt_fit_unbiased2 = model(betan2,freq);
-            betaf_LERt2 = betaf2;
-        end
     elseif strcmp(PSDmodel,'Integral')
         model = @Integral;
         edf=[find(freq==freqx(1),1),find(freq==freqx(end),1)];
@@ -605,66 +507,66 @@ if ~isfield(edges,'Average_PSD_LWR')
     LERt_fit_unbiased = 3*sqrt(2*sum(PSD_LERt_fit_unbiased))/length(PSD_LERt);
     PSD_LERt_beta = betaf_LERt;
     
-    if app.MultitaperButton.Value
-           %LWR = 3*sqrt(sum(2*mF_LW.^2)/ps);
-    
-    PSD2 = mF_LW2;
-    PSDh2 = mF_LW2(1:length(freq));
-    PSD_unbiased2 = (PSDh2-betaf_LW2(3));
-    PSD_unbiased2(PSD_unbiased2<0)=0;
-    PSD_LWR_fit2 = mF_LW_fit2;
-    PSD_LWR_fit_unbiased2 = mF_LW_fit_unbiased2;
-    
-    %LWR = 3*sqrt(2*ps^2*sum(PSD)/(length(PSD)));
-    LWR2 = 3*sqrt(sum(PSD2))/length(PSD2);
-    LWR_unbiased2 = 3*sqrt(2*sum(PSD_unbiased2))/length(PSD2);
-    LWR_fit2 = 3*sqrt(2*sum(PSD_LWR_fit2))/length(PSD2);
-    LWR_fit_unbiased2 = 3*sqrt(2*sum(PSD_LWR_fit_unbiased2))/length(PSD2);
-    PSD_LWR_beta2 = betaf_LW2;
-    
-    %LER
-    PSD_LER = mF_LER;
-    PSD_LERh = mF_LER(1:length(freq));
-    PSD_LER_unbiased = (PSD_LERh-betaf_LER(3));
-    PSD_LER_unbiased(PSD_LER_unbiased<0)=0;
-    PSD_LER_fit = mF_LER_fit;
-    PSD_LER_fit_unbiased = mF_LER_fit_unbiased;
-    
-    LER = 3*sqrt(sum(PSD_LER))/length(PSD_LER);
-    LER_unbiased = 3*sqrt(2*sum(PSD_LER_unbiased))/length(PSD_LER);
-    LER_fit = 3*sqrt(2*sum(PSD_LER_fit))/length(PSD_LER);
-    LER_fit_unbiased = 3*sqrt(2*sum(PSD_LER_fit_unbiased))/length(PSD_LER);
-    PSD_LER_beta = betaf_LER;
-    
-    %LERl
-    PSD_LERl = mF_LERl;
-    PSD_LERlh = mF_LERl(1:length(freq));
-    PSD_LERl_unbiased = (PSD_LERlh-betaf_LERl(3));
-    PSD_LERl_unbiased(PSD_LERl_unbiased<0)=0;
-    PSD_LERl_fit = mF_LERl_fit;
-    PSD_LERl_fit_unbiased = mF_LERl_fit_unbiased;
-    
-    LERl = 3*sqrt(sum(PSD_LERl))/length(PSD_LERl);
-    LERl_unbiased = 3*sqrt(2*sum(PSD_LERl_unbiased))/length(PSD_LERl);
-    LERl_fit = 3*sqrt(2*sum(PSD_LERl_fit))/length(PSD_LERl);
-    LERl_fit_unbiased = 3*sqrt(2*sum(PSD_LERl_fit_unbiased))/length(PSD_LERl);
-    PSD_LERl_beta = betaf_LERl;
-    
-    %LERt
-    PSD_LERt = mF_LERt;
-    PSD_LERth = mF_LERt(1:length(freq));
-    PSD_LERt_unbiased = (PSD_LERth-betaf_LERt(3));
-    PSD_LERt_unbiased(PSD_LERt_unbiased<0)=0;
-    PSD_LERt_fit = mF_LERt_fit;
-    PSD_LERt_fit_unbiased = mF_LERt_fit_unbiased;
-    
-    LERt = 3*sqrt(sum(PSD_LERt))/length(PSD_LERt);
-    LERt_unbiased = 3*sqrt(2*sum(PSD_LERt_unbiased))/length(PSD_LERt);
-    LERt_fit = 3*sqrt(2*sum(PSD_LER_fit))/length(PSD_LER);
-    LERt_fit_unbiased = 3*sqrt(2*sum(PSD_LERt_fit_unbiased))/length(PSD_LERt);
-    PSD_LERt_beta = betaf_LERt; 
-    end
-    
+%     if app.MultitaperButton.Value
+%            %LWR = 3*sqrt(sum(2*mF_LW.^2)/ps);
+%     
+%     PSD2 = mF_LW2;
+%     PSDh2 = mF_LW2(1:length(freq));
+%     PSD_unbiased2 = (PSDh2-betaf_LW2(3));
+%     PSD_unbiased2(PSD_unbiased2<0)=0;
+%     PSD_LWR_fit2 = mF_LW_fit2;
+%     PSD_LWR_fit_unbiased2 = mF_LW_fit_unbiased2;
+%     
+%     %LWR = 3*sqrt(2*ps^2*sum(PSD)/(length(PSD)));
+%     LWR2 = 3*sqrt(sum(PSD2))/length(PSD2);
+%     LWR_unbiased2 = 3*sqrt(2*sum(PSD_unbiased2))/length(PSD2);
+%     LWR_fit2 = 3*sqrt(2*sum(PSD_LWR_fit2))/length(PSD2);
+%     LWR_fit_unbiased2 = 3*sqrt(2*sum(PSD_LWR_fit_unbiased2))/length(PSD2);
+%     PSD_LWR_beta2 = betaf_LW2;
+%     
+%     %LER
+%     PSD_LER = mF_LER;
+%     PSD_LERh = mF_LER(1:length(freq));
+%     PSD_LER_unbiased = (PSD_LERh-betaf_LER(3));
+%     PSD_LER_unbiased(PSD_LER_unbiased<0)=0;
+%     PSD_LER_fit = mF_LER_fit;
+%     PSD_LER_fit_unbiased = mF_LER_fit_unbiased;
+%     
+%     LER = 3*sqrt(sum(PSD_LER))/length(PSD_LER);
+%     LER_unbiased = 3*sqrt(2*sum(PSD_LER_unbiased))/length(PSD_LER);
+%     LER_fit = 3*sqrt(2*sum(PSD_LER_fit))/length(PSD_LER);
+%     LER_fit_unbiased = 3*sqrt(2*sum(PSD_LER_fit_unbiased))/length(PSD_LER);
+%     PSD_LER_beta = betaf_LER;
+%     
+%     %LERl
+%     PSD_LERl = mF_LERl;
+%     PSD_LERlh = mF_LERl(1:length(freq));
+%     PSD_LERl_unbiased = (PSD_LERlh-betaf_LERl(3));
+%     PSD_LERl_unbiased(PSD_LERl_unbiased<0)=0;
+%     PSD_LERl_fit = mF_LERl_fit;
+%     PSD_LERl_fit_unbiased = mF_LERl_fit_unbiased;
+%     
+%     LERl = 3*sqrt(sum(PSD_LERl))/length(PSD_LERl);
+%     LERl_unbiased = 3*sqrt(2*sum(PSD_LERl_unbiased))/length(PSD_LERl);
+%     LERl_fit = 3*sqrt(2*sum(PSD_LERl_fit))/length(PSD_LERl);
+%     LERl_fit_unbiased = 3*sqrt(2*sum(PSD_LERl_fit_unbiased))/length(PSD_LERl);
+%     PSD_LERl_beta = betaf_LERl;
+%     
+%     %LERt
+%     PSD_LERt = mF_LERt;
+%     PSD_LERth = mF_LERt(1:length(freq));
+%     PSD_LERt_unbiased = (PSD_LERth-betaf_LERt(3));
+%     PSD_LERt_unbiased(PSD_LERt_unbiased<0)=0;
+%     PSD_LERt_fit = mF_LERt_fit;
+%     PSD_LERt_fit_unbiased = mF_LERt_fit_unbiased;
+%     
+%     LERt = 3*sqrt(sum(PSD_LERt))/length(PSD_LERt);
+%     LERt_unbiased = 3*sqrt(2*sum(PSD_LERt_unbiased))/length(PSD_LERt);
+%     LERt_fit = 3*sqrt(2*sum(PSD_LER_fit))/length(PSD_LER);
+%     LERt_fit_unbiased = 3*sqrt(2*sum(PSD_LERt_fit_unbiased))/length(PSD_LERt);
+%     PSD_LERt_beta = betaf_LERt; 
+%     end
+%     
     
     %%%%
     % imagesc(Output.Arc);axis image
