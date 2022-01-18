@@ -38,7 +38,7 @@ if ~isfield(edges,'Average_PSD_LWR')
             else %Sinusoidal
                 dps_seq = zeros(N,Ntapers);
                 for nseq = 1:Ntapers
-                    dps_seq(:,nseq) = sqrt(2/(Ntapers+1))*sin(pi*nseq*(1:N)/(N+1));
+                    dps_seq(:,nseq) = sqrt(2/(Ntapers+1))*sin(pi*nseq*(0:2*pi/(n:2*pi)/(Ntapers+1));
                 end
             end
         end
