@@ -46,8 +46,7 @@ parameters.LinesTone = app.ImagetoneButtonGroup.SelectedObject.Text;
 parameters.ManualRotation = app.ManualrotationadjustmentdegSlider.Value;
 
 parameters.MultiTaper = app.MultitaperButton.Value;
-parameters.MultiTaperFunctionType = app.TaperfunctionsDropDown.Value;
-parameters.TaperNumber = app.NumberoftapersEditField.Value;
+parameters.MultiTaperFunctionType = app.TaperButton.Value;
 
 dataStructure.parameters = parameters;
 app.ExportdataButton.UserData = dataStructure;
