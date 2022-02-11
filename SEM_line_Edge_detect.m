@@ -126,15 +126,15 @@ for n = 1:2
     if strcmp(flattening,'Linear')
         F = fit([xfit(id),yfit(id)],Arcc(id),'poly11');
         F = F(xfit,yfit);
-        ArcF = Arc./F;
+        ArcF = normal(Arc-F);
     elseif strcmp(flattening,'Quadratic')
         F = fit([xfit(id),yfit(id)],Arcc(id),'poly22');
         F = F(xfit,yfit);
-        ArcF = Arc./F;
+        ArcF = normal(Arc-F);
     elseif strcmp(flattening,'Cubic')
         F = fit([xfit(id),yfit(id)],Arcc(id),'poly33');
         F = F(xfit,yfit);
-        ArcF = Arc./F;
+        ArcF = normal(Arc-F);
     else
         ArcFm = medfilt2(Arc,[5,5]);
         ArcF = (Arc-min(ArcFm(:)))./(max(ArcFm(:))-min(ArcFm(:)));

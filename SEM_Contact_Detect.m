@@ -94,15 +94,15 @@ for n = 1:2
      if strcmp(flattening,'Linear')
          F = fit([xfit(backgroundmap),yfit(backgroundmap)],Acf(backgroundmap),'poly11');
          F = F(xfit,yfit);
-         AcF = Acf./F;
+         AcF = normal(Acf-F);
      elseif strcmp(flattening,'Quadratic')
          F = fit([xfit(backgroundmap),yfit(backgroundmap)],Acf(backgroundmap),'poly22');
          F = F(xfit,yfit);
-         AcF = Acf./F;
+         AcF = normal(Acf-F);
      elseif strcmp(flattening,'Cubic')
          F = fit([xfit(backgroundmap),yfit(backgroundmap)],Acf(backgroundmap),'poly22');
          F = F(xfit,yfit);
-         AcF = Acf./F;
+         AcF = normal(Acf-F);
      else
          AcF = Acf;
      end
@@ -177,7 +177,11 @@ for n = 1:size(ContoursRadius,2)
     x2 = round(ContoursCentersX(n)+r*a);
     y1 = round(ContoursCentersY(n)-r*a);
     y2 = round(ContoursCentersY(n)+r*a);
-    B = Ac(y1:y2,x1:x2);
+    try
+        B = Ac(y1:y2,x1:x2);
+    catch
+        disp('buca')
+    end
     [x,y] = meshgrid(1:(x2-x1+1),1:(y2-y1+1));
     try
     g = griddedInterpolant(x',y',B');
