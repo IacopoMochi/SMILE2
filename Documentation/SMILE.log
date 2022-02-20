@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.29)  15 FEB 2022 18:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.29)  21 FEB 2022 00:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -347,16 +347,16 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Chapter 1.
-<figures/GUI_01.png, id=107, 1509.64pt x 828.09375pt>
+<figures/GUI_01.png, id=107, 1533.73pt x 826.08624pt>
 File: figures/GUI_01.png Graphic file (type png)
 <use figures/GUI_01.png>
 Package pdftex.def Info: figures/GUI_01.png  used on input line 23.
-(pdftex.def)             Requested size: 390.0pt x 213.92201pt.
-<figures/GUI_01A.png, id=110, 1514.65875pt x 828.09375pt>
+(pdftex.def)             Requested size: 390.0pt x 210.05046pt.
+<figures/GUI_01A.png, id=110, 1526.70375pt x 828.09375pt>
 File: figures/GUI_01A.png Graphic file (type png)
 <use figures/GUI_01A.png>
 Package pdftex.def Info: figures/GUI_01A.png  used on input line 29.
-(pdftex.def)             Requested size: 390.0pt x 213.2144pt.
+(pdftex.def)             Requested size: 390.0pt x 211.53386pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
@@ -365,11 +365,11 @@ l.33 \section
              {Step 2: Setting the parameters} [1
 
  <./figures/GUI_01.png>]
-<figures/GUI_02A.png, id=119, 1524.69624pt x 801.99625pt>
+<figures/GUI_02A.png, id=119, 1526.70375pt x 809.0225pt>
 File: figures/GUI_02A.png Graphic file (type png)
 <use figures/GUI_02A.png>
 Package pdftex.def Info: figures/GUI_02A.png  used on input line 36.
-(pdftex.def)             Requested size: 390.0pt x 205.13657pt.
+(pdftex.def)             Requested size: 390.0pt x 206.66217pt.
 <figures/GUI_01B.png, id=120, 1511.6475pt x 826.08624pt>
 File: figures/GUI_01B.png Graphic file (type png)
 <use figures/GUI_01B.png>
@@ -400,16 +400,13 @@ Package pdftex.def Info: figures/HHCF_01.png  used on input line 95.
  [8 <./figures/PSD_01.png>] [9 <./figures/HHCF_01.png>] (./SMILE.bbl [10]) [11
 
 ] (./SMILE.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `SMILE.out' has not changed.
 (rerunfilecheck)             Checksum: 7F5D38ADFD6E53C4A84404AE88BB3D34;3954.
  ) 
 Here is how much of TeX's memory you used:
  9048 strings out of 479014
  130737 string characters out of 5859148
- 433462 words of memory out of 5000000
+ 433497 words of memory out of 5000000
  26359 multiletter control sequences out of 15000+600000
  413483 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -424,7 +421,7 @@ ocal/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
 l/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
 texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/t
 exlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on SMILE.pdf (12 pages, 4147051 bytes).
+Output written on SMILE.pdf (12 pages, 4146614 bytes).
 PDF statistics:
  238 PDF objects out of 1000 (max. 8388607)
  199 compressed objects within 2 object streams
