@@ -130,7 +130,7 @@ end
 %Cut edge contacts
 cnt = 0;
 %MC  = struct;
-mr = mean(ContoursRadius);
+mr = max(ContoursRadius);
 ContoursRadius2 = [];
 for n= 1:numel(M)
     if ContoursCentersX(n)>2*mr && ContoursCentersY(n)>2*mr && ...
