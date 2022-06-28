@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="2379524826" file="/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE2.0.prj" location="/Users/iacopomochi/Documents/GitHub/SMILE2" name="SMILE2.0" preferred-package-location="/Users/iacopomochi/Documents/MATLAB/C:\Users\iacopomochi\Documents\Work\SMILE\SMILE_matlab\SMILE20\SMILE2\SMILE2.0\for_redistribution" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="2379524826" file="/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE2.0.prj" location="/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2" name="SMILE2.0" preferred-package-location="/Users/iacopomochi/Documents/MATLAB/C:\Users\iacopomochi\Documents\Work\SMILE\SMILE_matlab\SMILE20\SMILE2\SMILE2.0\for_redistribution" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>SMILE</param.appname>
     <param.icon>${PROJECT_ROOT}/SMILE2.0_resources/icon.icns</param.icon>
     <param.icons>
@@ -109,14 +109,14 @@ ${DYLD_LIBRARY_PATH}:MR/v911/runtime/maci64:MR/v911/sys/os/maci64:MR/v911/bin/ma
       <file>${PROJECT_ROOT}/setROI.m</file>
     </fileset.depfun>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}/SMILE2.0/for_testing2" name="SMILE.app" optional="false">/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE2.0/for_testing2/SMILE.app</file>
-      <file location="${PROJECT_ROOT}/SMILE2.0/for_testing2" name="splash.png" optional="false">/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE2.0/for_testing2/splash.png</file>
-      <file location="${PROJECT_ROOT}/SMILE2.0/for_testing2" name="run_SMILE.sh" optional="false">/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE2.0/for_testing2/run_SMILE.sh</file>
-      <file location="${PROJECT_ROOT}/SMILE2.0/for_testing2" name="readme.txt" optional="true">/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE2.0/for_testing2/readme.txt</file>
+      <file location="${PROJECT_ROOT}/SMILE2.0/for_testing2" name="run_SMILE.sh" optional="false">/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE2.0/for_testing2/run_SMILE.sh</file>
+      <file location="${PROJECT_ROOT}/SMILE2.0/for_testing2" name="readme.txt" optional="true">/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE2.0/for_testing2/readme.txt</file>
+      <file location="${PROJECT_ROOT}/SMILE2.0/for_testing2" name="splash.png" optional="false">/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE2.0/for_testing2/splash.png</file>
+      <file location="${PROJECT_ROOT}/SMILE2.0/for_testing2" name="SMILE.app" optional="false">/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE2.0/for_testing2/SMILE.app</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>/Applications/MATLAB_R2021b.app</root>
+      <root>/Applications/MATLAB_R2022a.app</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
         <toolbox name="embeddedcoder" />
@@ -159,7 +159,7 @@ ${DYLD_LIBRARY_PATH}:MR/v911/runtime/maci64:MR/v911/sys/os/maci64:MR/v911/bin/ma
       <vista>false</vista>
       <linux>false</linux>
       <solaris>false</solaris>
-      <osver>12.1</osver>
+      <osver>12.3.1</osver>
       <os32>false</os32>
       <os64>true</os64>
       <arch>maci64</arch>

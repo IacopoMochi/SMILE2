@@ -166,7 +166,7 @@ Sb = mean(ArcF);
 %Arc_nf = (Arc_nf-min(S_nf)/size(Arc_nf,1))./(max(S_nf)/size(Arc_nf,1)-min(S_nf)/size(Arc_nf,1));
 
 
-dS = diff(Sb);
+dS = smooth(diff(Sb));
 [~,edgelocations]= findpeaks(normal(abs(dS)),...
     'MinPeakProminence',MinPeakProminence,...
     'MinPeakDistance',MinPeakDistance);
