@@ -217,6 +217,7 @@ threshold = parameters.threshold;
 %Spike filtering
 ff = parameters.spikePeak;
 
+if app.EdgerangeBu
 %Search the edge in a range of b*CD around the guessed position
 b = parameters.CD_fraction;
 %fwhmf = 3;
@@ -224,7 +225,7 @@ b = parameters.CD_fraction;
 if app.EdgefitfunctionButtonGroup.Buttons(1).Value
     [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectLin(leadingEdges,trailingEdges,ArcF,CD,b,threshold);
 elseif app.EdgefitfunctionButtonGroup.Buttons(2).Value
-    [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly(leadingEdges,trailingEdges,ArcF,CD,b,threshold);
+    [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly(leadingEdges,trailingEdges,ArcF,b,threshold);
 else
     %[leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,ArcF,CD,b,threshold,fwhmf);
     [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,ArcF,CD,b,threshold);
@@ -378,6 +379,7 @@ Output.trailingEdgeProfilesUndetected = trailingEdgeProfilesUndetected;
 Output.leadingEdgeProfilesUndetected = leadingEdgeProfilesUndetected;
 Output.CentersP = CentersP;
 Output.CentersB = CentersB;
+Output.Pitch = averagePitch;
 
 Output.Arc = Arc;
 Output.F = F;
