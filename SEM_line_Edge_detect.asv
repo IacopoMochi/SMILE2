@@ -378,7 +378,6 @@ Output.trailingEdgeProfilesUndetected = trailingEdgeProfilesUndetected;
 Output.leadingEdgeProfilesUndetected = leadingEdgeProfilesUndetected;
 Output.CentersP = CentersP;
 Output.CentersB = CentersB;
-Output.Pitch = averagePitch;
 
 Output.Arc = Arc;
 Output.F = F;
