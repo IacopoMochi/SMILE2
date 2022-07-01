@@ -206,7 +206,7 @@ trailingEdges = newTrailingEdges;
 
 
 averageCD = mean(trailingEdges-leadingEdges);
-averagePitch = mean([diff(trailingEdges) diff(leadingEdges)]);
+averagePitch = ps*mean([diff(trailingEdges) diff(leadingEdges)]);
 linesCenters = (trailingEdges+leadingEdges)/2;
 
 CD = averageCD;
