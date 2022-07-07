@@ -1,11 +1,11 @@
-function [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,Arc,CD,b,threshold)
+function [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,Arc,b,threshold)
 %linear fitting (no filtering)
 leadingEdgeProfiles = zeros(size(Arc,1),length(leadingEdges));
 trailingEdgeProfiles = zeros(size(Arc,1),length(trailingEdges));
 for n = 1:length(leadingEdges)
     for m = 1:size(Arc,1)
-        s1 = max(leadingEdges(n)-round(CD*b),1);
-        s2 = min(leadingEdges(n)+round(CD*b),size(Arc,2));
+        s1 = max(leadingEdges(n)-round(b),1);
+        s2 = min(leadingEdges(n)+round(b),size(Arc,2));
         
         segm = Arc(m,s1:s2);
         
@@ -17,8 +17,8 @@ for n = 1:length(leadingEdges)
             leadingEdgeProfiles(m,n) = p;
         end
         
-        s1b = max(trailingEdges(n)-round(CD*b),1);
-        s2b = min(trailingEdges(n)+round(CD*b),size(Arc,2));
+        s1b = max(trailingEdges(n)-b,1);
+        s2b = min(trailingEdges(n)+b,size(Arc,2));
         
         segm = Arc(m,s1b:s2b);
         

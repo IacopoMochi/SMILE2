@@ -4,11 +4,9 @@ function [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly(leadingEdg
 leadingEdgeProfiles = zeros(size(Arc,1),length(leadingEdges));
 trailingEdgeProfiles = zeros(size(Arc,1),length(trailingEdges));
 for n = 1:length(leadingEdges)
-    LEn = leadingEdges(n);
-    TEn = trailingEdges(n);
     parfor m = 1:size(Arc,1)
-        s1 = max(LEn-b,1);
-        s2 = min(LEn+b,size(Arc,2));
+        s1 = max(leadingEdges(n)-b,1);
+        s2 = min(leadingEdges(n)+b,size(Arc,2));
         
         Arcl = Arc(m,s1:s2);
         %Arcl = smooth(Arc(m,s1:s2));
@@ -37,8 +35,8 @@ for n = 1:length(leadingEdges)
         leadingEdgeProfiles(m,n) = p;
         % end
         
-        s1b = max(TEn-b,1);
-        s2b = min(TEn+b,size(Arc,2));
+        s1b = max(trailingEdges(n)-b,1);
+        s2b = min(trailingEdges(n)+b,size(Arc,2));
         segm = (Arc(m,s1b:s2b));
         %         p = find(segm>threshold,1,'last');
         %         if isempty(p)

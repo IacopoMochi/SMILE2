@@ -217,7 +217,7 @@ threshold = parameters.threshold;
 %Spike filtering
 ff = parameters.spikePeak;
 
-if strcmp(app.EdgerangeButton.Text,'CD fraction')
+if strcmp(app.EdgerangeButton.Text,'Edge range')
     %Search the edge in a range of b*CD around the guessed position
     b = round(CD*parameters.CD_fraction);
 else
@@ -226,12 +226,12 @@ end
 %fwhmf = 3;
 
 if app.EdgefitfunctionButtonGroup.Buttons(1).Value
-    [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectLin(leadingEdges,trailingEdges,ArcF,CD,b,threshold);
+    [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectLin(leadingEdges,trailingEdges,ArcF,b,threshold);
 elseif app.EdgefitfunctionButtonGroup.Buttons(2).Value
     [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly(leadingEdges,trailingEdges,ArcF,b,threshold);
 else
     %[leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,ArcF,CD,b,threshold,fwhmf);
-    [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,ArcF,CD,b,threshold);
+    [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,ArcF,b,threshold);
 end
 
 %Find undetected regions, bridge and pinch defects
