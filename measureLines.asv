@@ -625,7 +625,7 @@ if ~isfield(edges,'Average_PSD_LWR')
     metrics.PSD_LERt_fit_unbiased = PSD_LERt_fit_unbiased;
     metrics.PSD_LERt_beta = PSD_LERt_beta;
     
-    metrics.LinesCenters = LinesCenters;
+    plot)metrics.LinesCenters = LinesCenters;
     
     metrics.PSD = PSDh;
     metrics.mCD = mCD;

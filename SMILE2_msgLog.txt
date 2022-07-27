@@ -1,0 +1,297 @@
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+Starting parallel pool (parpool) using the 'local' profile ...
+Connected to the parallel pool (number of workers: 10).
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('displayData', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m', 239)" style="font-weight:bold">displayData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m',239,0)">line 239</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/dataTableCellSelection2', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 1137)" style="font-weight:bold">SMILE/dataTableCellSelection2</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',1137,0)">line 1137</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)', '/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m', 63)" style="font-weight:bold">matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m',63,0)">line 63</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 767)" style="font-weight:bold">matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',767,0)">line 767</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 584)" style="font-weight:bold">matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',584,0)">line 584</a>)] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('displayData', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m', 242)" style="font-weight:bold">displayData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m',242,0)">line 242</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/dataTableCellSelection2', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 1137)" style="font-weight:bold">SMILE/dataTableCellSelection2</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',1137,0)">line 1137</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)', '/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m', 63)" style="font-weight:bold">matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m',63,0)">line 63</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 767)" style="font-weight:bold">matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',767,0)">line 767</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 584)" style="font-weight:bold">matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',584,0)">line 584</a>)] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('displayData', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m', 239)" style="font-weight:bold">displayData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m',239,0)">line 239</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/dataTableCellSelection2', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 1137)" style="font-weight:bold">SMILE/dataTableCellSelection2</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',1137,0)">line 1137</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)', '/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m', 63)" style="font-weight:bold">matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m',63,0)">line 63</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 767)" style="font-weight:bold">matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',767,0)">line 767</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 584)" style="font-weight:bold">matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',584,0)">line 584</a>)] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('displayData', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m', 242)" style="font-weight:bold">displayData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m',242,0)">line 242</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/dataTableCellSelection2', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 1137)" style="font-weight:bold">SMILE/dataTableCellSelection2</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',1137,0)">line 1137</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)', '/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m', 63)" style="font-weight:bold">matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m',63,0)">line 63</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 767)" style="font-weight:bold">matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',767,0)">line 767</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 584)" style="font-weight:bold">matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',584,0)">line 584</a>)] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('displayData', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m', 239)" style="font-weight:bold">displayData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m',239,0)">line 239</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/dataTableCellSelection2', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 1137)" style="font-weight:bold">SMILE/dataTableCellSelection2</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',1137,0)">line 1137</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)', '/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m', 63)" style="font-weight:bold">matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m',63,0)">line 63</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 767)" style="font-weight:bold">matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',767,0)">line 767</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 584)" style="font-weight:bold">matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',584,0)">line 584</a>)] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('displayData', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m', 242)" style="font-weight:bold">displayData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m',242,0)">line 242</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/dataTableCellSelection2', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 1137)" style="font-weight:bold">SMILE/dataTableCellSelection2</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',1137,0)">line 1137</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)', '/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m', 63)" style="font-weight:bold">matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m',63,0)">line 63</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 767)" style="font-weight:bold">matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',767,0)">line 767</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 584)" style="font-weight:bold">matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',584,0)">line 584</a>)] 
+clc
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('displayData', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m', 239)" style="font-weight:bold">displayData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m',239,0)">line 239</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/dataTableCellSelection2', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 1137)" style="font-weight:bold">SMILE/dataTableCellSelection2</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',1137,0)">line 1137</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)', '/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m', 63)" style="font-weight:bold">matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m',63,0)">line 63</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 767)" style="font-weight:bold">matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',767,0)">line 767</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 584)" style="font-weight:bold">matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',584,0)">line 584</a>)] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('displayData', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m', 242)" style="font-weight:bold">displayData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m',242,0)">line 242</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/dataTableCellSelection2', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 1137)" style="font-weight:bold">SMILE/dataTableCellSelection2</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',1137,0)">line 1137</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)', '/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m', 63)" style="font-weight:bold">matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m',63,0)">line 63</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 767)" style="font-weight:bold">matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',767,0)">line 767</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 584)" style="font-weight:bold">matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',584,0)">line 584</a>)] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('displayData', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m', 239)" style="font-weight:bold">displayData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m',239,0)">line 239</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/dataTableCellSelection2', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 1137)" style="font-weight:bold">SMILE/dataTableCellSelection2</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',1137,0)">line 1137</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)', '/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m', 63)" style="font-weight:bold">matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m',63,0)">line 63</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 767)" style="font-weight:bold">matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',767,0)">line 767</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 584)" style="font-weight:bold">matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',584,0)">line 584</a>)] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('displayData', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m', 242)" style="font-weight:bold">displayData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/displayData.m',242,0)">line 242</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/dataTableCellSelection2', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 1137)" style="font-weight:bold">SMILE/dataTableCellSelection2</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',1137,0)">line 1137</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)', '/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m', 63)" style="font-weight:bold">matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m',63,0)">line 63</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 767)" style="font-weight:bold">matlab.ui.internal.controller.uitable/WebMWTableController/handleEvent</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',767,0)">line 767</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})', '/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m', 584)" style="font-weight:bold">matlab.ui.internal.controller.uitable.WebMWTableController>@(varargin)obj.handleEvent(varargin{:})</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/uitools/uicomponents/components/+matlab/+ui/+internal/+controller/+uitable/WebMWTableController.m',584,0)">line 584</a>)] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',81,1)">81  </a>        F_Te = fft(Te_f);
+size(Te_f)
+
+ans =
+
+        1939          57
+
+size([Le_f Te_f])
+
+ans =
+
+        1939         114
+
+if system_dependent('IsDebugMode')==1, dbcont; end
+if system_dependent('IsDebugMode')==1, dbcont; end
+if system_dependent('IsDebugMode')==1, dbquit; end
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',117,1)">117 </a>    [H4,r_4] = hhcf(Ae(:,1)-mean(Ae(:,1)),ps);
+Ae = [Te_f Le_f];
+loglog(mean(Ae))
+[Warning: Negative data ignored] 
+loglog(mean(Ae),'.')
+[Warning: Negative data ignored] 
+loglog((Ae(:,1),'.')
+ loglog((Ae(:,1),'.')
+                ↑
+{Invalid expression. When calling a function or indexing a variable, use parentheses.
+Otherwise, check for mismatched delimiters.
+} 
+loglog(Ae(:,1),'.')
+[Warning: Negative data ignored] 
+plot(Ae(:,1))
+plot(Ae)
+if system_dependent('IsDebugMode')==1, dbquit; end
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',607,1)">607 </a>    metrics.LinesCD = LinesCD;
+loglog(metrics.HHCorrFunc_LER)
+loglog(metrics.HHCorrFunc_LERt)
+loglog(metrics.HHCorrFunc_LERt);hold on;loglog(metrics.HHCorrFunc_LER);hold off;
+loglog(metrics.HHCorrFunc_LERt);hold on;loglog(metrics.HHCorrFunc_LERl);hold off;loglog(metrics.HHCorrFunc_LER);hold on;
+loglog(metrics.HHCorrFunc_LERt);hold on;loglog(metrics.HHCorrFunc_LERl);loglog(metrics.HHCorrFunc_LER);hold off;
+close
+loglog(metrics.HHCorrFunc_LERt);hold on;loglog(metrics.HHCorrFunc_LERl);loglog(metrics.HHCorrFunc_LER);hold off;
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+if system_dependent('IsDebugMode')==1, dbquit all; end
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',607,1)">607 </a>    metrics.LinesCD = LinesCD;
+if system_dependent('IsDebugMode')==1, dbquit all; end
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',608,1)">608 </a>    metrics.LinesCD = LinesCD;
+if system_dependent('IsDebugMode')==1, dbcont; end
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',608,1)">608 </a>    metrics.LinesCD = LinesCD;
+if system_dependent('IsDebugMode')==1, dbcont; end
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Negative data ignored] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Negative data ignored] 
+clc
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Negative data ignored] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Imaginary parts of complex X and/or Y arguments ignored.] 
+[Warning: Negative data ignored] 
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',131,1)">131 </a>        disp('buca')
+beta = nlinfit(r_1',H1,@hhcfmod,beta0_1);
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('nlinfit>checkFunVals')" style="font-weight:bold">nlinfit>checkFunVals</a>
+The function you provided as the MODELFUN input has returned Inf or NaN values.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('nlinfit>LMfit', '/Applications/MATLAB_R2022a.app/toolbox/stats/stats/nlinfit.m', 596)" style="font-weight:bold">nlinfit>LMfit</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/stats/stats/nlinfit.m',596,0)">line 596</a>)
+    if funValCheck && ~isfinite(sse), checkFunVals(r); end
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('nlinfit', '/Applications/MATLAB_R2022a.app/toolbox/stats/stats/nlinfit.m', 284)" style="font-weight:bold">nlinfit</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/stats/stats/nlinfit.m',284,0)">line 284</a>)
+        [beta,J,~,cause,fullr] = LMfit(X,yw, modelw,beta,options,verbose,maxiter);
+} 
+beta0_1 = [13,20,1,0];beta = nlinfit(r_1',H1,@hhcfmod,beta0_1);
+[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters
+may not be estimated well (they are not identifiable).  Use caution in making
+predictions.] 
+IdleTimeout has been reached.
+Parallel pool using the 'local' profile is shutting down.
+if system_dependent('IsDebugMode')==1, dbquit all; end
+Starting parallel pool (parpool) using the 'local' profile ...
+Connected to the parallel pool (number of workers: 10).
+[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters
+may not be estimated well (they are not identifiable).  Use caution in making
+predictions.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters
+may not be estimated well (they are not identifiable).  Use caution in making
+predictions.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters
+may not be estimated well (they are not identifiable).  Use caution in making
+predictions.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters
+may not be estimated well (they are not identifiable).  Use caution in making
+predictions.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters
+may not be estimated well (they are not identifiable).  Use caution in making
+predictions.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters
+may not be estimated well (they are not identifiable).  Use caution in making
+predictions.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters
+may not be estimated well (they are not identifiable).  Use caution in making
+predictions.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters
+may not be estimated well (they are not identifiable).  Use caution in making
+predictions.] 
+measureLines
+{Not enough input arguments.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('measureLines', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m', 3)" style="font-weight:bold">measureLines</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',3,0)">line 3</a>)
+ps = edges.PS;
+} 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model
+parameters may not be estimated well (they are not identifiable).  Use caution in
+making predictions.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model
+parameters may not be estimated well (they are not identifiable).  Use caution in
+making predictions.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model
+parameters may not be estimated well (they are not identifiable).  Use caution in
+making predictions.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model
+parameters may not be estimated well (they are not identifiable).  Use caution in
+making predictions.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model
+parameters may not be estimated well (they are not identifiable).  Use caution in
+making predictions.] 
+[Warning: Iteration limit exceeded.  Returning results from final iteration.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model
+parameters may not be estimated well (they are not identifiable).  Use caution in
+making predictions.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model
+parameters may not be estimated well (they are not identifiable).  Use caution in
+making predictions.] 
+[Warning: The Jacobian at the solution is ill-conditioned, and some model
+parameters may not be estimated well (they are not identifiable).  Use caution in
+making predictions.] 
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',151,1)">151 </a>    HHCorrFunc = H1;
+beta
+
+beta =
+
+    0.1502    7.9067    1.4152   13.2050
+
+beta2
+
+beta2 =
+
+    0.1057    9.4977    0.5375    6.1200
+
+beta3
+
+beta3 =
+
+    0.0421   12.2128    2.2577    7.1327
+
+beta4
+
+beta4 =
+
+    0.0211   12.2128    2.2577    3.5663
+
+if system_dependent('IsDebugMode')==1, dbcont; end
+plot(metrics.HHCorrFunc_LER-metrics.HHCorrFunc_LERt)
+plot(metrics.HHCorrFunc_LER-metrics.HHCorrFunc_LERl)
+if system_dependent('IsDebugMode')==1, dbcont; end
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',151,1)">151 </a>    HHCorrFunc = H1;
+if system_dependent('IsDebugMode')==1, dbcont; end
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',628,1)">628 </a>    metrics.LinesCenters = LinesCenters;
+plot(metrics.HHCorrFuncFit_LER-metrics.HHCorrFuncFit_LERt)
+if system_dependent('IsDebugMode')==1, dbquit; end
+{Unable to perform assignment because the left and right sides have a different
+number of elements.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/ProcessimagesButtonPushed', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 812)" style="font-weight:bold">SMILE/ProcessimagesButtonPushed</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',812,0)">line 812</a>)
+                    pitches(nli) = D{nli,5};
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)', '/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m', 63)" style="font-weight:bold">matlab.apps.AppBase>@(source,event)executeCallback(appdesigner.internal.service.AppManagementService.instance(),app,callback,requiresEventData,event)</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022a.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m',63,0)">line 63</a>)
+            newCallback = @(source, event)executeCallback(appdesigner.internal.service.AppManagementService.instance(), ...
+} 
+Error while evaluating Button PrivateButtonPushedFcn.
+
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',842,1)">842 </a>                app.averageCheckBox.UserData = R;
+plot(R.HHCorrFuncFit_LER-R.HHCorrFuncFit_LERt)
+if system_dependent('IsDebugMode')==1, dbcont; end
+IdleTimeout has been reached.
+Parallel pool using the 'local' profile is shutting down.
+Starting parallel pool (parpool) using the 'local' profile ...
+Connected to the parallel pool (number of workers: 10).
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',619,1)">619 </a>                        LcLWR = R.LWRCorrLength;
+loglog(HHCF_LER)
+loglog(HHCF_LER);hold on;loglog(HHCF_LERl);hold off
+loglog(HHCF_LER);hold on;loglog(HHCF_LERt);hold off
+loglog(HHCF_LER);hold on;loglog(HHCF_LERl);loglog(HHCF_LERt);hold off
+IdleTimeout has been reached.
+Parallel pool using the 'local' profile is shutting down.
