@@ -23,10 +23,10 @@ if ~isfield(edges,'Average_PSD_LWR')
     
     %Evaluate average LWR PSD
     LW = LWvar; %line widths
-    LW = LW-nanmean(LW,1);
+    LW = LW-mean(LW,1,'omitnan');
     %Evaluate average LER PSD
-    Le_f = Le_f-nanmean(Le_f,1); %line profiles
-    Te_f = Te_f-nanmean(Te_f,1);
+    Le_f = Le_f-mean(Le_f,1,'omitnan'); %line profiles
+    Te_f = Te_f-mean(Te_f,1,'omitnan');
     
     if app.MultitaperButton.Value
         N = size(LW,1);
@@ -88,6 +88,8 @@ if ~isfield(edges,'Average_PSD_LWR')
     smlt = mean(std([Le_f Te_f])); %Average standard deviation Le+Te
     
     %%%%%%
+    CorrLengthGuess = 20;
+
     %[H1,r_1] = hhcf(LW(:,1)-mean(LW(:,1)),ps);
     [H1,r_1] = hhcf(LW(:,1),ps);
     H1 = zeros(size(H1,1),size(LW,2));
@@ -96,7 +98,7 @@ if ~isfield(edges,'Average_PSD_LWR')
         [H1(:,k),~] = hhcf(LW(:,k),ps);
     end
     H1 = mean(H1,2); %Average height-height correlation function
-    beta0_1 = [(max(H1)-min(H1))/2 20 1 min(H1)];
+    beta0_1 = [(max(H1)-min(H1))/2 CorrLengthGuess 1 min(H1)];
     %%%%%%
     [H2,r_2] = hhcf(Le_f(:,1)-mean(Le_f(:,1)),ps);
     H2 = zeros(size(H2,1),size(Le_f,2));
@@ -104,7 +106,7 @@ if ~isfield(edges,'Average_PSD_LWR')
         [H2(:,k),~] = hhcf(Le_f(:,k)-mean(Le_f(:,k)),ps);
     end
     H2 = mean(H2,2); %Average height-height correlation function
-    beta0_2 = [(max(H2)-min(H2))/2 20 1 min(H2)];
+    beta0_2 = [(max(H2)-min(H2))/2 CorrLengthGuess 1 min(H2)];
     %%%%%%
     [H3,r_3] = hhcf(Te_f(:,1)-mean(Te_f(:,1)),ps);
     H3 = zeros(size(H3,1),size(Te_f,2));
@@ -112,16 +114,16 @@ if ~isfield(edges,'Average_PSD_LWR')
         [H3(:,k),~] = hhcf(Te_f(:,k)-mean(Te_f(:,k)),ps);
     end
     H3 = mean(H3,2); %Average height-height correlation function
-    beta0_3 = [(max(H3)-min(H3))/2 20 1 min(H3)];
+    beta0_3 = [(max(H3)-min(H3))/2 CorrLengthGuess 1 min(H3)];
     %%%%%%
     Ae = [Te_f Le_f];
     [H4,r_4] = hhcf(Ae(:,1)-mean(Ae(:,1)),ps);
     H4 = zeros(size(H4,1),size(Ae,2));
-    for k = 1:size(Te_f,2)
+    for k = 1:size(Ae,2)
         [H4(:,k),~] = hhcf(Ae(:,k)-mean(Ae(:,k)),ps);
     end
     H4 = mean(H4,2); %Average height-height correlation function
-    beta0_4 = [(max(H4)-min(H4))/2 20 1 min(H4)];
+    beta0_4 = [(max(H4)-min(H4))/2 CorrLengthGuess 1 min(H4)];
     %%%%%%
     
     try

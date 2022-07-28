@@ -398,15 +398,17 @@ else %Display average metrics
         hold(app.Metric,'off')
         title(app.Metric,Tstring)
     else
-        LCDU = dataStructure.LinesCD{id};
-        LCenters = dataStructure.LinesCenters{id};
-        app.Metric.XScale = 'linear';
-        app.Metric.YScale = 'linear';
-        plot(app.Metric,LCenters,0,0)
-        axis(app.Metric,'tight')
-        xlabel(app.Metric,'nm')
-        ylabel(app.Metric,'CD [nm]')
-        title(app.Metric,'Average CD value across the image')
+        if id>0
+            LCDU = dataStructure.LinesCD{id};
+            LCenters = dataStructure.LinesCenters{id};
+            app.Metric.XScale = 'linear';
+            app.Metric.YScale = 'linear';
+            plot(app.Metric,LCenters,0,0)
+            axis(app.Metric,'tight')
+            xlabel(app.Metric,'nm')
+            ylabel(app.Metric,'CD [nm]')
+            title(app.Metric,'Average CD value across the image')
+        end
     end
 end
 end %eof
