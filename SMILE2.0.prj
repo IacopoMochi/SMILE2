@@ -14,17 +14,17 @@
     <param.company>Paul Scherrer Institute</param.company>
     <param.summary>SMILE - SEM-Measured Image Lines Estimator</param.summary>
     <param.description>SMILE is a metrology tool for the analysis of L/S and contact array SEM images.</param.description>
-    <param.screenshot>${PROJECT_ROOT}\SMILE2.0_resources\SMILE210_splash.png</param.screenshot>
+    <param.screenshot>${PROJECT_ROOT}\SMILE2.0_resources\SMILE220_splash.png</param.screenshot>
     <param.guid />
     <param.installpath.string>\Paul Scherrer Institute\SMILE\</param.installpath.string>
     <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
-    <param.logo />
+    <param.logo>${PROJECT_ROOT}\SMILE2.0_resources\SMILE220_splash.png</param.logo>
     <param.install.notes />
     <param.target.install.notes />
-    <param.intermediate>${PROJECT_ROOT}\SMILE2.0\for_testing2</param.intermediate>
-    <param.files.only>${PROJECT_ROOT}\SMILE2.0\for_redistribution_files_only2</param.files.only>
-    <param.output>${PROJECT_ROOT}\SMILE2.0\for_redistribution2</param.output>
-    <param.logdir>${PROJECT_ROOT}\SMILE2.0_2</param.logdir>
+    <param.intermediate>${PROJECT_ROOT}\SMILE2.2\for_testing</param.intermediate>
+    <param.files.only>${PROJECT_ROOT}\SMILE2.2\for_redistribution_files_only</param.files.only>
+    <param.output>${PROJECT_ROOT}\SMILE2.2\for_redistribution</param.output>
+    <param.logdir>${PROJECT_ROOT}\SMILE2.2_2</param.logdir>
     <param.enable.clean.build>false</param.enable.clean.build>
     <param.user.defined.mcr.options />
     <param.target.type>subtarget.standalone</param.target.type>
@@ -32,7 +32,7 @@
     <param.web.mcr>true</param.web.mcr>
     <param.package.mcr>false</param.package.mcr>
     <param.no.mcr>false</param.no.mcr>
-    <param.web.mcr.name>SMILE2_1_macOS_web</param.web.mcr.name>
+    <param.web.mcr.name>SMILE2_2_macOS_web</param.web.mcr.name>
     <param.package.mcr.name>MyAppInstaller_mcr</param.package.mcr.name>
     <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
     <param.windows.command.prompt>true</param.windows.command.prompt>
@@ -51,7 +51,6 @@
       <param.guid />
       <param.installpath.string />
       <param.installpath.combo />
-      <param.logo />
       <param.install.notes />
       <param.target.install.notes />
       <param.enable.clean.build />
@@ -102,9 +101,9 @@
       <file>${PROJECT_ROOT}\setROI.m</file>
     </fileset.depfun>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\SMILE2.0\for_testing2" name="SMILE.exe" optional="false">C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE2.0\for_testing2\SMILE.exe</file>
-      <file location="${PROJECT_ROOT}\SMILE2.0\for_testing2" name="readme.txt" optional="true">C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE2.0\for_testing2\readme.txt</file>
-      <file location="${PROJECT_ROOT}\SMILE2.0\for_testing2" name="splash.png" optional="false">C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE2.0\for_testing2\splash.png</file>
+      <file location="${PROJECT_ROOT}\SMILE2.2\for_testing" name="SMILE.exe" optional="false">C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE2.2\for_testing\SMILE.exe</file>
+      <file location="${PROJECT_ROOT}\SMILE2.2\for_testing" name="readme.txt" optional="true">C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE2.2\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\SMILE2.2\for_testing" name="splash.png" optional="false">C:\Users\mochi_i\Documents\GitHub\SMILE2\SMILE2.2\for_testing\splash.png</file>
     </build-deliverables>
     <workflow />
     <matlab>

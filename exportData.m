@@ -91,7 +91,6 @@ FN_Lines = [filename(1:pd-1) '_Lines' filename(pd:end)];
 FN_Contacts = [filename(1:pd-1) '_Contacts' filename(pd:end)];
 if strcmpi(FN_Lines(end-2:end),'mat')
     save([pathname FN_Lines],'D','DSc')
-    %save([pathname FN_Contacts],'Dc','DSc_c')
 else
     writetable(D,[pathname FN_Lines])
     writetable(Dc,[pathname FN_Contacts])
