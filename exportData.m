@@ -1,5 +1,11 @@
 function exportData(app)
 
+Text = app.ExportdataButton.Text;
+Color = app.ExportdataButton.BackgroundColor;
+[filename, pathname] = uiputfile({'*.txt;*.xlsx;*.mat'});
+app.ExportdataButton.Text = 'Saving...';
+app.ExportdataButton.BackgroundColor = [0.9,0.9,1];
+
 D = app.dataTable.Data;
 Dc = app.dataTable_Contacts.Data;
 DS = app.ExportdataButton.UserData;
@@ -95,10 +101,6 @@ if ~isempty(Dc)
 end
 Dc.Properties.VariableDescriptions = VD;
 Dc.Properties.VariableNames = VN;
-
-
-[filename, pathname] = uiputfile({'*.txt;*.xlsx;*.mat'});
-
 
 if strcmpi(filename(end-2:end),'mat')
     save([pathname filename],'D','Dc','Ddata')
@@ -226,5 +228,6 @@ else %Comma separated values
     if ~isempty(Dc)
         writetable(Dc,filename,'WriteMode','append');
     end
-    disp('all done')
 end
+app.ExportdataButton.Text = Text;
+app.ExportdataButton.BackgroundColor = Color;
