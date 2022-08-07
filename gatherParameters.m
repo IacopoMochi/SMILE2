@@ -20,6 +20,7 @@ parameters.ps = app.PixelsizenmEditField.Value;
 parameters.threshold = app.ThresholdEditField.Value;
 parameters.spikePeak = app.MaxspikeEditField.Value;
 parameters.CD_fraction = app.CDfractionEditField.Value;
+parameters.Edge_range = app.EdgedetectionrangeEditField.Value;
 parameters.FN = app.LowfrequencyaverageEditField.Value;
 parameters.LN = app.HighfrequencyaverageEditField.Value;
 parameters.CF = app.CorrelationfrequencyEditField.Value;
@@ -48,6 +49,8 @@ parameters.ManualRotation = app.ManualrotationadjustmentdegSlider.Value;
 parameters.MultiTaper = app.MultitaperButton.Value;
 parameters.MultiTaperFunctionType = app.TaperfunctionsDropDown.Value;
 parameters.TaperNumber = app.NumberoftapersEditField.Value;
+
+parameters.Edgerange = app.EdgerangeButton.Text;
 
 dataStructure.parameters = parameters;
 app.ExportdataButton.UserData = dataStructure;

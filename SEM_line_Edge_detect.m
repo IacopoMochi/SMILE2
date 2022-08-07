@@ -228,7 +228,11 @@ end
 if app.EdgefitfunctionButtonGroup.Buttons(1).Value
     [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectLin(leadingEdges,trailingEdges,ArcF,b,threshold);
 elseif app.EdgefitfunctionButtonGroup.Buttons(2).Value
-    [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly(leadingEdges,trailingEdges,ArcF,b,threshold);
+    if app.MulticoreCheckBox.Value == 1
+        [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPolyMC(leadingEdges,trailingEdges,ArcF,b,threshold);
+    else
+        [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly(leadingEdges,trailingEdges,ArcF,b,threshold);
+    end
 else
     %[leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,ArcF,CD,b,threshold,fwhmf);
     [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,ArcF,b,threshold);

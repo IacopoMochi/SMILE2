@@ -1,4 +1,4 @@
-function [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly(leadingEdges,trailingEdges,Arc,b,threshold)
+function [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPolyMC(leadingEdges,trailingEdges,Arc,b,threshold)
 %polynomial fitting 
 
 leadingEdgeProfiles = zeros(size(Arc,1),length(leadingEdges));
@@ -6,7 +6,7 @@ trailingEdgeProfiles = zeros(size(Arc,1),length(trailingEdges));
 for n = 1:length(leadingEdges)
     LEn = leadingEdges(n);
     TEn = trailingEdges(n);
-    for m = 1:size(Arc,1)
+    parfor m = 1:size(Arc,1)
         s1 = max(LEn-b,1);
         s2 = min(LEn+b,size(Arc,2));
         

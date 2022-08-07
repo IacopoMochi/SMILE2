@@ -1,11 +1,12 @@
 function exportData(app)
 
-Text = app.ExportdataButton.Text;
-Color = app.ExportdataButton.BackgroundColor;
+Text = 'Export data';
+Color = [0.96,0.96,0.96];
 [filename, pathname] = uiputfile({'*.txt;*.xlsx;*.mat'});
 app.ExportdataButton.Text = 'Saving...';
-app.ExportdataButton.BackgroundColor = [0.9,0.9,1];
-
+app.ExportdataButton.BackgroundColor = [0.7,0.7,1];
+drawnow;
+filename = [pathname filename];
 D = app.dataTable.Data;
 Dc = app.dataTable_Contacts.Data;
 DS = app.ExportdataButton.UserData;
@@ -107,12 +108,14 @@ if strcmpi(filename(end-2:end),'mat')
 elseif strcmpi(filename(end-3:end),'xlsx')
     fnames = D.File_Name;
     fnamesc = Dc.File_Name;
-
-    writecell(fnames(1:end-1,1),filename,'FileType','Spreadsheet',...
-        'Sheet','Image List');
-    writecell(fnamesc,filename,'FileType','Spreadsheet',...
-        'Sheet','Image List','WriteMode','append');
-
+    if ~isempty(fnames)
+        writecell(fnames(1:end-1,1),filename,'FileType','Spreadsheet',...
+            'Sheet','Image List');
+    end
+    if ~isempty(fnamesc)
+        writecell(fnamesc,filename,'FileType','Spreadsheet',...
+            'Sheet','Image List','WriteMode','append');
+    end
     if ~isempty(D)
         writetable(D,filename,'FileType','Spreadsheet',...
             'Sheet','Lines Data')
@@ -135,68 +138,23 @@ elseif strcmpi(filename(end-3:end),'xlsx')
             sheetName = ['Image ' num2str(n) ' PSD'];
             writecell(labels,filename,'FileType','spreadsheet',...
                 'Sheet',sheetName)
-            writematrix(Ddata.Frequency{n}',filename,'FileType','spreadsheet',...
-                'Sheet',sheetName,'WriteMode','append')
-            writematrix(Ddata.PSD_LWR{n},filename,'FileType','spreadsheet',...
-                'Sheet',sheetName,'Range','B2')
-            writematrix(Ddata.PSD_LWR_fit{n},filename,'FileType','spreadsheet',...
-                'Sheet',sheetName,'Range','C2')
-            writematrix(Ddata.PSD_LWR_fit_unbiased{n},filename,'FileType','spreadsheet',...
-                'Sheet',sheetName,'Range','D2')
-            writematrix(Ddata.PSD_LER{n},filename,'FileType','spreadsheet',...
-                'Sheet',sheetName,'Range','E2')
-            writematrix(Ddata.PSD_LER_fit{n},filename,'FileType','spreadsheet',...
-                'Sheet',sheetName,'Range','F2')
-            writematrix(Ddata.PSD_LWR_fit_unbiased{n},filename,'FileType','spreadsheet',...
-                'Sheet',sheetName,'Range','G2')
-            writematrix(Ddata.PSD_LERl{n},filename,'FileType','spreadsheet',...
-                'Sheet',sheetName,'Range','H2')
-            writematrix(Ddata.PSD_LERl_fit{n},filename,'FileType','spreadsheet',...
-                'Sheet',sheetName,'Range','I2')
-            writematrix(Ddata.PSD_LERl_fit_unbiased{n},filename,'FileType','spreadsheet',...
-                'Sheet',sheetName,'Range','J2')
-            writematrix(Ddata.PSD_LERt{n},filename,'FileType','spreadsheet',...
-                'Sheet',sheetName,'Range','K2')
-            writematrix(Ddata.PSD_LERt_fit{n},filename,'FileType','spreadsheet',...
-                'Sheet',sheetName,'Range','L2')
-            writematrix(Ddata.PSD_LERt_fit_unbiased{n},filename,'FileType','spreadsheet',...
-                'Sheet',sheetName,'Range','M2')
-        end
-    end
-    if ~isempty(Dc)
-        writetable(Dc,filename,'FileType','Spreadsheet',...
-            'Sheet','Contacts Data')
-    end
-else %Comma separated values
-    fnames = D.File_Name;
-    fnamesc = Dc.File_Name;
 
-    writecell(fnames(1:end-1,1),filename,'FileType','Text',...
-        'Delimiter',',');
-    writecell(fnamesc,filename,'FileType','Text',...
-        'Delimiter',',','WriteMode','append');
-
-    if ~isempty(D)
-        writetable(D,filename,'FileType','Text','WriteMode','append')
-        A = Ddata.LeadingEdges;
-%         for n = 1:size(A,2)
-%             writematrix(A{1,n}*Ddata.PS(n),filename,'FileType','Spreadsheet',...
-%                 'Sheet',['Image ' num2str(n) ' Leading edges' ]);
-%         end
-%         B = Ddata.TrailingEdges;
-%         for n = 1:size(B,2)
-%             writematrix(B{1,n}*Ddata.PS(n),filename,'FileType','Spreadsheet',...
-%                 'Sheet',['Image ' num2str(n) ' Trailing edges' ]);
-%         end
-% 
-%         labels = {'Frequency','PSD LWR','PSD LWR fit','PSD LWR fit unbiased',...
-%             'PSD LER','PSD LER fit','PSD LER fit unbiased',...
-%             'PSD LERl','PSD LERl fit','PSD LERl fit unbiased',...
-%             'PSD LERt','PSD LERt fit','PSD LERt fit unbiased'};
-%         for n = 1:size(Ddata.Frequency,2)
-%             sheetName = ['Image ' num2str(n) ' PSD'];
-%             writecell(labels,filename,'FileType','spreadsheet',...
-%                 'Sheet',sheetName)
+            datamatrix = zeros(max(size(Ddata.Frequency{n})),13);
+            datamatrix(:,1) = Ddata.Frequency{n}';
+            datamatrix(:,2) = Ddata.PSD_LWR{n};
+            datamatrix(:,3) = Ddata.PSD_LWR_fit{n};
+            datamatrix(:,4) = Ddata.PSD_LWR_fit_unbiased{n};
+            datamatrix(:,5) = Ddata.PSD_LER{n};
+            datamatrix(:,6) = Ddata.PSD_LER_fit{n};
+            datamatrix(:,7) = Ddata.PSD_LER_fit_unbiased{n};
+            datamatrix(:,8) = Ddata.PSD_LERl{n};
+            datamatrix(:,9) = Ddata.PSD_LERl_fit{n};
+            datamatrix(:,10) = Ddata.PSD_LERl_fit_unbiased{n};
+            datamatrix(:,11) = Ddata.PSD_LERt{n};
+            datamatrix(:,12) = Ddata.PSD_LERt_fit{n};
+            datamatrix(:,14) = Ddata.PSD_LERt_fit_unbiased{n};
+            writematrix(datamatrix,filename,'FileType','spreadsheet',...
+                'Sheet',sheetName,'Range','A2')
 %             writematrix(Ddata.Frequency{n}',filename,'FileType','spreadsheet',...
 %                 'Sheet',sheetName,'WriteMode','append')
 %             writematrix(Ddata.PSD_LWR{n},filename,'FileType','spreadsheet',...
@@ -223,10 +181,74 @@ else %Comma separated values
 %                 'Sheet',sheetName,'Range','L2')
 %             writematrix(Ddata.PSD_LERt_fit_unbiased{n},filename,'FileType','spreadsheet',...
 %                 'Sheet',sheetName,'Range','M2')
-%         end
+        end
     end
     if ~isempty(Dc)
-        writetable(Dc,filename,'WriteMode','append');
+        writetable(Dc,filename,'FileType','Spreadsheet',...
+            'Sheet','Contacts Data')
+    end
+else %Comma separated values
+    fnames = D.File_Name;
+    fnamesc = Dc.File_Name;
+    if ~isempty(D)
+    writecell(fnames(1:end-1,1),filename,'FileType','Text',...
+        'Delimiter',',');
+    end
+    if ~isempty(Dc)
+    writecell(fnamesc,filename,'FileType','Text',...
+        'Delimiter',',','WriteMode','append');
+    end
+    if ~isempty(D)
+        writetable(D,filename,'FileType','Text','WriteMode','append','WriteVariableNames',true)
+        %A = Ddata.LeadingEdges;
+        %         for n = 1:size(A,2)
+        %             writematrix(A{1,n}*Ddata.PS(n),filename,'FileType','Spreadsheet',...
+        %                 'Sheet',['Image ' num2str(n) ' Leading edges' ]);
+        %         end
+        %         B = Ddata.TrailingEdges;
+        %         for n = 1:size(B,2)
+        %             writematrix(B{1,n}*Ddata.PS(n),filename,'FileType','Spreadsheet',...
+        %                 'Sheet',['Image ' num2str(n) ' Trailing edges' ]);
+        %         end
+        %
+        %         labels = {'Frequency','PSD LWR','PSD LWR fit','PSD LWR fit unbiased',...
+        %             'PSD LER','PSD LER fit','PSD LER fit unbiased',...
+        %             'PSD LERl','PSD LERl fit','PSD LERl fit unbiased',...
+        %             'PSD LERt','PSD LERt fit','PSD LERt fit unbiased'};
+        %         for n = 1:size(Ddata.Frequency,2)
+        %             sheetName = ['Image ' num2str(n) ' PSD'];
+        %             writecell(labels,filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName)
+        %             writematrix(Ddata.Frequency{n}',filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName,'WriteMode','append')
+        %             writematrix(Ddata.PSD_LWR{n},filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName,'Range','B2')
+        %             writematrix(Ddata.PSD_LWR_fit{n},filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName,'Range','C2')
+        %             writematrix(Ddata.PSD_LWR_fit_unbiased{n},filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName,'Range','D2')
+        %             writematrix(Ddata.PSD_LER{n},filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName,'Range','E2')
+        %             writematrix(Ddata.PSD_LER_fit{n},filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName,'Range','F2')
+        %             writematrix(Ddata.PSD_LWR_fit_unbiased{n},filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName,'Range','G2')
+        %             writematrix(Ddata.PSD_LERl{n},filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName,'Range','H2')
+        %             writematrix(Ddata.PSD_LERl_fit{n},filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName,'Range','I2')
+        %             writematrix(Ddata.PSD_LERl_fit_unbiased{n},filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName,'Range','J2')
+        %             writematrix(Ddata.PSD_LERt{n},filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName,'Range','K2')
+        %             writematrix(Ddata.PSD_LERt_fit{n},filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName,'Range','L2')
+        %             writematrix(Ddata.PSD_LERt_fit_unbiased{n},filename,'FileType','spreadsheet',...
+        %                 'Sheet',sheetName,'Range','M2')
+        %         end
+    end
+    if ~isempty(Dc)
+        writetable(Dc,filename,"FileType","Text",'WriteMode','append','WriteVariableNames',true);
     end
 end
 app.ExportdataButton.Text = Text;
