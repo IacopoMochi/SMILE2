@@ -32,7 +32,7 @@
     <param.web.mcr>true</param.web.mcr>
     <param.package.mcr>false</param.package.mcr>
     <param.no.mcr>false</param.no.mcr>
-    <param.web.mcr.name>SMILE2_2_macOS_web</param.web.mcr.name>
+    <param.web.mcr.name>SMILE2_2_Windows10_web</param.web.mcr.name>
     <param.package.mcr.name>MyAppInstaller_mcr</param.package.mcr.name>
     <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
     <param.windows.command.prompt>true</param.windows.command.prompt>
@@ -76,6 +76,7 @@
       <file>${PROJECT_ROOT}\cntsplit.m</file>
       <file>${PROJECT_ROOT}\displayData.m</file>
       <file>${PROJECT_ROOT}\edgeDetectfPoly.m</file>
+      <file>${PROJECT_ROOT}\edgeDetectfPolyMC.m</file>
       <file>${PROJECT_ROOT}\edgeDetectLin.m</file>
       <file>${PROJECT_ROOT}\edgeDetectLin_C.m</file>
       <file>${PROJECT_ROOT}\edgeDetectPoly_C.m</file>
