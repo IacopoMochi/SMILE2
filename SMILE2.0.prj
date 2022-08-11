@@ -32,11 +32,11 @@
     <param.web.mcr>true</param.web.mcr>
     <param.package.mcr>false</param.package.mcr>
     <param.no.mcr>false</param.no.mcr>
-    <param.web.mcr.name>SMILE2_2_Windows10_web</param.web.mcr.name>
+    <param.web.mcr.name>SMILE2_2_MacOS_web</param.web.mcr.name>
     <param.package.mcr.name>MyAppInstaller_mcr</param.package.mcr.name>
     <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
     <param.windows.command.prompt>true</param.windows.command.prompt>
-    <param.create.log>true</param.create.log>
+    <param.create.log>false</param.create.log>
     <param.log.file>SMILE_log.txt</param.log.file>
     <param.native.matlab>false</param.native.matlab>
     <param.checkbox>false</param.checkbox>
@@ -63,6 +63,7 @@
       <param.package.mcr.name />
       <param.no.mcr.name />
       <param.windows.command.prompt />
+      <param.create.log />
       <param.native.matlab />
       <param.checkbox />
       <param.example />
@@ -82,7 +83,6 @@
       <file>${PROJECT_ROOT}\edgeDetectPoly_C.m</file>
       <file>${PROJECT_ROOT}\edgeDetectThreshold.m</file>
       <file>${PROJECT_ROOT}\EllModel.m</file>
-      <file>${PROJECT_ROOT}\exportData.m</file>
       <file>${PROJECT_ROOT}\FieldNames.m</file>
       <file>${PROJECT_ROOT}\FloatingAlpha.m</file>
       <file>${PROJECT_ROOT}\gatherParameters.m</file>
@@ -97,6 +97,7 @@
       <file>${PROJECT_ROOT}\NoWhiteNoise.m</file>
       <file>${PROJECT_ROOT}\Palasantzas1.m</file>
       <file>${PROJECT_ROOT}\Palasantzas2.m</file>
+      <file>${PROJECT_ROOT}\ScaleBar.png</file>
       <file>${PROJECT_ROOT}\SEM_Contact_Detect.m</file>
       <file>${PROJECT_ROOT}\SEM_line_Edge_detect.m</file>
       <file>${PROJECT_ROOT}\setROI.m</file>

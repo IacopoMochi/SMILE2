@@ -24,6 +24,7 @@ if strcmp(parameters.SEM_model,'Zeiss')
                     ps = str2double(sc)/1000;
             end
             parameters.ps = ps;
+            app.PixelsizenmEditField.Value = ps;
         end
     end
 elseif strcmp(parameters.SEM_model,'Hitachi')
@@ -38,6 +39,7 @@ elseif strcmp(parameters.SEM_model,'Hitachi')
         if contains(s,'PixelSize=')
             ps = str2double(s(12:end));
             parameters.ps = ps;
+            app.PixelsizenmEditField.Value = ps;
         end
     end
 else
