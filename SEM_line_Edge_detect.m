@@ -47,7 +47,7 @@ MinPeakDistance = parameters.MinPeakDistance; %40
 % else
 %     ps = parameters.ps;
 % end
-ps = parameters.ps;
+ps = parameters.ps{1};
 
 A = double(parameters.rawImages);
 

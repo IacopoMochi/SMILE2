@@ -45,7 +45,7 @@ Output = struct();
 % else
 %     ps = parameters.ps;
 % end
-ps = parameters.ps;
+ps = parameters.ps{1};
 
 A = double(parameters.rawImages);
 
