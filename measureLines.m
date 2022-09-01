@@ -1,6 +1,6 @@
 function metrics = measureLines(edges,app)
 
-ps = edges.PS;
+ps = edges.PS(1); %We assume the PS is the same for all the averaged images
 if ~isfield(edges,'Average_PSD_LWR')
     Output = edges;
     
