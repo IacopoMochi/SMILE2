@@ -16151,7 +16151,7 @@
 	ACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/Z
 	</data>
 	<key>DKDChangeTimeStamp</key>
-	<string>2022-10-04 22:19:15 +0000</string>
+	<string>2022-10-04 22:50:42 +0000</string>
 	<key>DKDCreateTimeStamp</key>
 	<string>2022-02-09 23:33:18 +0000</string>
 	<key>DKDDisplayGraphicDetails</key>
@@ -16256,7 +16256,7 @@
 		<key>ExportImageInterpolation</key>
 		<string>Automatic</string>
 		<key>ExportPath</key>
-		<string>/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE2.0_resources</string>
+		<string>/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE2.0_resources</string>
 		<key>ExportTransparentColor</key>
 		<string>Automatic</string>
 		<key>GIFExporBackground</key>
@@ -16746,7 +16746,7 @@ Release 2.2.1 - 2022/10/05</string>
 		<string>NO</string>
 	</dict>
 	<key>DKDSaveTimeStamp</key>
-	<string>2022-10-04 22:19:42 +0000</string>
+	<string>2022-10-04 22:50:47 +0000</string>
 	<key>DKDTablet</key>
 	<dict>
 		<key>BrushDynamic</key>
@@ -16890,7 +16890,7 @@ Release 2.2.1 - 2022/10/05</string>
 		<key>DocCenter</key>
 		<string>{532, 654.5}</string>
 		<key>DocumentFileName</key>
-		<string>/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE2.0_resources/SMILE220_splash.ezdraw</string>
+		<string>/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE2.0_resources/SMILE221_splash.ezdraw</string>
 		<key>DrawersOnMainView</key>
 		<string>YES</string>
 		<key>GDetailsLayersDrawerEdgePreference</key>
