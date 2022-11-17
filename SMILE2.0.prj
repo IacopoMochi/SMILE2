@@ -8,7 +8,7 @@
       <file>${PROJECT_ROOT}/SMILE2.0_resources/icon_24.png</file>
       <file>${PROJECT_ROOT}/SMILE2.0_resources/icon_16.png</file>
     </param.icons>
-    <param.version>2.2</param.version>
+    <param.version>2.2.1</param.version>
     <param.authnamewatermark>Iacopo Mochi</param.authnamewatermark>
     <param.email>iacopo.mochi@psi.ch</param.email>
     <param.company>Paul Scherrer Institute</param.company>
@@ -160,7 +160,7 @@ ${DYLD_LIBRARY_PATH}:MR/v911/runtime/maci64:MR/v911/sys/os/maci64:MR/v911/bin/ma
       <vista>false</vista>
       <linux>false</linux>
       <solaris>false</solaris>
-      <osver>12.5.1</osver>
+      <osver>12.6</osver>
       <os32>false</os32>
       <os64>true</os64>
       <arch>maci64</arch>
