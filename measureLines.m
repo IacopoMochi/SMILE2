@@ -91,7 +91,11 @@ if ~isfield(edges,'Average_PSD_LWR')
     CorrLengthGuess = 20;
 
     %[H1,r_1] = hhcf(LW(:,1)-mean(LW(:,1)),ps);
-    [H1,r_1] = hhcf(LW(:,1),ps);
+    try
+        [H1,r_1] = hhcf(LW(:,1),ps);
+    catch
+        disp('buca')
+    end
     H1 = zeros(size(H1,1),size(LW,2));
     for k = 1:size(LW,2)
         %[H1(:,k),~] = hhcf(LW(:,k)-mean(LW(:,k)),ps);
@@ -611,18 +615,22 @@ if ~isfield(edges,'Average_PSD_LWR')
     metrics.PSD_LWR_fit = PSD_LWR_fit;
     metrics.PSD_LWR_fit_unbiased = PSD_LWR_fit_unbiased;
     metrics.PSD_LWR_beta = PSD_LWR_beta;
+    metrics.PSD_LWR_unbiased = PSD_unbiased;   
     %metrics.PSD_LWR_fit2 = PSD_LWR_fit2;
     %metrics.PSD_LWR_fit_unbiased2 = PSD_LWR_fit_unbiased2;
     %metrics.PSD_LWR_beta2 = PSD_LWR_beta2;
     metrics.PSD_LER = PSD_LERh;
     metrics.PSD_LER_fit = PSD_LER_fit;
+    metrics.PSD_LER_unbiased = PSD_LER_unbiased;
     metrics.PSD_LER_fit_unbiased = PSD_LER_fit_unbiased;
     metrics.PSD_LER_beta = PSD_LER_beta;
     metrics.PSD_LERl = PSD_LERlh;
+    metrics.PSD_LERl_unbiased = PSD_LERl_unbiased;
     metrics.PSD_LERl_fit = PSD_LERl_fit;
     metrics.PSD_LERl_fit_unbiased = PSD_LERl_fit_unbiased;
     metrics.PSD_LERl_beta = PSD_LERl_beta;
     metrics.PSD_LERt = PSD_LERth;
+    metrics.PSD_LERt_unbiased = PSD_LERt_unbiased;
     metrics.PSD_LERt_fit = PSD_LERt_fit;
     metrics.PSD_LERt_fit_unbiased = PSD_LERt_fit_unbiased;
     metrics.PSD_LERt_beta = PSD_LERt_beta;
