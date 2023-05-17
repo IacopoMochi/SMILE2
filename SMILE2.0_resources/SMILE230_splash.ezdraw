@@ -16245,13 +16245,13 @@
 		<key>ExportExpand</key>
 		<string>1.069</string>
 		<key>ExportFileExtension</key>
-		<string>png</string>
+		<string>jpg</string>
 		<key>ExportImageAntialias</key>
 		<string>YES</string>
 		<key>ExportImageInterpolation</key>
 		<string>Automatic</string>
 		<key>ExportPath</key>
-		<string>/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE2.0_resources</string>
+		<string>/Users/iacopomochi/Documents/GitHub/SMILE2</string>
 		<key>ExportTransparentColor</key>
 		<string>Automatic</string>
 		<key>GIFExporBackground</key>
@@ -16741,7 +16741,7 @@ Release 2.3.0 - 2023/05/17</string>
 		<string>NO</string>
 	</dict>
 	<key>DKDSaveTimeStamp</key>
-	<string>2023-05-17 07:51:12 +0000</string>
+	<string>2023-05-17 07:52:41 +0000</string>
 	<key>DKDTablet</key>
 	<dict>
 		<key>BrushDynamic</key>
