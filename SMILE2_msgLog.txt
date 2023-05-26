@@ -1,44 +1,30 @@
-[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters
-may not be estimated well (they are not identifiable).  Use caution in making
-predictions.] 
-<a href="matlab: opentoline('/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp',1367,1)">1367 </a>                D{NLineImages+1,3} = 'Average';
-dbcont
-{Unrecognized field name "Frequency_a".
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SEM_line_Edge_detect.m',171,1)">171 </a>dS = smooth(diff(Sb));
+if system_dependent('IsDebugMode')==1, dbcont; end
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('exist')" style="font-weight:bold">exist</a>
+The first input to exist must be a string scalar or character vector.
 
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/exportData', '/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp', 479)" style="font-weight:bold">SMILE/exportData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp',479,0)">line 479</a>)
-                        datamatrix = zeros(max(size(Ddata.Frequency_a)),13);
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/exportData', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 307)" style="font-weight:bold">SMILE/exportData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',307,0)">line 307</a>)
+            if exist([pathname filename],'file')
 
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/ExportdataButtonPushed', '/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp', 1722)" style="font-weight:bold">SMILE/ExportdataButtonPushed</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp',1722,0)">line 1722</a>)
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/ExportdataButtonPushed', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 1744)" style="font-weight:bold">SMILE/ExportdataButtonPushed</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',1744,0)">line 1744</a>)
             exportData(app)
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.apps.AppBase>@(source,event)executeCallback(ams,app,callback,requiresEventData,event)', '/Applications/MATLAB_R2022b.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m', 62)" style="font-weight:bold">matlab.apps.AppBase>@(source,event)executeCallback(ams,app,callback,requiresEventData,event)</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022b.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m',62,0)">line 62</a>)
+            newCallback = @(source, event)executeCallback(ams, ...
+} 
+Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/ProcessimagesButtonPushed')" style="font-weight:bold">SMILE/ProcessimagesButtonPushed</a>
+Error while evaluating Button PrivateButtonPushedFcn.
+
+{Unrecognized function or variable 'labels'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/exportData', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 499)" style="font-weight:bold">SMILE/exportData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',499,0)">line 499</a>)
+                            writecell(labels,filename,'FileType','spreadsheet',...
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/ExportdataButtonPushed', '/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp', 1744)" style="font-weight:bold">SMILE/ExportdataButtonPushed</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/SMILE.mlapp',1744,0)">line 1744</a>)
+            exportData(app)
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.apps.AppBase>@(source,event)executeCallback(ams,app,callback,requiresEventData,event)', '/Applications/MATLAB_R2022b.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m', 62)" style="font-weight:bold">matlab.apps.AppBase>@(source,event)executeCallback(ams,app,callback,requiresEventData,event)</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2022b.app/toolbox/matlab/appdesigner/appdesigner/runtime/+matlab/+apps/AppBase.m',62,0)">line 62</a>)
+            newCallback = @(source, event)executeCallback(ams, ...
 } 
 Error while evaluating Button PrivateButtonPushedFcn.
 
-[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters
-may not be estimated well (they are not identifiable).  Use caution in making
-predictions.] 
-{Unrecognized field name "freq_a".
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/exportData', '/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp', 479)" style="font-weight:bold">SMILE/exportData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp',479,0)">line 479</a>)
-                        datamatrix = zeros(max(size(Ddata.freq_a)),13);
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/ExportdataButtonPushed', '/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp', 1722)" style="font-weight:bold">SMILE/ExportdataButtonPushed</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp',1722,0)">line 1722</a>)
-            exportData(app)
-} 
-Error while evaluating Button PrivateButtonPushedFcn.
-
-<a href="matlab: opentoline('/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp',479,1)">479 </a>                        datamatrix = zeros(max(size(Ddata.freq_a)),13);
-dbquit
-[Warning: The Jacobian at the solution is ill-conditioned, and some model parameters
-may not be estimated well (they are not identifiable).  Use caution in making
-predictions.] 
-{Unrecognized field name "ProfilesLFilled_a".
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/exportData', '/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp', 356)" style="font-weight:bold">SMILE/exportData</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp',356,0)">line 356</a>)
-                Ddata.LeadingEdges_a = DS.ProfilesLFilled_a;
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('SMILE/ExportdataButtonPushed', '/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp', 1743)" style="font-weight:bold">SMILE/ExportdataButtonPushed</a> (<a href="matlab: opentoline('/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp',1743,0)">line 1743</a>)
-            exportData(app)
-} 
-Error while evaluating Button PrivateButtonPushedFcn.
-
-<a href="matlab: opentoline('/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.mlapp',498,1)">498 </a>                        datamatrix = zeros(max(size(Ddata.Frequency_a)),13);
