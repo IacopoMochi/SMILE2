@@ -169,11 +169,19 @@ Sb = mean(ArcF);
 
 
 dS = smooth(diff(Sb));
+
+if ~app.BrightedgeButton.Value
+    dS = smooth(diff(Sb));
+else
+    dS = Sb;
+end
+
 [~,edgelocations]= findpeaks(normal(abs(dS)),...
     'MinPeakProminence',MinPeakProminence,...
     'MinPeakDistance',MinPeakDistance);
 leadingEdges = [];
 trailingEdges = [];
+if ~app.BrightedgeButton.Value
 for n = 1:length(edgelocations)
     if app.ImagetoneButtonGroup.Buttons(2).Value
         if dS(edgelocations(n))>0
@@ -188,10 +196,38 @@ for n = 1:length(edgelocations)
             leadingEdges = [leadingEdges edgelocations(n)];
         end
     end
-    
-    
 end
+else
+    mdiff = round(mean(diff(edgelocations))/2);
+for n = 1:length(edgelocations)
+    if edgelocations(n)>mdiff
+        intvleft = mdiff;
+    else
+        intvleft = edgelocations(n)-1;
+    end
+    if (length(dS)-edgelocations(n))>mdiff
+        intvright = mdiff;
+    else
+        intvright = length(dS)-edgelocations(n)-1;
+    end
+    lval = mean(Sb(edgelocations(n)-intvleft:edgelocations(n)));
+    rval = mean(Sb(edgelocations(n):edgelocations(n)+intvright));
+    if app.ImagetoneButtonGroup.Buttons(2).Value
 
+        if rval>=lval
+            trailingEdges = [trailingEdges edgelocations(n)];
+        else
+            leadingEdges = [leadingEdges edgelocations(n)];
+        end
+    else
+        if rval<lval
+            trailingEdges = [trailingEdges edgelocations(n)];
+        else
+            leadingEdges = [leadingEdges edgelocations(n)];
+        end
+    end
+end
+end
 %consider only complete lines
 newLeadingEdges = [];
 newTrailingEdges = [];
@@ -235,11 +271,16 @@ elseif app.EdgefitfunctionButtonGroup.Buttons(2).Value
     else
         [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly(leadingEdges,trailingEdges,ArcF,b,threshold);
     end
-else
+elseif app.EdgefitfunctionButtonGroup.Buttons(3).Value
     %[leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,ArcF,CD,b,threshold,fwhmf);
     [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,ArcF,b,threshold);
+else
+    if app.MulticoreCheckBox.Value == 1
+        [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly2MC(leadingEdges,trailingEdges,ArcF,b);
+    else
+        [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly2(leadingEdges,trailingEdges,ArcF,b);
+    end
 end
-
 %Find undetected regions, bridge and pinch defects
 leadingEdgeProfilesUndetectedId = isnan(leadingEdgeProfiles);
 trailingEdgeProfilesUndetectedId = isnan(trailingEdgeProfiles);
