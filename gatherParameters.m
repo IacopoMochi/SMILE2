@@ -51,6 +51,14 @@ parameters.MultiTaperFunctionType = app.TaperfunctionsDropDown.Value;
 parameters.TaperNumber = app.NumberoftapersEditField.Value;
 
 parameters.Edgerange = app.EdgerangeButton.Text;
+parameters.BrightEdge = app.BrightedgeCheckBox.Value;
+
+BEButtons = app.BrightedgeselectionButtonGroup.Buttons;
+for  nb = 1:3
+    if BEButtons(nb).Value
+        parameters.BrightEdgeSelection = nb;
+    end
+end
 
 dataStructure.parameters = parameters;
 app.ExportdataButton.UserData = dataStructure;

@@ -262,7 +262,7 @@ else
     b = app.EdgedetectionrangeEditField.Value;
 end
 %fwhmf = 3;
-
+if app.mul
 if app.EdgefitfunctionButtonGroup.Buttons(1).Value
     [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectLin(leadingEdges,trailingEdges,ArcF,b,threshold);
 elseif app.EdgefitfunctionButtonGroup.Buttons(2).Value
@@ -271,14 +271,15 @@ elseif app.EdgefitfunctionButtonGroup.Buttons(2).Value
     else
         [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly(leadingEdges,trailingEdges,ArcF,b,threshold);
     end
-elseif app.EdgefitfunctionButtonGroup.Buttons(3).Value
+else app.EdgefitfunctionButtonGroup.Buttons(3).Value
     %[leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,ArcF,CD,b,threshold,fwhmf);
     [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,ArcF,b,threshold);
+end
 else
     if app.MulticoreCheckBox.Value == 1
-        [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly2MC(leadingEdges,trailingEdges,ArcF,b);
+        [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly2MC(leadingEdges,trailingEdges,ArcF,b,threshold);
     else
-        [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly2(leadingEdges,trailingEdges,ArcF,b);
+        [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly2(leadingEdges,trailingEdges,ArcF,b,threshold);
     end
 end
 %Find undetected regions, bridge and pinch defects
