@@ -1,4 +1,4 @@
-function [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly2MC(leadingEdges,trailingEdges,Arc,b,threshold)
+function [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly2MC(app,leadingEdges,trailingEdges,Arc,b,threshold)
 %polynomial fitting
 
 leadingEdgeProfiles = zeros(size(Arc,1),length(leadingEdges));
@@ -22,13 +22,32 @@ for n = 1:length(leadingEdges)
         %         else
         y = segm;
         x = s1:s2;
-        xint = s1:1:s2;
+        xint = s1:.1:s2;
         [pp1,~,mu1] = polyfit(x,y,4);
-        [mli,vi] = max(polyval(pp1,xint,[],mu1));
+        FittedProfile = polyval(pp1,xint,[],mu1);
+        [mli,vi] = max(FittedProfile);
+        RightV = FittedProfile(vi:end)-threshold;
+        EdgeR = xint(vi+find(RightV<=0,1,'first')-1);
+        LeftV = FittedProfile(1:vi)-threshold;
+        EdgeL = xint(find(LeftV<=0,1,'last'));
 
-        %leadingEdgeProfiles(m,n) = -pp1(2)/(2*pp1(1));
-        leadingEdgeProfiles(m,n) = xint(vi);
-        % end
+        switch app.BrightedgeselectionButtonGroup.SelectedObject.Text
+            case 'Center'
+                leadingEdgeProfiles(m,n) = xint(vi);
+            case 'Outer'
+                if isempty(EdgeL)
+                    leadingEdgeProfiles(m,n) = nan;
+                else
+                    leadingEdgeProfiles(m,n) = EdgeL;
+                end
+            case 'Inner'
+                if isempty(EdgeR)
+                    leadingEdgeProfiles(m,n) = nan;
+                else
+                    leadingEdgeProfiles(m,n) = EdgeR;
+                end
+
+        end
 
         s1b = max(TEn-b,1);
         s2b = min(TEn+b,size(Arc,2));
@@ -41,19 +60,44 @@ for n = 1:length(leadingEdges)
         %         else
         y = segm;
         x = s1b:s2b;
-        xint = s1b:1:s2b;
+        xint = s1b:.1:s2b;
         [pp2,~,mu2] = polyfit(x,y,4);
 
-        %trailingEdgeProfiles(m,n) = -pp2(2)/(2*pp2(1));
-        [mti,vi] = max(polyval(pp2,xint,[],mu2));
-        trailingEdgeProfiles(m,n) = xint(vi);
 
-        %end
-%         plot(s1:s2b,Arc(m,s1:s2b),s1:s2,Arc(m,s1:s2),'r',...
-%             s1b:s2b,Arc(m,s1b:s2b),'r',...
-%             s1:s2,polyval(pp1,s1:s2,[],mu1),'g',...
-%             s1b:s2b,polyval(pp2,s1b:s2b,[],mu2),'g',...
-%             trailingEdgeProfiles(m,n),mti,'ok',leadingEdgeProfiles(m,n),mli,'ok')
-%         waitforbuttonpress
+        FittedProfile = polyval(pp2,xint,[],mu2);
+        [mti,vi] = max(FittedProfile);
+        RightV = FittedProfile(vi:end)-threshold;
+        EdgeR = xint(vi+find(RightV<=0,1,'first')-1);
+        if isempty(EdgeR)
+            EdgeR = nan;
+        end
+
+        LeftV = FittedProfile(1:vi)-threshold;
+        EdgeL = xint(find(LeftV<=0,1,'last'));
+
+        switch app.BrightedgeselectionButtonGroup.SelectedObject.Text
+            case 'Center'
+                trailingEdgeProfiles(m,n) = xint(vi);
+            case 'Inner'
+                trailingEdgeProfiles(m,n) = xint(vi);
+                if isempty(EdgeL)
+                    trailingEdgeProfiles(m,n) = nan;
+                else
+                    trailingEdgeProfiles(m,n) = EdgeL;
+                end
+            case 'Outer'
+                if isempty(EdgeR)
+                    trailingEdgeProfiles(m,n) = nan;
+                else
+                    trailingEdgeProfiles(m,n) = EdgeR;
+                end
+
+        end
+        %         plot(s1:s2b,Arc(m,s1:s2b),s1:s2,Arc(m,s1:s2),'r',...
+        %             s1b:s2b,Arc(m,s1b:s2b),'r',...
+        %             s1:s2,polyval(pp1,s1:s2,[],mu1),'g',...
+        %             s1b:s2b,polyval(pp2,s1b:s2b,[],mu2),'g',...
+        %             trailingEdgeProfiles(m,n),mti,'ok',leadingEdgeProfiles(m,n),mli,'ok')
+        %         waitforbuttonpress
     end
 end
