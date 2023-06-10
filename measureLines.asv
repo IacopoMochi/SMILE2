@@ -493,38 +493,38 @@ if ~isfield(edges,'Average_PSD_LWR')
     PSD_LER_fit = mF_LER_fit/L;
     PSD_LER_fit_unbiased = mF_LER_fit_unbiased/L;
     
-    LER = 3*sqrt(sum(PSD_LER)/L);
-    LER_unbiased = 3*sqrt(2*sum(PSD_LER_unbiased)/L);
-    LER_fit = 3*sqrt(2*sum(PSD_LER_fit)/L);
-    LER_fit_unbiased = 3*sqrt(2*sum(PSD_LER_fit_unbiased)/L);
+    LER = 3*sqrt(sum(PSD_LER))/length(PSD_LER);
+    LER_unbiased = 3*sqrt(2*sum(PSD_LER_unbiased))/length(PSD_LER);
+    LER_fit = 3*sqrt(2*sum(PSD_LER_fit))/length(PSD_LER);
+    LER_fit_unbiased = 3*sqrt(2*sum(PSD_LER_fit_unbiased))/length(PSD_LER);
     PSD_LER_beta = betaf_LER;
     
     %LERl
-    PSD_LERl = mF_LERl/L;
-    PSD_LERlh = mF_LERl(1:length(freq))/L;
-    PSD_LERl_unbiased = PSD_LERlh-betaf_LERl(3)/L;
+    PSD_LERl = mF_LERl;
+    PSD_LERlh = mF_LERl(1:length(freq));
+    PSD_LERl_unbiased = (PSD_LERlh-betaf_LERl(3));
     PSD_LERl_unbiased(PSD_LERl_unbiased<0)=0;
-    PSD_LERl_fit = mF_LERl_fit/L;
-    PSD_LERl_fit_unbiased = mF_LERl_fit_unbiased/L;
+    PSD_LERl_fit = mF_LERl_fit;
+    PSD_LERl_fit_unbiased = mF_LERl_fit_unbiased;
     
-    LERl = 3*sqrt(sum(PSD_LERl)/L);
-    LERl_unbiased = 3*sqrt(2*sum(PSD_LERl_unbiased)/L);
-    LERl_fit = 3*sqrt(2*sum(PSD_LERl_fit)/L);
-    LERl_fit_unbiased = 3*sqrt(2*sum(PSD_LERl_fit_unbiased)/L);
+    LERl = 3*sqrt(sum(PSD_LERl))/length(PSD_LERl);
+    LERl_unbiased = 3*sqrt(2*sum(PSD_LERl_unbiased))/length(PSD_LERl);
+    LERl_fit = 3*sqrt(2*sum(PSD_LERl_fit))/length(PSD_LERl);
+    LERl_fit_unbiased = 3*sqrt(2*sum(PSD_LERl_fit_unbiased))/length(PSD_LERl);
     PSD_LERl_beta = betaf_LERl;
     
     %LERt
-    PSD_LERt = mF_LERt/L;
-    PSD_LERth = mF_LERt(1:length(freq))/L;
-    PSD_LERt_unbiased = PSD_LERth-betaf_LERt(3)/L;
+    PSD_LERt = mF_LERt;
+    PSD_LERth = mF_LERt(1:length(freq));
+    PSD_LERt_unbiased = (PSD_LERth-betaf_LERt(3));
     PSD_LERt_unbiased(PSD_LERt_unbiased<0)=0;
-    PSD_LERt_fit = mF_LERt_fit/L;
-    PSD_LERt_fit_unbiased = mF_LERt_fit_unbiased/L;
+    PSD_LERt_fit = mF_LERt_fit;
+    PSD_LERt_fit_unbiased = mF_LERt_fit_unbiased;
     
-    LERt = 3*sqrt(sum(PSD_LERt)/L);
-    LERt_unbiased = 3*sqrt(2*sum(PSD_LERt_unbiased)/L);
-    LERt_fit = 3*sqrt(2*sum(PSD_LER_fit)/L);
-    LERt_fit_unbiased = 3*sqrt(2*sum(PSD_LERt_fit_unbiased)/L);
+    LERt = 3*sqrt(sum(PSD_LERt))/length(PSD_LERt);
+    LERt_unbiased = 3*sqrt(2*sum(PSD_LERt_unbiased))/length(PSD_LERt);
+    LERt_fit = 3*sqrt(2*sum(PSD_LER_fit))/length(PSD_LER);
+    LERt_fit_unbiased = 3*sqrt(2*sum(PSD_LERt_fit_unbiased))/length(PSD_LERt);
     PSD_LERt_beta = betaf_LERt;
     
 %     if app.MultitaperButton.Value

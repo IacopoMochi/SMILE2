@@ -270,7 +270,7 @@ if id~=0
                         Tstring = 'Trailing edge LER Power Spectral Density';
                     end
                     
-                    
+                    normLength = length(PSD);
                     loglog(app.Metric,freq,PSD(1:length(freq)),freq,PSD_fit,'lineWidth',2)
                     xlabel(app.Metric,'nm^{-1}')
                     ylabel(app.Metric,'nm^{3}')
