@@ -1,4 +1,4 @@
-function metrics = measureLines(edges,app)
+ function metrics = measureLines(edges,app)
 
 ps = edges.PS(1); %We assume the PS is the same for all the averaged images
 if ~isfield(edges,'Average_PSD_LWR')
@@ -470,7 +470,7 @@ if ~isfield(edges,'Average_PSD_LWR')
     
     %LWR = 3*sqrt(sum(2*mF_LW.^2)/ps);
     
-    L=length(mF_LW);
+    L=length(mF_LW)*app.PixelsizenmEditField.Value;
     PSD = mF_LW/L;
     PSDh = mF_LW(1:length(freq))/L;
     PSD_unbiased = PSDh-betaf_LW(3)/L;
@@ -480,9 +480,9 @@ if ~isfield(edges,'Average_PSD_LWR')
     
     %LWR = 3*sqrt(2*ps^2*sum(PSD)/(length(PSD)));
     LWR = 3*sqrt(sum(PSD)/L);
-    LWR_unbiased = 3*sqrt(2*sum(PSD_unbiased)/L);
-    LWR_fit = 3*sqrt(2*sum(PSD_LWR_fit)/L);
-    LWR_fit_unbiased = 3*sqrt(2*sum(PSD_LWR_fit_unbiased)/L);
+    LWR_unbiased = 3*sqrt(sum(PSD_unbiased)/L);
+    LWR_fit = 3*sqrt(sum(PSD_LWR_fit)/L);
+    LWR_fit_unbiased = 3*sqrt(sum(PSD_LWR_fit_unbiased)/L);
     PSD_LWR_beta = betaf_LW;
     
     %LER
@@ -494,9 +494,9 @@ if ~isfield(edges,'Average_PSD_LWR')
     PSD_LER_fit_unbiased = mF_LER_fit_unbiased/L;
     
     LER = 3*sqrt(sum(PSD_LER)/L);
-    LER_unbiased = 3*sqrt(2*sum(PSD_LER_unbiased)/L);
-    LER_fit = 3*sqrt(2*sum(PSD_LER_fit)/L);
-    LER_fit_unbiased = 3*sqrt(2*sum(PSD_LER_fit_unbiased)/L);
+    LER_unbiased = 3*sqrt(sum(PSD_LER_unbiased)/L);
+    LER_fit = 3*sqrt(sum(PSD_LER_fit)/L);
+    LER_fit_unbiased = 3*sqrt(sum(PSD_LER_fit_unbiased)/L);
     PSD_LER_beta = betaf_LER;
     
     %LERl
@@ -508,9 +508,9 @@ if ~isfield(edges,'Average_PSD_LWR')
     PSD_LERl_fit_unbiased = mF_LERl_fit_unbiased/L;
     
     LERl = 3*sqrt(sum(PSD_LERl)/L);
-    LERl_unbiased = 3*sqrt(2*sum(PSD_LERl_unbiased)/L);
-    LERl_fit = 3*sqrt(2*sum(PSD_LERl_fit)/L);
-    LERl_fit_unbiased = 3*sqrt(2*sum(PSD_LERl_fit_unbiased)/L);
+    LERl_unbiased = 3*sqrt(sum(PSD_LERl_unbiased)/L);
+    LERl_fit = 3*sqrt(sum(PSD_LERl_fit)/L);
+    LERl_fit_unbiased = 3*sqrt(sum(PSD_LERl_fit_unbiased)/L);
     PSD_LERl_beta = betaf_LERl;
     
     %LERt
@@ -522,9 +522,9 @@ if ~isfield(edges,'Average_PSD_LWR')
     PSD_LERt_fit_unbiased = mF_LERt_fit_unbiased/L;
     
     LERt = 3*sqrt(sum(PSD_LERt)/L);
-    LERt_unbiased = 3*sqrt(2*sum(PSD_LERt_unbiased)/L);
-    LERt_fit = 3*sqrt(2*sum(PSD_LER_fit)/L);
-    LERt_fit_unbiased = 3*sqrt(2*sum(PSD_LERt_fit_unbiased)/L);
+    LERt_unbiased = 3*sqrt(sum(PSD_LERt_unbiased)/L);
+    LERt_fit = 3*sqrt(sum(PSD_LER_fit)/L);
+    LERt_fit_unbiased = 3*sqrt(sum(PSD_LERt_fit_unbiased)/L);
     PSD_LERt_beta = betaf_LERt;
     
 %     if app.MultitaperButton.Value

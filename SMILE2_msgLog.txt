@@ -1,0 +1,27 @@
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',475,1)">475 </a>    PSDh = mF_LW(1:length(freq))/L;
+freq(1)
+
+ans =
+
+     0
+
+freqx(1)
+
+ans =
+
+    0.0013
+
+if system_dependent('IsDebugMode')==1, dbcont; end
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',475,1)">475 </a>    PSDh = mF_LW(1:length(freq))/L;
+if system_dependent('IsDebugMode')==1, dbcont; end
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',475,1)">475 </a>    PSDh = mF_LW(1:length(freq))/L;
+if system_dependent('IsDebugMode')==1, dbcont; end
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',475,1)">475 </a>    PSDh = mF_LW(1:length(freq))/L;
+if system_dependent('IsDebugMode')==1, dbcont; end
+<a href="matlab: opentoline('/Users/iacopomochi/Documents/Work/SMILE/SMILE_matlab/SMILE20/SMILE2/measureLines.m',474,1)">474 </a>    PSD = mF_LW/L;
+app.PixelsizenmEditField.Value
+
+ans =
+
+    0.8270
+
