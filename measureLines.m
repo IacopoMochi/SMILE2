@@ -185,16 +185,16 @@ if ~isfield(edges,'Average_PSD_LWR')
     
     %Evaluate average LWR
     N = size(LW,1);
-    Fs = 1/ps;
+    Fs = 1/(N*ps);
     
-    freq = 0:Fs/N:Fs/2-Fs/N;
-    freqL = 0:Fs/N:Fs-Fs/N;
+    freq = 0:Fs:Fs*N/2+Fs;
+    freqL = 0:Fs:Fs*N;
     %F_LW = F_LW(1:length(freq),:);
     
-    mF_LW = nanmean(abs(F_LW).^2,2); % Average LW PSD (uncut)
-    mF_LER = nanmean(abs(F_LTe).^2,2); % Average LER PSD (uncut)
-    mF_LERl = nanmean(abs(F_Le).^2,2); % Average LERl PSD (uncut)
-    mF_LERt = nanmean(abs(F_Te).^2,2); % Average LERt PSD (uncut)
+    mF_LW = mean(abs(F_LW).^2,2,'omitnan'); % Average LW PSD (uncut)
+    mF_LER = mean(abs(F_LTe).^2,2,'omitnan'); % Average LER PSD (uncut)
+    mF_LERl = mean(abs(F_Le).^2,2,'omitnan'); % Average LERl PSD (uncut)
+    mF_LERt = mean(abs(F_Te).^2,2,'omitnan'); % Average LERt PSD (uncut)
     
    
     %     L = length(mF_LW);
@@ -599,7 +599,7 @@ if ~isfield(edges,'Average_PSD_LWR')
     % drawnow
     
     metrics.LWprofiles = LW;
-    
+    Ftor = 1/sqrt(L);
     metrics.HHCorrFunc = HHCorrFunc;
     metrics.HHCorrFuncFit = HHCorrFuncFit;
     metrics.LWRCorrLength = LWRCorrLength;
@@ -613,32 +613,32 @@ if ~isfield(edges,'Average_PSD_LWR')
     metrics.HHCorrFuncFit_LERt = HHCorrFuncFit3;
     metrics.LERtCorrLength = LWRCorrLength3;
     metrics.LinesCD = LinesCD;
-    metrics.PSD_LWR_fit = PSD_LWR_fit;
-    metrics.PSD_LWR_fit_unbiased = PSD_LWR_fit_unbiased;
+    metrics.PSD_LWR_fit = PSD_LWR_fit*Ftor;
+    metrics.PSD_LWR_fit_unbiased = PSD_LWR_fit_unbiased*Ftor;
     metrics.PSD_LWR_beta = PSD_LWR_beta;
-    metrics.PSD_LWR_unbiased = PSD_unbiased;   
+    metrics.PSD_LWR_unbiased = PSD_unbiased*Ftor;   
     %metrics.PSD_LWR_fit2 = PSD_LWR_fit2;
     %metrics.PSD_LWR_fit_unbiased2 = PSD_LWR_fit_unbiased2;
     %metrics.PSD_LWR_beta2 = PSD_LWR_beta2;
-    metrics.PSD_LER = PSD_LERh;
-    metrics.PSD_LER_fit = PSD_LER_fit;
-    metrics.PSD_LER_unbiased = PSD_LER_unbiased;
-    metrics.PSD_LER_fit_unbiased = PSD_LER_fit_unbiased;
+    metrics.PSD_LER = PSD_LERh*Ftor;
+    metrics.PSD_LER_fit = PSD_LER_fit*Ftor;
+    metrics.PSD_LER_unbiased = PSD_LER_unbiased*Ftor;
+    metrics.PSD_LER_fit_unbiased = PSD_LER_fit_unbiased*Ftor;
     metrics.PSD_LER_beta = PSD_LER_beta;
-    metrics.PSD_LERl = PSD_LERlh;
-    metrics.PSD_LERl_unbiased = PSD_LERl_unbiased;
-    metrics.PSD_LERl_fit = PSD_LERl_fit;
-    metrics.PSD_LERl_fit_unbiased = PSD_LERl_fit_unbiased;
+    metrics.PSD_LERl = PSD_LERlh*Ftor;
+    metrics.PSD_LERl_unbiased = PSD_LERl_unbiased*Ftor;
+    metrics.PSD_LERl_fit = PSD_LERl_fit*Ftor;
+    metrics.PSD_LERl_fit_unbiased = PSD_LERl_fit_unbiased*Ftor;
     metrics.PSD_LERl_beta = PSD_LERl_beta;
-    metrics.PSD_LERt = PSD_LERth;
-    metrics.PSD_LERt_unbiased = PSD_LERt_unbiased;
-    metrics.PSD_LERt_fit = PSD_LERt_fit;
-    metrics.PSD_LERt_fit_unbiased = PSD_LERt_fit_unbiased;
+    metrics.PSD_LERt = PSD_LERth*Ftor;
+    metrics.PSD_LERt_unbiased = PSD_LERt_unbiased*Ftor;
+    metrics.PSD_LERt_fit = PSD_LERt_fit*Ftor;
+    metrics.PSD_LERt_fit_unbiased = PSD_LERt_fit_unbiased*Ftor;
     metrics.PSD_LERt_beta = PSD_LERt_beta;
     
     metrics.LinesCenters = LinesCenters;
     
-    metrics.PSD = PSDh;
+    metrics.PSD = PSDh*Ftor;
     metrics.mCD = mCD;
     metrics.stdCD = stdCD;
     metrics.LWR3s = LWR3s;
