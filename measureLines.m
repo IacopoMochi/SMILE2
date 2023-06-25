@@ -1,4 +1,4 @@
-function metrics = measureLines(edges,app)
+ function metrics = measureLines(edges,app)
 
 ps = edges.PS(1); %We assume the PS is the same for all the averaged images
 if ~isfield(edges,'Average_PSD_LWR')
@@ -185,16 +185,16 @@ if ~isfield(edges,'Average_PSD_LWR')
     
     %Evaluate average LWR
     N = size(LW,1);
-    Fs = 1/(N*ps);
+    Fs = 1/ps;
     
-    freq = 0:Fs:Fs*N/2+Fs;
-    freqL = 0:Fs:Fs*N;
+    freq = 0:Fs/N:Fs/2-Fs/N;
+    freqL = 0:Fs/N:Fs-Fs/N;
     %F_LW = F_LW(1:length(freq),:);
     
-    mF_LW = mean(abs(F_LW).^2,2,'omitnan'); % Average LW PSD (uncut)
-    mF_LER = mean(abs(F_LTe).^2,2,'omitnan'); % Average LER PSD (uncut)
-    mF_LERl = mean(abs(F_Le).^2,2,'omitnan'); % Average LERl PSD (uncut)
-    mF_LERt = mean(abs(F_Te).^2,2,'omitnan'); % Average LERt PSD (uncut)
+    mF_LW = nanmean(abs(F_LW).^2,2); % Average LW PSD (uncut)
+    mF_LER = nanmean(abs(F_LTe).^2,2); % Average LER PSD (uncut)
+    mF_LERl = nanmean(abs(F_Le).^2,2); % Average LERl PSD (uncut)
+    mF_LERt = nanmean(abs(F_Te).^2,2); % Average LERt PSD (uncut)
     
    
     %     L = length(mF_LW);
@@ -467,65 +467,64 @@ if ~isfield(edges,'Average_PSD_LWR')
     end
     
     
+        
+    %L=length(mF_LW)*app.PixelsizenmEditField.Value;
+    L=length(mF_LW);
     
-    %LWR = 3*sqrt(sum(2*mF_LW.^2)/ps);
-    
-    L=length(mF_LW)*ps;
-    Lf=length(freq)*ps;
-
     PSD = mF_LW/L;
-    PSDh = mF_LW(1:length(freq))/Lf;
-    PSD_unbiased = PSDh-betaf_LW(3)/Lf;
+    PSDh = mF_LW(1:length(freq))/L;
+    PSD_unbiased = PSDh-betaf_LW(3)/L;
     PSD_unbiased(PSD_unbiased<0)=0;
-    PSD_LWR_fit = mF_LW_fit/Lf;
-    PSD_LWR_fit_unbiased = mF_LW_fit_unbiased/Lf;
+    PSD_LWR_fit = mF_LW_fit/L;
+    PSD_LWR_fit_unbiased = mF_LW_fit_unbiased/L;
     
+    %LWR = 3*sqrt(2*ps^2*sum(PSD)/(length(PSD)));
     LWR = 3*sqrt(sum(PSD)/L);
-    LWR_unbiased = 3*sqrt(sum(PSD_unbiased)/Lf);
-    LWR_fit = 3*sqrt(sum(PSD_LWR_fit)/Lf);
-    LWR_fit_unbiased = 3*sqrt(sum(PSD_LWR_fit_unbiased)/Lf);
+    LWR_unbiased = 3*sqrt(sum(PSD_unbiased)/L);
+    LWR_fit = 3*sqrt(sum(PSD_LWR_fit)/L);
+    LWR_fit_unbiased = 3*sqrt(sum(PSD_LWR_fit_unbiased)/L);
     PSD_LWR_beta = betaf_LW;
     
     %LER
     PSD_LER = mF_LER/L;
-    PSD_LERh = mF_LER(1:length(freq))/Lf;
-    PSD_LER_unbiased = PSD_LERh-betaf_LER(3)/Lf;
+    PSD_LERh = mF_LER(1:length(freq))/L;
+    PSD_LER_unbiased = PSD_LERh-betaf_LER(3)/L;
     PSD_LER_unbiased(PSD_LER_unbiased<0)=0;
-    PSD_LER_fit = mF_LER_fit/Lf;
-    PSD_LER_fit_unbiased = mF_LER_fit_unbiased/Lf;
+    PSD_LER_fit = mF_LER_fit/L;
+    PSD_LER_fit_unbiased = mF_LER_fit_unbiased/L;
     
     LER = 3*sqrt(sum(PSD_LER)/L);
-    LER_unbiased = 3*sqrt(sum(PSD_LER_unbiased)/Lf);
-    LER_fit = 3*sqrt(2*sum(PSD_LER_fit)/Lf);
-    LER_fit_unbiased = 3*sqrt(2*sum(PSD_LER_fit_unbiased)/Lf);
+    LER_unbiased = 3*sqrt(sum(PSD_LER_unbiased)/L);
+    LER_fit = 3*sqrt(sum(PSD_LER_fit)/L);
+    LER_fit_unbiased = 3*sqrt(sum(PSD_LER_fit_unbiased)/L);
     PSD_LER_beta = betaf_LER;
     
     %LERl
     PSD_LERl = mF_LERl/L;
-    PSD_LERlh = mF_LERl(1:length(freq))/Lf;
-    PSD_LERl_unbiased = PSD_LERlh-betaf_LERl(3)/Lf;
+    PSD_LERlh = mF_LERl(1:length(freq))/L;
+    PSD_LERl_unbiased = PSD_LERlh-betaf_LERl(3)/L;
     PSD_LERl_unbiased(PSD_LERl_unbiased<0)=0;
-    PSD_LERl_fit = mF_LERl_fit/Lf;
-    PSD_LERl_fit_unbiased = mF_LERl_fit_unbiased/Lf;
+    PSD_LERl_fit = mF_LERl_fit/L;
+    PSD_LERl_fit_unbiased = mF_LERl_fit_unbiased/L;
     
     LERl = 3*sqrt(sum(PSD_LERl)/L);
-    LERl_unbiased = 3*sqrt(sum(PSD_LERl_unbiased)/Lf);
-    LERl_fit = 3*sqrt(sum(PSD_LERl_fit)/Lf);
-    LERl_fit_unbiased = 3*sqrt(sum(PSD_LERl_fit_unbiased)/Lf);
+    LERl_unbiased = 3*sqrt(sum(PSD_LERl_unbiased)/L);
+    LERl_fit = 3*sqrt(sum(PSD_LERl_fit)/L);
+    LERl_fit_unbiased = 3*sqrt(sum(PSD_LERl_fit_unbiased)/L);
     PSD_LERl_beta = betaf_LERl;
     
     %LERt
     PSD_LERt = mF_LERt/L;
-    PSD_LERth = mF_LERt(1:length(freq))/Lf;
-    PSD_LERt_unbiased = PSD_LERth-betaf_LERt(3)/Lf;
+    PSD_LERth = mF_LERt(1:length(freq))/L;
+    PSD_LERt_unbiased = PSD_LERth-betaf_LERt(3)/L;
     PSD_LERt_unbiased(PSD_LERt_unbiased<0)=0;
-    PSD_LERt_fit = mF_LERt_fit/Lf;
-    PSD_LERt_fit_unbiased = mF_LERt_fit_unbiased/Lf;
+    PSD_LERt_fit = mF_LERt_fit/L;
+    PSD_LERt_fit_unbiased = mF_LERt_fit_unbiased/L;
     
     LERt = 3*sqrt(sum(PSD_LERt)/L);
-    LERt_unbiased = 3*sqrt(2*sum(PSD_LERt_unbiased)/Lf);
-    LERt_fit = 3*sqrt(sum(PSD_LER_fit)/Lf);
-    LERt_fit_unbiased = 3*sqrt(sum(PSD_LERt_fit_unbiased)/Lf);
+    LERt_unbiased = 3*sqrt(sum(PSD_LERt_unbiased)/L);
+    LERt_fit = 3*sqrt(sum(PSD_LER_fit)/L);
+    LERt_fit_unbiased = 3*sqrt(sum(PSD_LERt_fit_unbiased)/L);
     PSD_LERt_beta = betaf_LERt;
     
 %     if app.MultitaperButton.Value
@@ -600,7 +599,7 @@ if ~isfield(edges,'Average_PSD_LWR')
     % drawnow
     
     metrics.LWprofiles = LW;
-    Ftor = 1/sqrt(L);
+    
     metrics.HHCorrFunc = HHCorrFunc;
     metrics.HHCorrFuncFit = HHCorrFuncFit;
     metrics.LWRCorrLength = LWRCorrLength;
@@ -614,32 +613,32 @@ if ~isfield(edges,'Average_PSD_LWR')
     metrics.HHCorrFuncFit_LERt = HHCorrFuncFit3;
     metrics.LERtCorrLength = LWRCorrLength3;
     metrics.LinesCD = LinesCD;
-    metrics.PSD_LWR_fit = PSD_LWR_fit*Ftor;
-    metrics.PSD_LWR_fit_unbiased = PSD_LWR_fit_unbiased*Ftor;
+    metrics.PSD_LWR_fit = PSD_LWR_fit;
+    metrics.PSD_LWR_fit_unbiased = PSD_LWR_fit_unbiased;
     metrics.PSD_LWR_beta = PSD_LWR_beta;
-    metrics.PSD_LWR_unbiased = PSD_unbiased*Ftor;   
+    metrics.PSD_LWR_unbiased = PSD_unbiased;   
     %metrics.PSD_LWR_fit2 = PSD_LWR_fit2;
     %metrics.PSD_LWR_fit_unbiased2 = PSD_LWR_fit_unbiased2;
     %metrics.PSD_LWR_beta2 = PSD_LWR_beta2;
-    metrics.PSD_LER = PSD_LERh*Ftor;
-    metrics.PSD_LER_fit = PSD_LER_fit*Ftor;
-    metrics.PSD_LER_unbiased = PSD_LER_unbiased*Ftor;
-    metrics.PSD_LER_fit_unbiased = PSD_LER_fit_unbiased*Ftor;
+    metrics.PSD_LER = PSD_LERh;
+    metrics.PSD_LER_fit = PSD_LER_fit;
+    metrics.PSD_LER_unbiased = PSD_LER_unbiased;
+    metrics.PSD_LER_fit_unbiased = PSD_LER_fit_unbiased;
     metrics.PSD_LER_beta = PSD_LER_beta;
-    metrics.PSD_LERl = PSD_LERlh*Ftor;
-    metrics.PSD_LERl_unbiased = PSD_LERl_unbiased*Ftor;
-    metrics.PSD_LERl_fit = PSD_LERl_fit*Ftor;
-    metrics.PSD_LERl_fit_unbiased = PSD_LERl_fit_unbiased*Ftor;
+    metrics.PSD_LERl = PSD_LERlh;
+    metrics.PSD_LERl_unbiased = PSD_LERl_unbiased;
+    metrics.PSD_LERl_fit = PSD_LERl_fit;
+    metrics.PSD_LERl_fit_unbiased = PSD_LERl_fit_unbiased;
     metrics.PSD_LERl_beta = PSD_LERl_beta;
-    metrics.PSD_LERt = PSD_LERth*Ftor;
-    metrics.PSD_LERt_unbiased = PSD_LERt_unbiased*Ftor;
-    metrics.PSD_LERt_fit = PSD_LERt_fit*Ftor;
-    metrics.PSD_LERt_fit_unbiased = PSD_LERt_fit_unbiased*Ftor;
+    metrics.PSD_LERt = PSD_LERth;
+    metrics.PSD_LERt_unbiased = PSD_LERt_unbiased;
+    metrics.PSD_LERt_fit = PSD_LERt_fit;
+    metrics.PSD_LERt_fit_unbiased = PSD_LERt_fit_unbiased;
     metrics.PSD_LERt_beta = PSD_LERt_beta;
     
     metrics.LinesCenters = LinesCenters;
     
-    metrics.PSD = PSDh*Ftor;
+    metrics.PSD = PSDh;
     metrics.mCD = mCD;
     metrics.stdCD = stdCD;
     metrics.LWR3s = LWR3s;
