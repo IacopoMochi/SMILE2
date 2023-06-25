@@ -467,10 +467,10 @@ if ~isfield(edges,'Average_PSD_LWR')
     end
     
     
+        
+    %L=length(mF_LW)*app.PixelsizenmEditField.Value;
+    L=length(mF_LW);
     
-    %LWR = 3*sqrt(sum(2*mF_LW.^2)/ps);
-    
-    L=length(mF_LW)*app.PixelsizenmEditField.Value;
     PSD = mF_LW/L;
     PSDh = mF_LW(1:length(freq))/L;
     PSD_unbiased = PSDh-betaf_LW(3)/L;
