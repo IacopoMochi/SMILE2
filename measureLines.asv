@@ -383,7 +383,7 @@ if ~isfield(edges,'Average_PSD_LWR')
         betaf_LERt = betaf;
     elseif strcmp(PSDmodel,'Palasantzas2')
         model = @Palasantzas2;
-        beta0 = [sqrt(mean(mF_LWx(1:FN),'omitnan')-mean(mF_LWx(Lx-LN:Lx),'omitnan')), CF, (mean(mF_LWx(Lx-LN:Lx),'omitnan')),Alpha];
+        beta0 = [sqrt(nanmean(mF_LWx(1:FN))-nanmean(mF_LWx(Lx-LN:Lx))), CF, (mean(mF_LWx(Lx-LN:Lx),'omitnan')),Alpha];
         f = @(beta,freqx,mF_LWx) sum((Palasantzas2(beta,freqx)-mF_LWx).^2);
         Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
         betaf = fminsearch(@(beta) f(beta,freqx,mF_LWx),beta0,Options);
@@ -393,7 +393,7 @@ if ~isfield(edges,'Average_PSD_LWR')
         mF_LW_fit_unbiased = model(betan,freq);
         betaf_LW = betaf;
         
-        beta0 = [sqrt(mean(mF_LERx(1:FN),'omitnan')-mean(mF_LERx(Lx-LN:Lx),'omitnan')), CF, (mean(mF_LERx(Lx-LN:Lx),'omitnan')),Alpha];
+        beta0 = [sqrt(nanmean(mF_LERx(1:FN))-nanmean(mF_LERx(Lx-LN:Lx))), CF, (nanmean(mF_LERx(Lx-LN:Lx))),Alpha];
         f = @(beta,freqx,mF_LERx) sum((Palasantzas2(beta,freqx)-mF_LERx).^2);
         Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
         betaf = fminsearch(@(beta) f(beta,freqx,mF_LERx),beta0,Options);
@@ -403,7 +403,7 @@ if ~isfield(edges,'Average_PSD_LWR')
         mF_LER_fit_unbiased = model(betan,freq);
         betaf_LER = betaf;
         
-        beta0 = [sqrt(mean(mF_LERlx(1:FN),'omitnan')-mean(mF_LERlx(Lx-LN:Lx),'omitnan')), CF, (mean(mF_LERlx(Lx-LN:Lx),'omitnan')),Alpha];
+        beta0 = [sqrt(nanmean(mF_LERlx(1:FN))-nanmean(mF_LERlx(Lx-LN:Lx))), CF, (nanmean(mF_LERlx(Lx-LN:Lx))),Alpha];
         f = @(beta,freqx,mF_LERlx) sum((Palasantzas2(beta,freqx)-mF_LERlx).^2);
         Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
         betaf = fminsearch(@(beta) f(beta,freqx,mF_LERlx),beta0,Options);
@@ -413,7 +413,7 @@ if ~isfield(edges,'Average_PSD_LWR')
         mF_LERl_fit_unbiased = model(betan,freq);
         betaf_LERl = betaf;
         
-        beta0 = [sqrt(mean(mF_LERtx(1:FN),'omitnan')-mean(mF_LERtx(Lx-LN:Lx),'omitnan')), CF, (mean(mF_LERtx(Lx-LN:Lx),'omitnan')),Alpha];
+        beta0 = [sqrt(nanmean(mF_LERtx(1:FN))-nanmean(mF_LERtx(Lx-LN:Lx))), CF, (nanmean(mF_LERtx(Lx-LN:Lx))),Alpha];
         f = @(beta,freqx,mF_LERtx) sum((Palasantzas2(beta,freqx)-mF_LERtx).^2);
         Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
         betaf = fminsearch(@(beta) f(beta,freqx,mF_LERtx),beta0,Options);
@@ -425,7 +425,7 @@ if ~isfield(edges,'Average_PSD_LWR')
     elseif strcmp(PSDmodel,'Integral')
         model = @Integral;
         edf=[find(freq==freqx(1),1),find(freq==freqx(end),1)];
-        beta0 = [(mean(mF_LWx(1:FN),'omitnan')-mean(mF_LWx(Lx-LN:Lx),'omitnan')), CF, (mean(mF_LWx(Lx-LN:Lx),'omitnan')),Alpha];
+        beta0 = [(nanmean(mF_LWx(1:FN))-nanmean(mF_LWx(Lx-LN:Lx))), CF, (nanmean(mF_LWx(Lx-LN:Lx))),Alpha];
         f = @(beta,Rv,edf,mF_LW) sum((Integral(beta,freqL,edf)-mF_LW).^2);
         Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
         betaf = fminsearch(@(beta) f(beta,freqL,edf,mF_LWx),beta0,Options);
@@ -435,7 +435,7 @@ if ~isfield(edges,'Average_PSD_LWR')
         mF_LW_fit_unbiased = model(betan,freqL,[1,length(freq)]);
         betaf_LW = betaf;
         
-        beta0 = [sqrt(mean(mF_LERx(1:FN),'omitnan')-mean(mF_LERx(Lx-LN:Lx),'omitnan')), 1/CF, (mean(mF_LERx(Lx-LN:Lx),'omitnan')),Alpha];
+        beta0 = [sqrt(nanmean(mF_LERx(1:FN))-nanmean(mF_LERx(Lx-LN:Lx))), 1/CF, (nanmean(mF_LERx(Lx-LN:Lx))),Alpha];
         f = @(beta,Rv,edf,mF_LERx) sum((Integral(beta,freqL,edf)-mF_LERx).^2);
         Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
         betaf_LER = fminsearch(@(beta) f(beta,freqL,edf,mF_LERx),beta0,Options);
@@ -445,7 +445,7 @@ if ~isfield(edges,'Average_PSD_LWR')
         betan(3) = 0;
         mF_LER_fit_unbiased = model(betan,freq,[1,length(freq)]);
         
-        beta0 = [sqrt(mean(mF_LERlx(1:FN),'omitnan')-mean(mF_LERlx(Lx-LN:Lx),'omitnan')), 1/CF, (mean(mF_LERlx(Lx-LN:Lx),'omitnan')),Alpha];
+        beta0 = [sqrt(nanmean(mF_LERlx(1:FN))-nanmean(mF_LERlx(Lx-LN:Lx))), 1/CF, (nanmean(mF_LERlx(Lx-LN:Lx))),Alpha];
         f = @(beta,Rv,edf,mF_LERlx) sum((Integral(beta,freqL,edf)-mF_LERlx).^2);
         Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
         betaf_LERl = fminsearch(@(beta) f(beta,freqL,edf,mF_LERlx),beta0,Options);
@@ -455,7 +455,7 @@ if ~isfield(edges,'Average_PSD_LWR')
         betan(3) = 0;
         mF_LERl_fit_unbiased = model(betan,freq,[1,length(freq)]);
         
-        beta0 = [sqrt(mean(mF_LERtx(1:FN),'omitnan')-mean(mF_LERtx(Lx-LN:Lx),'omitnan')), 1/CF, (mean(mF_LERtx(Lx-LN:Lx),'omitnan')),Alpha];
+        beta0 = [sqrt(nanmean(mF_LERtx(1:FN))-nanmean(mF_LERtx(Lx-LN:Lx))), 1/CF, (nanmean(mF_LERtx(Lx-LN:Lx))),Alpha];
         f = @(beta,Rv,edf,mF_LERtx) sum((Integral(beta,freqL,edf)-mF_LERtx).^2);
         Options = optimset('MaxFunEvals',MFE,'MaxIter',MI);
         betaf_LERt = fminsearch(@(beta) f(beta,freqL,edf,mF_LERtx),beta0,Options);
@@ -617,6 +617,9 @@ if ~isfield(edges,'Average_PSD_LWR')
     metrics.PSD_LWR_fit_unbiased = PSD_LWR_fit_unbiased;
     metrics.PSD_LWR_beta = PSD_LWR_beta;
     metrics.PSD_LWR_unbiased = PSD_unbiased;   
+    %metrics.PSD_LWR_fit2 = PSD_LWR_fit2;
+    %metrics.PSD_LWR_fit_unbiased2 = PSD_LWR_fit_unbiased2;
+    %metrics.PSD_LWR_beta2 = PSD_LWR_beta2;
     metrics.PSD_LER = PSD_LERh;
     metrics.PSD_LER_fit = PSD_LER_fit;
     metrics.PSD_LER_unbiased = PSD_LER_unbiased;
