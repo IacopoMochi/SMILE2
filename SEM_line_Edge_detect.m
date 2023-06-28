@@ -271,7 +271,7 @@ elseif app.EdgefitfunctionButtonGroup.Buttons(2).Value
     else
         [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectfPoly(leadingEdges,trailingEdges,ArcF,b,threshold);
     end
-else app.EdgefitfunctionButtonGroup.Buttons(3).Value
+elseif app.EdgefitfunctionButtonGroup.Buttons(3).Value
     %[leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,ArcF,CD,b,threshold,fwhmf);
     [leadingEdgeProfiles,trailingEdgeProfiles] = edgeDetectThreshold(leadingEdges,trailingEdges,ArcF,b,threshold);
 end

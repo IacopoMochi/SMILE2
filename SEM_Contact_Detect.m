@@ -119,6 +119,9 @@ Acf = AcF;
 C = contourc(Acf,[threshold,threshold]);
 M = cntsplit(C);
 
+MM = struct();
+
+
 ContoursRadius = zeros(numel(M),1);
 ContoursCentersX = zeros(numel(M),1);
 ContoursCentersY = zeros(numel(M),1);
@@ -129,15 +132,42 @@ for n = 1:numel(M)
         (M(n).y-ContoursCentersY(n)).^2));
 end
 
+% Detect nested contacts
+cnt = 0;
+for n = 1:numel(M)
+    for m = 1:numel(M)
+        x2 = (M(n).x-ContoursCentersX(m)).^2;
+        y2 = (M(n).y-ContoursCentersY(m)).^2;
+        if sum((x2+y2)<ContoursRadius(m)^2)>size(x2)/2
+            cnt = cnt+1;
+            MM(cnt).xi = M(n).x;
+            MM(cnt).yi = M(n).y;
+            MM(cnt).xo = M(m).x;
+            MM(cnt).yo = M(m).y;
+            MM(cnt).isnested = true;
+            MM(cnt).Id = n;
+        end
+    end
+end
+% Remove inner nested contacts (if any)
+idn = true([numel(M),1]);
+if cnt>0
+    for n = 1:cnt
+        idn(MM(n).Id) = false;
+    end
+end
+M = M(idn);
+
 %Cut edge contacts
 cnt = 0;
 %MC  = struct;
 mr = mean(ContoursRadius);
 ContoursRadius2 = [];
+th = 1.1*app.RadiusfractionEditField.Value;
 for n= 1:numel(M)
-    if ContoursCentersX(n)>2*mr && ContoursCentersY(n)>2*mr && ...
-            ContoursCentersY(n)<(h2-h1-2*mr) && ...
-            ContoursCentersX(n)<(w2-w1-2*mr)
+    if ContoursCentersX(n)>th*mr && ContoursCentersY(n)>th*mr && ...
+            ContoursCentersY(n)<(h2-h1-th*mr) && ...
+            ContoursCentersX(n)<(w2-w1-th*mr)
         cnt = cnt+1;
         %MC(cnt).x = M(n).x;
         %MC(cnt).y = M(n).y;

@@ -101,15 +101,27 @@ if id~=0
                     switch app.ContourMetricButtonGroup.SelectedObject.Text
                         case 'Radius'
                             Cid = round(1+255*(Radii(m)-mR)/(MR-mR));
+                            if length(Radii)==1
+                                Cid = 1;
+                            end
                             fill(ax,ContoursX{m},ContoursY{m},C(Cid,:),'edgecolor','none')
                         case 'Ellipticity'
                             Cid = round(1+255*(Ellipticity(m)-mE)/(ME-mE));
+                            if length(Radii)==1
+                                Cid = 1;
+                            end
                             fill(ax,ContoursX{m},ContoursY{m},C(Cid,:),'edgecolor','none')
                         case 'Angle'
                             Cid = round(1+255*(Angle(m)-mA)/(MA-mA));
+                            if length(Radii)==1
+                                Cid = 1;
+                            end
                             fill(ax,ContoursX{m},ContoursY{m},C(Cid,:),'edgecolor','none')
                         case 'Fit std error'
                             Cid = round(1+255*(FitStdError(m)-mfse)/(Mfse-mfse));
+                            if length(Radii)==1
+                                Cid = 1;
+                            end
                             fill(ax,ContoursX{m},ContoursY{m},C(Cid,:),'edgecolor','none')
                         case 'None'
                             
