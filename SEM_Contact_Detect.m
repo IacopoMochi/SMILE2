@@ -160,14 +160,14 @@ M = M(idn);
 
 %Cut edge contacts
 cnt = 0;
-%MC  = struct;
-mr = mean(ContoursRadius);
 ContoursRadius2 = [];
-th = 1.1*app.RadiusfractionEditField.Value;
+th = app.RadiusfractionEditField.Value;
 for n= 1:numel(M)
-    if ContoursCentersX(n)>th*mr && ContoursCentersY(n)>th*mr && ...
-            ContoursCentersY(n)<(h2-h1-th*mr) && ...
-            ContoursCentersX(n)<(w2-w1-th*mr)
+    maxradius = max(sqrt(mean(M(n).x)-M(n).x).^2+...
+        (mean(M(n).y-M(n).y).^2));
+    if ContoursCentersX(n)>maxradius*(th+1) && ContoursCentersY(n)>maxradius*(th+1) && ...
+            ContoursCentersY(n)<(h2-h1-maxradius*(th+1)) && ...
+            ContoursCentersX(n)<(w2-w1-maxradius*(th+1))
         cnt = cnt+1;
         %MC(cnt).x = M(n).x;
         %MC(cnt).y = M(n).y;
@@ -176,6 +176,7 @@ for n= 1:numel(M)
         ContoursRadius2 = [ContoursRadius2 ContoursRadius(n)];
     end
 end
+
 ContoursRadius = ContoursRadius2;
 %Output.contacts_contoursX = MCx;
 %Output.contacts_contoursY = MCy;
@@ -200,6 +201,7 @@ Output.AC = A(h1:h2,w1:w2);
 
 a = app.ContactsubimagesizeEditField.Value;
 b = app.RadiusfractionEditField.Value;
+contactCount = 0;
 for n = 1:size(ContoursRadius,2)
     R = AllRadii{n};
     r = max(R);
@@ -209,19 +211,19 @@ for n = 1:size(ContoursRadius,2)
     x2 = round(ContoursCentersX(n)+r*a);
     y1 = round(ContoursCentersY(n)-r*a);
     y2 = round(ContoursCentersY(n)+r*a);
-    try
+    S = size(Ac);
+
+    if x1>0 && x1<=S(2) && x2>0 && x2<=S(2) && y1>0 && y1<=S(1) && y2>0 && y2<=S(1) 
+        
+        contactCount = contactCount+1;
         B = Ac(y1:y2,x1:x2);
-    catch
-        disp('buca')
+        [x,y] = meshgrid(1:(x2-x1+1),1:(y2-y1+1));
+    
+        g = griddedInterpolant(x',y',B');
+        X = MCx{contactCount};
+        Y = MCy{contactCount};
+    
     end
-    [x,y] = meshgrid(1:(x2-x1+1),1:(y2-y1+1));
-    try
-    g = griddedInterpolant(x',y',B');
-    catch
-        disp('what?')
-    end
-    X = MCx{n};
-    Y = MCy{n};
     if strcmp(app.ContourdetectionButtonGroup.SelectedObject.Text,'Edge fit function')
         for k = 1:numel(X)
             ra = sqrt((Y(k)-ContoursCentersY(n)).^2+(X(k)-ContoursCentersX(n)).^2);
@@ -242,7 +244,7 @@ for n = 1:size(ContoursRadius,2)
                     end
                 case 'Linear'
                     if length(edge)>3
-                        [p,bb2] = edgeDetectLin_C(app,rr,edge);
+                        [p,~] = edgeDetectLin_C(app,rr,edge);
                     else
                         p = nan;
                     end
@@ -313,5 +315,6 @@ for n = 1:size(ContoursRadius,2)
     Output.contacts_contoursY = MCyA;
     Output.contacts_contoursXs = MCx;
     Output.contacts_contoursYs = MCy;
+
     
 end
