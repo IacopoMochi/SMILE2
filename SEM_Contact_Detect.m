@@ -229,7 +229,7 @@ for n = 1:size(ContoursRadius,2)
         X = MCx{contactCount};
         Y = MCy{contactCount};
 
-    end
+   
     if strcmp(app.ContourdetectionButtonGroup.SelectedObject.Text,'Edge fit function')
         for k = 1:numel(X)
             ra = sqrt((Y(k)-ContoursCentersY(n)).^2+(X(k)-ContoursCentersX(n)).^2);
@@ -308,6 +308,7 @@ for n = 1:size(ContoursRadius,2)
             %             end
 
         end
+    end
 
         MCxA{n} = X+ContoursCentersX(n)-1;
         MCyA{n} = Y+ContoursCentersY(n)-1;
