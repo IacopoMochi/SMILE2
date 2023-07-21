@@ -1,4 +1,4 @@
-function Output = SEM_line_Edge_detect(parameters,app)
+function Output = SEM_line_Edge_detect_old(parameters,app)
 
 %filename = parameters.filename;
 MinPeakProminence = parameters.MinPeakProminence; %0.36
