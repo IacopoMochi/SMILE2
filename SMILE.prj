@@ -8,8 +8,8 @@
     <param.icons />
     <param.summary />
     <param.description />
-    <param.screenshot>${PROJECT_ROOT}\SMILE2.0_resources\SMILE-splash.jpg</param.screenshot>
-    <param.version>2.0</param.version>
+    <param.screenshot>C:\Users\mochi_i\AppData\Local\Temp\tp0c00ce72_e776_4600_9784_beb5534672e6.png</param.screenshot>
+    <param.version>2.3</param.version>
     <param.products.name />
     <param.products.id />
     <param.products.version />
@@ -36,12 +36,14 @@
       <file>${PROJECT_ROOT}\cntsplit.m</file>
       <file>${PROJECT_ROOT}\displayData.m</file>
       <file>${PROJECT_ROOT}\edgeDetectfPoly.m</file>
+      <file>${PROJECT_ROOT}\edgeDetectfPoly2.m</file>
+      <file>${PROJECT_ROOT}\edgeDetectfPoly2MC.m</file>
+      <file>${PROJECT_ROOT}\edgeDetectfPolyMC.m</file>
       <file>${PROJECT_ROOT}\edgeDetectLin.m</file>
       <file>${PROJECT_ROOT}\edgeDetectLin_C.m</file>
       <file>${PROJECT_ROOT}\edgeDetectPoly_C.m</file>
       <file>${PROJECT_ROOT}\edgeDetectThreshold.m</file>
       <file>${PROJECT_ROOT}\EllModel.m</file>
-      <file>${PROJECT_ROOT}\exportData.m</file>
       <file>${PROJECT_ROOT}\FieldNames.m</file>
       <file>${PROJECT_ROOT}\FloatingAlpha.m</file>
       <file>${PROJECT_ROOT}\gatherParameters.m</file>
@@ -56,6 +58,7 @@
       <file>${PROJECT_ROOT}\NoWhiteNoise.m</file>
       <file>${PROJECT_ROOT}\Palasantzas1.m</file>
       <file>${PROJECT_ROOT}\Palasantzas2.m</file>
+      <file>${PROJECT_ROOT}\ScaleBar.png</file>
       <file>${PROJECT_ROOT}\SEM_Contact_Detect.m</file>
       <file>${PROJECT_ROOT}\SEM_line_Edge_detect.m</file>
       <file>${PROJECT_ROOT}\setROI.m</file>
@@ -67,7 +70,7 @@
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2021a_x64</root>
+      <root>C:\Program Files\MATLAB\R2022a_x64</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
         <toolbox name="embeddedcoder" />

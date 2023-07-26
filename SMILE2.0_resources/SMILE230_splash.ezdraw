@@ -16090,7 +16090,7 @@
 	oooAKKKKACiiigAooooAKKKKACiiigAooooA/9k=
 	</data>
 	<key>DKDChangeTimeStamp</key>
-	<string>2023-06-25 19:52:05 +0000</string>
+	<string>2023-07-04 21:32:05 +0000</string>
 	<key>DKDCreateTimeStamp</key>
 	<string>2022-02-09 23:33:18 +0000</string>
 	<key>DKDDisplayGraphicDetails</key>
@@ -16456,7 +16456,7 @@
 						<key>String</key>
 						<string>SMILE 2.3
 SEM-Measured Image Lines Estimator
-Release 2.3.0 - 2023/06/25</string>
+Release 2.3.1 - 2023/07/04</string>
 						<key>TextAttributes</key>
 						<array>
 							<string>{0, 45}</string>
@@ -16685,7 +16685,7 @@ Release 2.3.0 - 2023/06/25</string>
 		<string>NO</string>
 	</dict>
 	<key>DKDSaveTimeStamp</key>
-	<string>2023-06-25 19:52:22 +0000</string>
+	<string>2023-07-04 21:32:20 +0000</string>
 	<key>DKDTablet</key>
 	<dict>
 		<key>BrushDynamic</key>

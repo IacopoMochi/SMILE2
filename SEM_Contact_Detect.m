@@ -92,32 +92,35 @@ flattening = parameters.RemoveGradient;
 xfit = xfit-size(xfit,2)/2;
 yfit = yfit-size(yfit,1)/2;
 for n = 1:2
-     id = ~isnan(Acf);
-     if strcmp(flattening,'Linear')
-         F = fit([xfit(backgroundmap),yfit(backgroundmap)],Acf(backgroundmap),'poly11');
-         F = F(xfit,yfit);
-         AcF = normal(Acf-F);
-     elseif strcmp(flattening,'Quadratic')
-         F = fit([xfit(backgroundmap),yfit(backgroundmap)],Acf(backgroundmap),'poly22');
-         F = F(xfit,yfit);
-         AcF = normal(Acf-F);
-     elseif strcmp(flattening,'Cubic')
-         F = fit([xfit(backgroundmap),yfit(backgroundmap)],Acf(backgroundmap),'poly22');
-         F = F(xfit,yfit);
-         AcF = normal(Acf-F);
-     else
-         AcF = Acf;
-     end
+    id = ~isnan(Acf);
+    if strcmp(flattening,'Linear')
+        F = fit([xfit(backgroundmap),yfit(backgroundmap)],Acf(backgroundmap),'poly11');
+        F = F(xfit,yfit);
+        AcF = normal(Acf-F);
+    elseif strcmp(flattening,'Quadratic')
+        F = fit([xfit(backgroundmap),yfit(backgroundmap)],Acf(backgroundmap),'poly22');
+        F = F(xfit,yfit);
+        AcF = normal(Acf-F);
+    elseif strcmp(flattening,'Cubic')
+        F = fit([xfit(backgroundmap),yfit(backgroundmap)],Acf(backgroundmap),'poly22');
+        F = F(xfit,yfit);
+        AcF = normal(Acf-F);
+    else
+        AcF = Acf;
+    end
 end
 Acf = AcF;
-% 
-% 
+%
+%
 % ArcF = (ArcF-(median(min(ArcF,[],2))))./((median(max(ArcF,[],2)))-(median(min(ArcF,[],2))));
 % ArcF(ArcF<0)=0;
 % Sb = mean(ArcF);
 
 C = contourc(Acf,[threshold,threshold]);
 M = cntsplit(C);
+
+MM = struct();
+
 
 ContoursRadius = zeros(numel(M),1);
 ContoursCentersX = zeros(numel(M),1);
@@ -128,28 +131,62 @@ for n = 1:numel(M)
     ContoursRadius(n) = mean(sqrt((M(n).x-ContoursCentersX(n)).^2+...
         (M(n).y-ContoursCentersY(n)).^2));
 end
-
-%Cut edge contacts
+mr = median(ContoursRadius);
+% Detect nested contacts
 cnt = 0;
-%MC  = struct;
-mr = mean(ContoursRadius);
+for n = 1:numel(M)
+    for m = 1:numel(M)
+        if m~=n
+            x2 = (M(n).x-ContoursCentersX(m)).^2;
+            y2 = (M(n).y-ContoursCentersY(m)).^2;
+            if sum((x2+y2)<ContoursRadius(m)^2)>size(x2)/2
+                cnt = cnt+1;
+                MM(cnt).xi = M(n).x;
+                MM(cnt).yi = M(n).y;
+                MM(cnt).xo = M(m).x;
+                MM(cnt).yo = M(m).y;
+                MM(cnt).isnested = true;
+                MM(cnt).Id = n;
+            end
+        end
+    end
+end
+% Remove inner nested contacts (if any)
+idn = true([numel(M),1]);
+if cnt>0
+    for n = 1:cnt
+        idn(MM(n).Id) = false;
+    end
+end
+M = M(idn);
 ContoursRadius2 = [];
-for n= 1:numel(M)
-    if ContoursCentersX(n)>2*mr && ContoursCentersY(n)>2*mr && ...
-            ContoursCentersY(n)<(h2-h1-2*mr) && ...
-            ContoursCentersX(n)<(w2-w1-2*mr)
-        cnt = cnt+1;
-        %MC(cnt).x = M(n).x;
-        %MC(cnt).y = M(n).y;
-        MCx{cnt} = M(n).x;
-        MCy{cnt} = M(n).y;
+if app.ExcludeedgesCheckBox.Value
+    %Cut edge contacts
+    cnt = 0;
+    th = app.ContactsubimagesizeEditField.Value;
+    for n= 1:numel(M)
+        maxradius = max(max(sqrt(mean(M(n).x)-M(n).x).^2+...
+            (mean(M(n).y-M(n).y).^2)), mr);
+        if ContoursCentersX(n)>maxradius*(th+1) && ContoursCentersY(n)>maxradius*(th+1) && ...
+                ContoursCentersY(n)<(h2-h1-maxradius*(th)) && ...
+                ContoursCentersX(n)<(w2-w1-maxradius*(th))
+            cnt = cnt+1;
+            %MC(cnt).x = M(n).x;
+            %MC(cnt).y = M(n).y;
+            MCx{cnt} = M(n).x;
+            MCy{cnt} = M(n).y;
+            ContoursRadius2 = [ContoursRadius2 ContoursRadius(n)];
+        end
+    end
+else
+    for n= 1:numel(M)
+        MCx{n} = M(n).x;
+        MCy{n} = M(n).y;
         ContoursRadius2 = [ContoursRadius2 ContoursRadius(n)];
     end
 end
-ContoursRadius = ContoursRadius2;
-%Output.contacts_contoursX = MCx;
-%Output.contacts_contoursY = MCy;
 
+ContoursRadius = ContoursRadius2;
 
 AllRadii = cell(numel(MCx),1);
 for n = 1:numel(MCx)
@@ -170,28 +207,29 @@ Output.AC = A(h1:h2,w1:w2);
 
 a = app.ContactsubimagesizeEditField.Value;
 b = app.RadiusfractionEditField.Value;
+contactCount = 0;
 for n = 1:size(ContoursRadius,2)
     R = AllRadii{n};
-    r = max(R);
+    r = max(max(R)*a,2);
     %r = ContoursRadius(n);
     %th = 0:1/(2*r):2*pi-1/(2*r);
-    x1 = round(ContoursCentersX(n)-r*a);
-    x2 = round(ContoursCentersX(n)+r*a);
-    y1 = round(ContoursCentersY(n)-r*a);
-    y2 = round(ContoursCentersY(n)+r*a);
-    try
+    x1 = round(ContoursCentersX(n)-r);
+    x2 = round(ContoursCentersX(n)+r);
+    y1 = round(ContoursCentersY(n)-r);
+    y2 = round(ContoursCentersY(n)+r);
+    S = size(Ac);
+
+    if x1>0 && x1<=S(2) && x2>0 && x2<=S(2) && y1>0 && y1<=S(1) && y2>0 && y2<=S(1)
+
+        contactCount = contactCount+1;
         B = Ac(y1:y2,x1:x2);
-    catch
-        disp('buca')
-    end
-    [x,y] = meshgrid(1:(x2-x1+1),1:(y2-y1+1));
-    try
-    g = griddedInterpolant(x',y',B');
-    catch
-        disp('what?')
-    end
-    X = MCx{n};
-    Y = MCy{n};
+        [x,y] = meshgrid(1:(x2-x1+1),1:(y2-y1+1));
+
+        g = griddedInterpolant(x',y',B');
+        X = MCx{contactCount};
+        Y = MCy{contactCount};
+
+   
     if strcmp(app.ContourdetectionButtonGroup.SelectedObject.Text,'Edge fit function')
         for k = 1:numel(X)
             ra = sqrt((Y(k)-ContoursCentersY(n)).^2+(X(k)-ContoursCentersX(n)).^2);
@@ -201,8 +239,8 @@ for n = 1:size(ContoursRadius,2)
             xi = rr*cos(th)+(x2-x1)/2;
             yi = rr*sin(th)+(y2-y1)/2;
             edge = g(xi,yi);
-            
-            
+
+
             switch app.EdgefitfunctionButtonGroup.SelectedObject.Text
                 case 'Polynomial'
                     if length(edge)>4
@@ -212,7 +250,7 @@ for n = 1:size(ContoursRadius,2)
                     end
                 case 'Linear'
                     if length(edge)>3
-                        [p,bb2] = edgeDetectLin_C(app,rr,edge);
+                        [p,~] = edgeDetectLin_C(app,rr,edge);
                     else
                         p = nan;
                     end
@@ -230,11 +268,11 @@ for n = 1:size(ContoursRadius,2)
             if p<=rr(1) || p>=rr(end)
                 p = ra;
             end
-            
+
             if k>1
                 if abs(p-p0)>app.MaxspikeEditField.Value
                     p = ra;
-                    
+
                 end
                 p0 = p;
             else
@@ -253,35 +291,37 @@ for n = 1:size(ContoursRadius,2)
                     xp = p*cos(th);
                     yp = p*sin(th);
             end
-            
+
             X(k) = xp;
             Y(k) = yp;
-            
-%             if p>(2*ra)
-%                 plot(rr,edge,'-k',rr,bb2(1)*rr+bb2(2),'-r',(0.5-bb2(2))/bb2(1),0.5,'o');
-%             
-%             %hold(app.Image,'on')
-%             %line(app.Image,[xi(1) xi(end)]+ContoursCentersX(n)-(x2-x1)/2,[yi(1) yi(end)]+ContoursCentersY(n)-(y2-y1)/2,'color','red')
-%             
-% 
-%             %plot(app.Image,xp+ContoursCentersX(n),yp+ContoursCentersY(n),'o')
-%             %plot(rr,edge,rr,polyval(P,rr,[],mu))
-%                 waitforbuttonpress
-%             end
-            
+
+            %             if p>(2*ra)
+            %                 plot(rr,edge,'-k',rr,bb2(1)*rr+bb2(2),'-r',(0.5-bb2(2))/bb2(1),0.5,'o');
+            %
+            %             %hold(app.Image,'on')
+            %             %line(app.Image,[xi(1) xi(end)]+ContoursCentersX(n)-(x2-x1)/2,[yi(1) yi(end)]+ContoursCentersY(n)-(y2-y1)/2,'color','red')
+            %
+            %
+            %             %plot(app.Image,xp+ContoursCentersX(n),yp+ContoursCentersY(n),'o')
+            %             %plot(rr,edge,rr,polyval(P,rr,[],mu))
+            %                 waitforbuttonpress
+            %             end
+
         end
-        
+    end
+
         MCxA{n} = X+ContoursCentersX(n)-1;
         MCyA{n} = Y+ContoursCentersY(n)-1;
-        
+
     else
         MCxA{n} = MCx{n};
         MCyA{n} = MCy{n};
     end
-    
+
     Output.contacts_contoursX = MCxA;
     Output.contacts_contoursY = MCyA;
     Output.contacts_contoursXs = MCx;
     Output.contacts_contoursYs = MCy;
-    
+
+
 end
