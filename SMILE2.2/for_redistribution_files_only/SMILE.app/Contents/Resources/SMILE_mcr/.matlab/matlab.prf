@@ -1,20 +1,29 @@
 #MATLAB Preferences
-#Tue Oct 11 23:00:57 CEST 2022
+#Thu Aug 10 13:43:17 CEST 2023
 RLHiddenB2_WB_2014b_1=I16376
 RLOrderB2_WB_2014b_1=S0:1:
 MatlabExitConfirm=Bfalse
+RecentProjects=S/Users/iacopomochi/MATLAB/Projects/CGH
+RLWidthB2_VE_2014b_1_1=I130
+RLWidthB2_VE_2014b_1_0=I130
 DeploytoollastOpenFile=S
-EditorMRU8=S/Users/iacopomochi/Library/CloudStorage/OneDrive-Personal/Work/PSI/Data/REGINE/20220916/imremap.m
-EditorMRU7=S/Users/iacopomochi/Downloads/cSAXS_matlab_ptycho_package/utils/get_tilted_plane_correction_matrix.m
-EditorMRU6=S/Users/iacopomochi/Library/CloudStorage/OneDrive-Personal/Work/PSI/Data/REGINE/20220916/reconstruction.m
-EditorMRU5=S/Users/iacopomochi/Library/CloudStorage/OneDrive-Personal/Work/PSI/Data/REGINE/20220916/objectBox.m
-EditorMRU4=S/Users/iacopomochi/Library/CloudStorage/OneDrive-Personal/Work/PSI/RESCAN/Synthesis/Dipole.m
-EditorMRU3=S/Users/iacopomochi/Library/CloudStorage/OneDrive-Personal/Work/PSI/Data/REGINE/20220926/Preprocessing_D1_1a4.m
-EditorMRU2=S/Users/iacopomochi/Library/CloudStorage/OneDrive-Personal/Work/PSI/Data/REGINE/20220926/reconstruction.m
-EditorMRU1=S/Users/iacopomochi/Library/CloudStorage/OneDrive-Personal/Work/PSI/Data/REGINE/20220916/Preprocessing_D1_1a4.m
+EditorMRU8=S/Users/iacopomochi/Downloads/IacopoMochi-Multilayer-mirror-622d413/Multilayer.m
+EditorMRU7=S/Users/iacopomochi/Downloads/IacopoMochi-Multilayer-mirror-622d413/TestML.m
+EditorMRU6=S/Users/iacopomochi/Library/Mobile Documents/com~apple~CloudDocs/Euler/p838.m
+EditorMRU5=S/Users/iacopomochi/Library/Mobile Documents/com~apple~CloudDocs/Euler/FermatSpiralSorted.m
+EditorMRU4=S/Users/iacopomochi/Library/Mobile Documents/com~apple~CloudDocs/Work/Matlab_Files/Functions/GDS2raster.m
+CopyOptions.HonorCOPrefs=I0
+EditorMRU3=S/Users/iacopomochi/Library/CloudStorage/OneDrive-Personal/Work/PSI/IMEC/CreateTable.m
+EditorMRU2=S/Users/iacopomochi/Library/Mobile Documents/com~apple~CloudDocs/Work/Matlab_Files/Functions/contrast.m
+EditorMRU1=S/Users/iacopomochi/Documents/GitHub/SMILE2/toggleErrors.m
+ProjectRecentFiles1=S/Users/iacopomochi/MATLAB/Projects/CGH
 CommandWindowClearConfirmation=Btrue
 DeploytoolrecentProjects=S/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE2.0.prj;/Users/iacopomochi/Library/Mobile Documents/com~apple~CloudDocs/Work/PSI/Ptychography/rPIEimagereconstruction.prj;/Users/iacopomochi/Documents/GitHub/SMILE2/SMILE.prj
+SimulinkProjectUI_EnableWelcomePage=S0
 RLWidthB2_WB_2014b_1_1=I130
 RLWidthB2_WB_2014b_1_0=I130
 RLPrevInitB2_null=Btrue
+RLHiddenB2_VE_2014b_1=I8184
+RLPrevInitB2_VE_2014b_1=Btrue
 RLPrevInitB2_WB_2014b_1=Btrue
+RLOrderB2_VE_2014b_1=S0:1:

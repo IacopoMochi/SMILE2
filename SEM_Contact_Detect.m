@@ -229,90 +229,92 @@ for n = 1:size(ContoursRadius,2)
         X = MCx{contactCount};
         Y = MCy{contactCount};
 
-   
-    if strcmp(app.ContourdetectionButtonGroup.SelectedObject.Text,'Edge fit function')
-        for k = 1:numel(X)
-            ra = sqrt((Y(k)-ContoursCentersY(n)).^2+(X(k)-ContoursCentersX(n)).^2);
-            rr = ra*(1-b):1/(4*b*r):ra*(1+b);
-            %rr = R(k)*(1-b):1/(4*b*r):R(k)*(1+b);
-            th = atan2(Y(k)-ContoursCentersY(n), X(k)-ContoursCentersX(n));
-            xi = rr*cos(th)+(x2-x1)/2;
-            yi = rr*sin(th)+(y2-y1)/2;
-            edge = g(xi,yi);
+
+        if strcmp(app.ContourdetectionButtonGroup.SelectedObject.Text,'Edge fit function')
+            for k = 1:numel(X)
+                ra = sqrt((Y(k)-ContoursCentersY(n)).^2+(X(k)-ContoursCentersX(n)).^2);
+                rr = ra*(1-b):1/(4*b*r):ra*(1+b);
+                %rr = R(k)*(1-b):1/(4*b*r):R(k)*(1+b);
+                th = atan2(Y(k)-ContoursCentersY(n), X(k)-ContoursCentersX(n));
+                xi = rr*cos(th)+(x2-x1)/2;
+                yi = rr*sin(th)+(y2-y1)/2;
+                edge = g(xi,yi);
 
 
-            switch app.EdgefitfunctionButtonGroup.SelectedObject.Text
-                case 'Polynomial'
-                    if length(edge)>4
-                        [p,~,~] = edgeDetectPoly_C(app,rr,edge);
-                    else
-                        p = nan;
-                    end
-                case 'Linear'
-                    if length(edge)>3
-                        [p,~] = edgeDetectLin_C(app,rr,edge);
-                    else
-                        p = nan;
-                    end
-                case 'Threshold'
-                    if length(edge)>3
-                        p = edgeDetectLin_C(app,rr,edge);
-                    else
-                        p = nan;
-                    end
-            end
-            if isnan(p)
-                p = ra;
-            end
-            %Robustness check (profile fit error)
-            if p<=rr(1) || p>=rr(end)
-                p = ra;
-            end
-
-            if k>1
-                if abs(p-p0)>app.MaxspikeEditField.Value
-                    p = ra;
-
+                switch app.EdgefitfunctionButtonGroup.SelectedObject.Text
+                    case 'Polynomial'
+                        if length(edge)>4
+                            [p,~,~] = edgeDetectPoly_C(app,rr,edge);
+                        else
+                            p = nan;
+                        end
+                    case 'Linear'
+                        if length(edge)>3
+                            [p,~] = edgeDetectLin_C(app,rr,edge);
+                        else
+                            p = nan;
+                        end
+                    case 'Threshold'
+                        if length(edge)>3
+                            p = edgeDetectLin_C(app,rr,edge);
+                        else
+                            p = nan;
+                        end
                 end
-                p0 = p;
-            else
-                p0 = p;
+                if isnan(p)
+                    p = ra;
+                end
+                %Robustness check (profile fit error)
+                if p<=rr(1) || p>=rr(end)
+                    p = ra;
+                end
+
+                if k>1
+                    if abs(p-p0)>app.MaxspikeEditField.Value
+                        p = ra;
+
+                    end
+                    p0 = p;
+                else
+                    p0 = p;
+                end
+                switch app.EdgefitfunctionButtonGroup.SelectedObject.Text
+                    case 'Polynomial'
+                        %xp = (p-rr(1))*cos(th);
+                        %yp = (p-rr(1))*sin(th);
+                        xp = (p)*cos(th);
+                        yp = (p)*sin(th);
+                    case 'Linear'
+                        xp = p*cos(th);
+                        yp = p*sin(th);
+                    case 'Threshold'
+                        xp = p*cos(th);
+                        yp = p*sin(th);
+                end
+
+                X(k) = xp;
+                Y(k) = yp;
+
+                %             if p>(2*ra)
+                %                 plot(rr,edge,'-k',rr,bb2(1)*rr+bb2(2),'-r',(0.5-bb2(2))/bb2(1),0.5,'o');
+                %
+                %             %hold(app.Image,'on')
+                %             %line(app.Image,[xi(1) xi(end)]+ContoursCentersX(n)-(x2-x1)/2,[yi(1) yi(end)]+ContoursCentersY(n)-(y2-y1)/2,'color','red')
+                %
+                %
+                %             %plot(app.Image,xp+ContoursCentersX(n),yp+ContoursCentersY(n),'o')
+                %             %plot(rr,edge,rr,polyval(P,rr,[],mu))
+                %                 waitforbuttonpress
+                %             end
+
             end
-            switch app.EdgefitfunctionButtonGroup.SelectedObject.Text
-                case 'Polynomial'
-                    %xp = (p-rr(1))*cos(th);
-                    %yp = (p-rr(1))*sin(th);
-                    xp = (p)*cos(th);
-                    yp = (p)*sin(th);
-                case 'Linear'
-                    xp = p*cos(th);
-                    yp = p*sin(th);
-                case 'Threshold'
-                    xp = p*cos(th);
-                    yp = p*sin(th);
-            end
+            MCxA{n} = X+ContoursCentersX(n)-1;
+            MCyA{n} = Y+ContoursCentersY(n)-1;
+        else
 
-            X(k) = xp;
-            Y(k) = yp;
-
-            %             if p>(2*ra)
-            %                 plot(rr,edge,'-k',rr,bb2(1)*rr+bb2(2),'-r',(0.5-bb2(2))/bb2(1),0.5,'o');
-            %
-            %             %hold(app.Image,'on')
-            %             %line(app.Image,[xi(1) xi(end)]+ContoursCentersX(n)-(x2-x1)/2,[yi(1) yi(end)]+ContoursCentersY(n)-(y2-y1)/2,'color','red')
-            %
-            %
-            %             %plot(app.Image,xp+ContoursCentersX(n),yp+ContoursCentersY(n),'o')
-            %             %plot(rr,edge,rr,polyval(P,rr,[],mu))
-            %                 waitforbuttonpress
-            %             end
-
+            MCxA{n} = X;
+            MCyA{n} = Y;
         end
-    end
-
-        MCxA{n} = X+ContoursCentersX(n)-1;
-        MCyA{n} = Y+ContoursCentersY(n)-1;
-
     else
         MCxA{n} = MCx{n};
         MCyA{n} = MCy{n};

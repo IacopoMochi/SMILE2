@@ -1,0 +1,10 @@
+dd
+{Unrecognized function or variable 'dd'.
+} 
+get(0,'diaryFile')
+
+ans =
+
+    'diary'
+
+diary off

@@ -1,0 +1,32 @@
+#
+#DAStudio Preference File
+#
+
+
+[GLUEEditorPreferences]
+FirstTimeScrollNotification=0
+SuggestActionsSearchNotification=0
+SuggestQuickInsertNotification=0
+
+[General]
+MatlabRelease=2021b
+
+[LibraryBrowser2]
+LBGeometry4Window=32 66 600 550
+LBListWidth=341
+LBRecentName0=visiontransforms/2-D FFT
+LBRecentName1=simulink/Math Operations
+LBScaleFactor=1
+LBSearchHistory=fft,fft2,
+LBSearch_MatchCase=0
+LBSearch_MatchWholeWord=0
+LBSearch_UseRegExp=0
+LBSortStyle=0
+LBTreePopupHeight=500
+LBTreePopupWidth=250
+LBTreeWidth=243
+LBUseCache=1
+
+[SLToolstrip]
+TSDisplay=0
+
