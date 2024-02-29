@@ -294,6 +294,8 @@ if id~=0
                     set(app.Metric,'ylim',ylim,'xlim',xlim)
                     hold(app.Metric,'off')
                     title(app.Metric,Tstring)
+                    grid(app.Metric,"on")
+                    legend(app.Metric,{"Raw data","PSD fit"})
                 else
                     LCDU = dataStructure.LinesCD{id};
                     LCenters = dataStructure.LinesCenters{id};
@@ -409,6 +411,7 @@ else %Display average metrics
         set(app.Metric,'ylim',ylim,'xlim',xlim)
         hold(app.Metric,'off')
         title(app.Metric,Tstring)
+        grid(app.Metric,"on",'LineWidth',2)
     else
         if id>0
             LCDU = dataStructure.LinesCD{id};
@@ -423,4 +426,5 @@ else %Display average metrics
         end
     end
 end
+set(app.Metric,'FontSize',24)
 end %eof
