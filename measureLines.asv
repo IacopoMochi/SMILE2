@@ -41,7 +41,7 @@ if ~isfield(edges,'Average_PSD_LWR')
                     %dps_seq(:,nseq) = sqrt(2/(Ntapers+1))*sin(pi*nseq*(1:N)/(N+1));
                     taper = sin(pi*nseq*(1:N)/(N+1));
                     taper = taper./sqrt(sum(taper.*taper));
-                    dps_seq(:,nseq) = taper;
+                    dps_seq(:,nseq) = taper
                 end
             end
         end
